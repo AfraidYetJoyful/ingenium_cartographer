@@ -1,5 +1,5 @@
 # ingenium_cartographer
-Bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project
+Bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project. This branch is being edited to use ROS2 Jazzy Jalisco. As of this writing (June 2025) it is NOT complete, and NOT functional. 
 ![Screenshot](blanchard.png)
 
 ## Installation Instructions
