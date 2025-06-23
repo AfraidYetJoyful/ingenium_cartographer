@@ -74,7 +74,7 @@ fi
 # Move files into new directory, and then move the .pbstream file and the original bag file back
 mv "$file"* "$output_dir"
 cd "$output_dir" || exit
-mv "$(basename "$file").pbstream" "$(dirname "$file")"
+rm "$(basename "$file").pbstream" ### Delete the pbstream file, since it is specific to Google Cartographer* (*information from Johannes, late June 2025)
 mv "$(basename "$file")" "$(dirname "$file")"
 
 # Save a small copy of pointcloud
