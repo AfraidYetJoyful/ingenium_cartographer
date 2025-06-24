@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu install.
+
 sudo apt update
 sudo apt upgrade
 sudo apt install htop # Disk space monitor
