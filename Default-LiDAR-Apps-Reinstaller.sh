@@ -2,15 +2,18 @@
 
 sudo apt update
 sudo apt upgrade
-sudo apt install htop &
-sudo apt install openssh-server &
-sudo apt install blender &
+sudo apt install htop # Disk space monitor
+sudo apt install openssh-server # SSH client
+sudo apt install blender # Install blender (a 3D modeling software)
+sudo apt install snapd # A package manager
+sudo snap install --classic code # Visual Studio Code, a git-integrated IDE for basically all computer languages
+sudo snap install cloudcompare # Install CloudCompare (a point-cloud processing software)
+sudo apt-get install gnome-keyring # Install a secure cryptographic library needed by VS Code
 
-sudo apt install snapd
-sudo snap install --classic code &
-sudo snap install cloudcompare &
+sudo apt-get install git # Install and then configure git (a source control software for coders)
+git config --global user.email "ingenium.lidar@outlook.com"
+git config --global user.name "Ingenium-LiDAR"
 
-sudo apt install git-all
+sudo apt-get install gnome-keyring # Install a secure cryptographic library needed by VS Code
 
-
-
+sudo apt autoremove # Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
