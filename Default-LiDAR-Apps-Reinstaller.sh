@@ -9,5 +9,5 @@ sudo apt install snapd # A package manager
 sudo snap install --classic code # Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap install cloudcompare # Install CloudCompare (a point-cloud processing software)
 sudo apt-get install git # Install git (a source control software for coders)
-
+sudo apt-get install gnome-keyring # Install a secure cryptographic library needed by VS Code
 
