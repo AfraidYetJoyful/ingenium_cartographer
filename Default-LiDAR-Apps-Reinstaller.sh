@@ -11,3 +11,4 @@ sudo snap install cloudcompare # Install CloudCompare (a point-cloud processing 
 sudo apt-get install git # Install git (a source control software for coders)
 sudo apt-get install gnome-keyring # Install a secure cryptographic library needed by VS Code
 
+sudo apt autoremove # Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
