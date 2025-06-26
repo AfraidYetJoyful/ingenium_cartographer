@@ -68,5 +68,9 @@ clone_at_commit https://github.com/ros-drivers/velodyne/ 0f2a3bb1dde4fa91cbafad8
 sudo apt-get update && sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
 
 
+
+#---------------------------------------------CLEANUP---------------------------------------------
+
+
 echo "Running sudo apt autoremove:"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
