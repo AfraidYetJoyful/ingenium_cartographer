@@ -30,6 +30,8 @@ echo "Installing ros-jazzy-desktop..."
 sleep 1
 sudo apt install ros-jazzy-desktop
 
+echo 'alias run_jazzy="source /opt/ros/jazzy/setup.bash"' >> ~/.bashrc #AB add the alias run_jazzy to the system ~/.bashrc file.
+
 echo "ROS2 Jazzy installation complete."
 sleep 1
 
