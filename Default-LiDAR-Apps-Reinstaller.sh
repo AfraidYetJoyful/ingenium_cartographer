@@ -11,6 +11,8 @@ sudo apt install snapd # A package manager
 sudo snap install --classic code # Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap install cloudcompare # Install CloudCompare (a point-cloud processing software)
 sudo apt-get install gnome-keyring # Install a secure cryptographic library needed by VS Code
+sudo apt install rpi-imager # a software for burning OSes onto SD cards for use in a Raspberry Pi
+sudo snap refresh firefox # Update the default-installed firefox to the latest version
 
 sudo apt-get install git # Install and then configure git (a source control software for coders)
 git config --global user.email "ingenium.lidar@outlook.com"
