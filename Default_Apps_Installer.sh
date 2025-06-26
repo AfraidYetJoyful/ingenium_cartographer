@@ -42,30 +42,10 @@ fi
 #---------------------------------------------INSTALL HARDWARE DRIVERS---------------------------------------------
 
 
-#AB Make and go to a new directory called ingenium_cartographer_scripts in the ~ directory.
-cd ~
-mkdir ingenium_cartographer_scripts
-cd ingenium_cartographer_scripts
-mkdir drivers #AB make and navigate to a new directory called "drivers" in ingenium_cartographer_scripts
-cd drivers
-
-
-function clone_at_commit() { #AB Copied straight from install.sh
-  url=$1
-  commit=$2
-  git clone "$url"
-  cd "$(basename "$url")" || exit
-  git reset --hard "$commit"
-  git pull
-  cd .. || exit
-}
-
-
-clone_at_commit https://github.com/ros-drivers/velodyne/ 0f2a3bb1dde4fa91cbafad8a3f9f89b66c2a1350 #AB Clone the velodyne driver. This was the most recent commit on June 26, 2025, when I wrote this comment. No need that this should necessarily stay the default, but if you want to upgrade check for compatibility first and save this commit ID so you can revert if you need to.
-#AB Note that Johannes was unsatisfied with the ROS1 version of this ^ and wrote his own version, which is on his GitHub. If things start breaking I will talk to him about what he did and why.
-
-
-sudo apt-get update && sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install ros-jazzy-velodyne #AB Install the IMU driver. It's in a stack hosted (I believe) on the ROS website.
+sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
 
 
 
