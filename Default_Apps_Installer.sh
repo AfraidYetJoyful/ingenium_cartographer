@@ -13,6 +13,7 @@ sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt install blender #AB Install blender (a 3D modeling software)
 sudo apt install snapd #AB A package manager
+sudo apt install gnome-tweaks #AB An OS customization tool
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
