@@ -51,6 +51,14 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 
 
 
+#---------------------------------------------INSTALL PIP AND PYTHON PACKAGES---------------------------------------------
+
+
+sudo apt install python3-pip #AB Install pip, Python's package manager.
+#AB Add more install package instructions here. (I mean to add open3d, but it looks like that might cause some problems...)
+
+
+
 #---------------------------------------------CLEANUP---------------------------------------------
 
 
