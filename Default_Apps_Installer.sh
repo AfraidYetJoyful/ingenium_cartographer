@@ -59,6 +59,13 @@ sudo apt install python3-pip #AB Install pip, Python's package manager.
 
 
 
+# sudo ip addr flush dev enp152s0 
+#AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip addr 
+# sudo ip addr add 192.168.1.100/24 dev enp152s0 
+#AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
+sudo ip route add 192.168.1.201 dev enp152s0
+
+
 #---------------------------------------------CLEANUP---------------------------------------------
 
 
