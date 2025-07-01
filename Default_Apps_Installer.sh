@@ -68,6 +68,8 @@ sudo ip route add 192.168.1.201 dev enp152s0
 
 #---------------------------------------------CLEANUP---------------------------------------------
 
+echo 'alias cleanup="./cleanup.sh"' >> ~/.bashrc #AB add the alias cleanup to the system ~/.bashrc file. It will now run ./cleanup.sh whenever the command "cleanup" is entered.
 
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
+
