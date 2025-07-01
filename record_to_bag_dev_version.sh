@@ -39,7 +39,7 @@ echo "Currently recording, press any key to exit"
 read -r ### Wait for an input of any key, then proceed to the next line
 
 
-./cleanup.sh #AB This is an alias created by Default_Apps_Installer.sh to refer to cleanup.sh. It automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
+./cleanup.sh #AB This  automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
 echo "The program has finished running now."
 exit
 
