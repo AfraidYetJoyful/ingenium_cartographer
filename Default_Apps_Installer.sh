@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu install.
+#AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. cloudcompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see Ubuntu-Core-RPi-Default-Packages-Installer.sh
 
 
 
@@ -59,11 +60,14 @@ sudo apt install python3-pip #AB Install pip, Python's package manager.
 
 
 
+#---------------------------------------------CONFIGURE PORTS AND IP ADDRESSES---------------------------------------------
+
+
 # sudo ip addr flush dev enp152s0 
-#AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip addr 
 # sudo ip addr add 192.168.1.100/24 dev enp152s0 
 #AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
-sudo ip route add 192.168.1.201 dev enp152s0
+sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip addr 
+
 
 
 #---------------------------------------------CLEANUP---------------------------------------------

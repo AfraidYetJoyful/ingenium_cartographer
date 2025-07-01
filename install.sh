@@ -40,4 +40,4 @@ git clone https://github.com/JohannesByle/velodyne ### Import Johannes' velodyne
 cd $catkin_dir/ || exit ### move back to the catkin directory, if this is not possible, exit
 catkin_make_custom ### Still not sure what this does exactly.
 fi
-cd "$cwd" || exit ### return to the directory the program started in. Ff this is not possible, exit
+cd "$cwd" || exit ### return to the directory the program started in. If this is not possible, exit
