@@ -56,6 +56,7 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 
 
 sudo apt install python3-pip #AB Install pip, Python's package manager.
+sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
 #AB Add more install package instructions here. (I mean to add open3d, but it looks like that might cause some problems...)
 
 
