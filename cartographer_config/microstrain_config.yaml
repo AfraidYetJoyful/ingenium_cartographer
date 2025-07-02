@@ -1,0 +1,11 @@
+microstrain_inertial_driver:
+  ros__parameters:
+    # Copy this file to a new file, fill out this section with desired parameters, and specify the new file via params_file to override the default params
+    # foo: bar
+    port: /dev/ttyACM0
+    baudrate: 115200 
+    imu_enable: true 
+    gnss1_enable: false 
+    gnss2_enable: false 
+    filter_manual_config: false 
+    filter_enable: false 

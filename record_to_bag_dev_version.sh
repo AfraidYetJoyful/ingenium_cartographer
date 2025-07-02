@@ -20,14 +20,8 @@ sudo ip route add 192.168.1.201 dev $ethernet
 
 # ros2 launch microstrain_inertial_driver microstrain_launch.py &
 #ros2 launch microstrain_inertial_driver microstrain_launch.py port:=/dev/ttyACM0 baudrgnss1_enable:=falseate:=115200 imu_enable:=true filter_manual_config:=false &
-ros2 launch microstrain_inertial_driver microstrain_launch.py \
-  port:=/dev/ttyACM0 \
-  baudrate:=115200 \
-  imu_enable:=true \
-  gnss1_enable:=false \
-  gnss2_enable:=false \
-  filter_manual_config:=false \
-  filter_enable:=false &
+ros2 launch microstrain_inertial_driver microstrain_launch.py --params-file /cartographer_config/microstrain_config.yaml
+  
 
 sleep 2
 
