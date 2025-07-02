@@ -14,8 +14,9 @@ record_imu=true
 
 #---------------------------------------------LAUNCH DRIVERS AS DICTATED BY ENVIRONMENT VARIABLES---------------------------------------------#
 
-if $record_lidar; then #AB If record_lidar parameter is enabled...
+if [ $record_lidar = "true" ]; then #AB If record_lidar parameter is enabled...
   #AB Configure the IP address of the ethernet port to receive data from the default IP of a VLP-32C. Replace enp152s0 with the name of your ethernet port, which can be found using ip addr 
+  echo "recording lidar. Parameter = " $record_lidar
   sudo ip addr flush dev $ethernet
   sudo ip addr add 192.168.1.100/24 dev $ethernet 
   sudo ip route add 192.168.1.201 dev $ethernet
@@ -25,7 +26,7 @@ if $record_lidar; then #AB If record_lidar parameter is enabled...
 fi
 
 
-if $record_imu; then #AB If record_imu parameter is enabled...
+if [ $record_imu = "true" ]; then #AB If record_imu parameter is enabled...
   # ros2 launch microstrain_inertial_driver microstrain_launch.py &
   #ros2 launch microstrain_inertial_driver microstrain_launch.py port:=/dev/ttyACM0 baudrgnss1_enable:=falseate:=115200 imu_enable:=true filter_manual_config:=false &
   #AB Launch the IMU driver and begin broadcasting on the /imu/data topic
@@ -39,13 +40,13 @@ fi
 
 
 #AB Record different topics depending on which parameters are enabled. This is for DEV VERSION ONLY. In production version, only the first option will be allowed, and all others will throw an error (since either kind of data is useless without the other for inertial SLAM purposes)
-if [ $record_lidar ] &&  [$record_imu ]; then 
+if [ $record_lidar = "true" ] &&  [ $record_imu = "true" ]; then 
   echo "Recording lidar and imu data..."
   ros2 bag record /imu/data /velodyne_packets &
-elif [ $record_lidar ] && ! [ $record_imu ]; then
+elif [ $record_lidar = "true" ] && [ $record_imu = "false" ]; then
   echo "Recording lidar data only..."
   ros2 bag record /velodyne_packets &
-elif ! [ $record_lidar ] && [ $record_imu ]; then
+elif [ $record_lidar = "false" ] && [ $record_imu = "true" ]; then
   echo "Recording imu data only..."
   ros2 bag record /imu/data &
 else
