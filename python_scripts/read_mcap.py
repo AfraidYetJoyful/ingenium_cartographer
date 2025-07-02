@@ -15,7 +15,7 @@ subprocess.run("source ~/.bashrc; source /opt/ros/jazzy/setup.bash; sleep 2", sh
 """script that reads ROS2 messages from an MCAP bag using the rosbag2_py API."""
 import argparse
 
-import rosbag2_py
+import rosbag2_py #AB Each of these import errors resolve themselves once Jazzy is sourced in the same terminal the script is run in.
 from rclpy.serialization import deserialize_message
 from rosidl_runtime_py.utilities import get_message
 

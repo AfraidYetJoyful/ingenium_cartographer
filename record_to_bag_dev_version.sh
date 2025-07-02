@@ -1,36 +1,68 @@
 #!/bin/bash
 
+
+#---------------------------------------------SOURCE JAZZY AND CONFIGURE ENVIRONMENT VARIABLES---------------------------------------------#
+
 source /opt/ros/jazzy/setup.bash
 
 cwd=$(pwd)
 ethernet=enp152s0
-
-#AB Configure the IP address of the ethernet port to receive data from the default IP of a VLP-32C. Replace enp152s0 with the name of your ethernet port, which can be found using ip addr 
-sudo ip addr flush dev $ethernet
-sudo ip addr add 192.168.1.100/24 dev $ethernet 
-sudo ip route add 192.168.1.201 dev $ethernet
+record_lidar=false
+record_imu=true
 
 
-# Start the connection to the lidar
+
+#---------------------------------------------LAUNCH DRIVERS AS DICTATED BY ENVIRONMENT VARIABLES---------------------------------------------#
+
+if $record_lidar; then #AB If record_lidar parameter is enabled...
+  #AB Configure the IP address of the ethernet port to receive data from the default IP of a VLP-32C. Replace enp152s0 with the name of your ethernet port, which can be found using ip addr 
+  sudo ip addr flush dev $ethernet
+  sudo ip addr add 192.168.1.100/24 dev $ethernet 
+  sudo ip route add 192.168.1.201 dev $ethernet
+  #AB Launch the velodyne driver and begin broadcasting on the /velodyne_packets topic
+  ros2 launch velodyne_driver velodyne_driver_node-VLP32C-launch.py &
+  sleep 2
+fi
 
 
-# ros2 launch velodyne_driver velodyne_driver_node-VLP32C-launch.py &
-# sleep 2
+if $record_imu; then #AB If record_imu parameter is enabled...
+  # ros2 launch microstrain_inertial_driver microstrain_launch.py &
+  #ros2 launch microstrain_inertial_driver microstrain_launch.py port:=/dev/ttyACM0 baudrgnss1_enable:=falseate:=115200 imu_enable:=true filter_manual_config:=false &
+  #AB Launch the IMU driver and begin broadcasting on the /imu/data topic
+  ros2 launch microstrain_inertial_driver microstrain_launch.py params_file:=$(pwd)/cartographer_config/microstrain_config.yaml
+  sleep 2
+fi
 
 
-# ros2 launch microstrain_inertial_driver microstrain_launch.py &
-#ros2 launch microstrain_inertial_driver microstrain_launch.py port:=/dev/ttyACM0 baudrgnss1_enable:=falseate:=115200 imu_enable:=true filter_manual_config:=false &
-ros2 launch microstrain_inertial_driver microstrain_launch.py params_file:=$(pwd)/cartographer_config/microstrain_config.yaml
-  
+#---------------------------------------------RECORD DATA DICTATED BY ENVIRONMENT VARIABLES---------------------------------------------#
+
+
+
+#AB Record different topics depending on which parameters are enabled. This is for DEV VERSION ONLY. In production version, only the first option will be allowed, and all others will throw an error (since either kind of data is useless without the other for inertial SLAM purposes)
+if [$record_lidar] && [$record_imu]; then 
+  echo "Recording lidar and imu data..."
+  ros2 bag record /imu/data /velodyne_packets &
+elif [$record_lidar] && ! [$record_imu]; then
+  echo "Recording lidar data only..."
+  ros2 bag record /velodyne_packets &
+elif ! [$record_lidar] && [$record_imu]; then
+  echo "Recording imu data only..."
+  ros2 bag record /imu/data &
+else
+  echo "Error: No topics recorded"
+  exit
+fi
+
+
+
+#---------------------------------------------END DATA COLLECTION AND CLEAN UP WORKSPACE---------------------------------------------#
+
+
 
 sleep 2
-
-# Start recording specific nodes from the lidar and the imu
-ros2 bag record /imu/data & # /velodyne_packets &
-sleep 2
-
 echo "Currently recording, press any key to exit"
-read -r ### Wait for an input of any key, then proceed to the next line
+read -r #AB Wait for an input of any key, then proceed to cleanup
+
 
 
 ./cleanup.sh #AB This  automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
@@ -40,7 +72,8 @@ exit
 
 
 
-
+#---------------------------------------------OLD CODE AND CHATGPT ERROR ANALYSIS---------------------------------------------#
+#AB [Delete this section from the production version]
 
 
 
