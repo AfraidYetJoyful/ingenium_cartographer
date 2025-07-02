@@ -39,13 +39,13 @@ fi
 
 
 #AB Record different topics depending on which parameters are enabled. This is for DEV VERSION ONLY. In production version, only the first option will be allowed, and all others will throw an error (since either kind of data is useless without the other for inertial SLAM purposes)
-if [$record_lidar] && [$record_imu]; then 
+if [ $record_lidar ] &&  [$record_imu ]; then 
   echo "Recording lidar and imu data..."
   ros2 bag record /imu/data /velodyne_packets &
-elif [$record_lidar] && ! [$record_imu]; then
+elif [ $record_lidar ] && ! [ $record_imu ]; then
   echo "Recording lidar data only..."
   ros2 bag record /velodyne_packets &
-elif ! [$record_lidar] && [$record_imu]; then
+elif ! [ $record_lidar ] && [ $record_imu ]; then
   echo "Recording imu data only..."
   ros2 bag record /imu/data &
 else
