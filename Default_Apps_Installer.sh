@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu install.
-#AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. cloudcompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see Ubuntu-Core-RPi-Default-Packages-Installer.sh
+#AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see Ubuntu-Core-RPi-Default-Packages-Installer.sh
 
 
 
@@ -9,8 +9,10 @@
 echo -ne "Installing base packages...\n"
 sleep 1
 
+echo "Running sudo apt update and upgrade: "
 sudo apt update
 sudo apt upgrade
+echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, and git"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt install blender #AB Install blender (a 3D modeling software)
@@ -26,13 +28,12 @@ sudo apt-get install git #AB Install and then configure git (a source control so
 git config --global user.email "ingenium.lidar@outlook.com"
 git config --global user.name "Ingenium-LiDAR"
 
-sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
-
 
 
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
+echo "Installing ROS2 Jazzy Jalisco..."
 if [ -f "./Install_Jazzy.sh" ]; #AB If the ROS2 Jazzy installer script file exists...
 then 
   ./Install_Jazzy.sh #AB ...execute it, to install ROS Jazzy
@@ -100,6 +101,7 @@ Categories=Graphics;
 EOF"
 
 sudo chmod +x "/usr/share/applications/veloview.desktop" #AB Make the desktop file into an executable
+rm veloview.tar.gz #AB delete the archive previously downloaded
 
 cd $CURRENT_DIRECTORY #AB return to the directory the script was in before installing VeloView
 
