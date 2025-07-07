@@ -9,3 +9,5 @@ microstrain_inertial_driver:
     gnss2_enable: false 
     filter_manual_config: false 
     filter_enable: false 
+    debug: true
+ 
