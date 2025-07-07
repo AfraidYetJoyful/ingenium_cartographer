@@ -73,8 +73,11 @@ sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name 
 
 
 #---------------------------------------------INSTALL VELOVIEW---------------------------------------------
-CURRENT_DIRECTORY=$(pwd)
-cd ~
+
+
+echo "Installing VeloView..."
+CURRENT_DIRECTORY=$(pwd) #AB store the current directory in a variable
+cd ~ #AB create a new directory called "Apps" within the directory ~ (the user default) and navigate into it
 mkdir Apps
 cd Apps
 
@@ -98,11 +101,12 @@ EOF"
 
 sudo chmod +x "/usr/share/applications/veloview.desktop" #AB Make the desktop file into an executable
 
-cd $CURRENT_DIRECTORY
+cd $CURRENT_DIRECTORY #AB return to the directory the script was in before installing VeloView
 
 
 
 #---------------------------------------------CLEANUP---------------------------------------------
+
 
 echo 'alias cleanup="./cleanup.sh"' >> ~/.bashrc #AB add the alias cleanup to the system ~/.bashrc file. It will now run ./cleanup.sh whenever the command "cleanup" is entered.
 
