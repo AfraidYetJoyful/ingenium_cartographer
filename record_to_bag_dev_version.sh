@@ -7,8 +7,8 @@ source /opt/ros/jazzy/setup.bash
 
 cwd=$(pwd)
 ethernet=enp152s0
-record_lidar=false
-record_imu=true
+record_lidar=true
+record_imu=false
 
 
 

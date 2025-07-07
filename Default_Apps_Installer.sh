@@ -71,6 +71,37 @@ sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name 
 
 
 
+
+#---------------------------------------------INSTALL VELOVIEW---------------------------------------------
+CURRENT_DIRECTORY=$(pwd)
+cd ~
+mkdir Apps
+cd Apps
+
+#AB Download VeloView 5.1 for Ubuntu from the web
+curl "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.9&type=app&os=Linux&downloadFile=VeloView-5.1.0-Ubuntu18.04-x86_64.tar.gz" --output veloview.tar.gz
+tar -xzf veloview.tar.gz #AB Extract it from the archive. Extracts by default to a directory called VeloView-5.1.0-Ubuntu18.04-x86_64
+chmod +x "VeloView-5.1.0-Ubuntu18.04-x86_64/bin/VeloView" #AB Make the VeloView binary executable
+VELOVIEW_EXEC_PATH="$(pwd)/VeloView-5.1.0-Ubuntu18.04-x86_64/bin/VeloView" #AB Get the absolute path to the executable
+
+#AB Create a Desktop entry file for all users linking to the VeloView binary
+sudo bash -c "cat > '/usr/share/applications/veloview.desktop' <<EOF
+[Desktop Entry]
+Version=1.0
+Name=VeloView
+Exec=$VELOVIEW_EXEC_PATH
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Categories=Graphics;
+EOF"
+
+sudo chmod +x "/usr/share/applications/veloview.desktop" #AB Make the desktop file into an executable
+
+cd $CURRENT_DIRECTORY
+
+
+
 #---------------------------------------------CLEANUP---------------------------------------------
 
 echo 'alias cleanup="./cleanup.sh"' >> ~/.bashrc #AB add the alias cleanup to the system ~/.bashrc file. It will now run ./cleanup.sh whenever the command "cleanup" is entered.
