@@ -41,7 +41,7 @@ if [ -f "./Install_Jazzy.sh" ]; #AB If the ROS2 Jazzy installer script file exis
 then 
   ./Install_Jazzy.sh #AB ...execute it, to install ROS Jazzy
 else #AB otherwise skip it.
-    echo -e "${RED}ERROR:\n ./Install_Jazzy.sh was not found. Skipping ROS Jazzy install...\n${NC}"
+    echo -e "${RED}ERROR:\n ./Install_Jazzy.sh was not found. Skipping ROS Jazzy install...\n${NC}" #AB This error prints in red
 fi
 
 

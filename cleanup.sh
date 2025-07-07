@@ -11,7 +11,7 @@ fi
 for dir in "$(pwd)"/*/     #AB Iterate through every directory in the current working directory (i.e., the directory in which the script is running)
 do
     if [[ "$dir" =~ rosbag2_* ]]; then #AB Use a regular expression to determine if any of the directories starts with the phrase "rosbag2_" and has other characters after it
-        mv "$dir" "~/Documents/Data" #AB If it matches this pattern, move it to the Data folder out of the script folder
+        mv "$dir" ~/Documents/Data/"$(basename "$dir")" #AB If it matches this pattern, move it to the Data folder out of the script folder
         echo "Moved $dir to ~/Documents/Data"
     fi
 
