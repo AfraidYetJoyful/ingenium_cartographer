@@ -1,7 +1,12 @@
 # ingenium_cartographer
-   Bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project. This branch is being edited to use ROS2 Jazzy Jalisco. 
-   
-As of this writing (June 2025) it is NOT complete, and NOT functional. 
+   Bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project. This branch is being edited to use ROS2 Jazzy Jalisco. As of this writing (June 2025) it is NOT complete, and NOT functional. 
+
+   The following scripts work as intended: cleanup.sh; Default_Apps_Installer.sh; Install_Jazzy.sh; Ubuntu-Core-RPi-Default-Packages-Installer.sh
+
+   The following scripts do not yet work as intended: record_to_bag_dev_version.sh
+
+   The following scripts are relics from the ROS1 branch, and will eventually be fully replaced: display_bag.sh; install.sh; process_bag.sh; record_to_bag.sh; subtract.sh
+
 ![Screenshot](blanchard.png)
 
 ## A Brief Note About the Jazzy Branch
@@ -15,7 +20,21 @@ Milan's comments are denoted by #MS
 ## Installation Instructions
   The order of these steps is very important, and not following this order can lead to irreparable problems with the installation.
 
-0. If installing on Pi, make sure to add a swap file. Typically do 4G instead of the 2G listed [here](https://linuxize.com/post/how-to-add-swap-space-on-ubuntu-20-04/). Also install pcap `sudo apt-get install libpcap-dev`
+0. Download onto your device the following scripts from this branch of the repository: Default_Apps_Installer.sh ; Install_Jazzy.sh . Make sure they are in the same directory. [ NOTE: if installing on a device solely for data collection, and not on a device intended for development, use Ubuntu-Core-RPi-Default-Packages-Installer.sh instead of Default_Apps_Installer.sh ]
 
-1. Install ROS Jazzy using their [guide](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)
-2. 
+1. Navigate to that directory in terminal. Mark both scripts as executable (either via the "properties" dialog when you right-click or via the chmod command)
+
+2. Run sudo ./Default_Apps_Installer.sh . It is recommended that you permit all the packages to install to prevent installation issues. (Note: These scripts work best when run on a fresh reinstall of Ubuntu 24.04 LTS)
+
+3. Clone this git repostitory onto your device [Note for future: automate this]
+
+4. Mark all shell scripts within it as executable files
+
+
+## Instructions for Gathering and Processing Data
+
+0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15 and a 3DM-GX5-AR) to the data gathering device (which should have these scripts installed). Run ./record_to_bag.sh. This should procduce a .mcap file in the directory ~/Documents/Data (this will be created automatically by cleanup.sh if it does not yet exist)
+
+1. On a powerful computer (Raspberry Pi not recommended for this step), run ./process_bag.sh insert_mcap_file_path_here.mcap 
+
+2.  
