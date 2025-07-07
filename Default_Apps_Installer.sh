@@ -3,6 +3,9 @@
 #AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu install.
 #AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see Ubuntu-Core-RPi-Default-Packages-Installer.sh
 
+RED='\033[0;31m' #AB format echo text as red
+NC='\033[0m' #AB format echo text as "no color"
+
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
@@ -12,7 +15,7 @@ sleep 1
 echo "Running sudo apt update and upgrade: "
 sudo apt update
 sudo apt upgrade
-echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, and git"
+echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, and git\n"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt install blender #AB Install blender (a 3D modeling software)
@@ -33,12 +36,12 @@ git config --global user.name "Ingenium-LiDAR"
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
-echo "Installing ROS2 Jazzy Jalisco..."
+echo "Installing ROS2 Jazzy Jalisco...\n"
 if [ -f "./Install_Jazzy.sh" ]; #AB If the ROS2 Jazzy installer script file exists...
 then 
   ./Install_Jazzy.sh #AB ...execute it, to install ROS Jazzy
 else #AB otherwise skip it.
-    echo "./Install_Jazzy.sh was not found. Skipping ROS Jazzy install..."
+    echo -e "${RED}ERROR:\n ./Install_Jazzy.sh was not found. Skipping ROS Jazzy install...\n${NC}"
 fi
 
 
