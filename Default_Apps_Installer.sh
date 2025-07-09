@@ -19,13 +19,14 @@ echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudComp
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt install blender #AB Install blender (a 3D modeling software)
-sudo apt install snapd #AB A package manager
-sudo apt install gnome-tweaks #AB An OS customization tool
-sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo apt install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
 sudo apt install rpi-imager #AB a software for burning OSes onto SD cards for use in a Raspberry Pi
+sudo apt install gnome-tweaks #AB An OS customization tool
+sudo apt install snapd #AB A package manager
+sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
+sudo snap install docker #AB A containerization software [!] CRITICAL [!]
 
 sudo apt-get install git #AB Install and then configure git (a source control software for coders)
 git config --global user.email "ingenium.lidar@outlook.com"
@@ -107,6 +108,13 @@ sudo chmod +x "/usr/share/applications/veloview.desktop" #AB Make the desktop fi
 rm veloview.tar.gz #AB delete the archive previously downloaded
 
 cd $CURRENT_DIRECTORY #AB return to the directory the script was in before installing VeloView
+
+
+
+#---------------------------------------------INSTALL LIO-SAM---------------------------------------------
+
+
+./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
 
 
 
