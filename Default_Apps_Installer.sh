@@ -114,16 +114,20 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 #---------------------------------------------INSTALL LIO-SAM---------------------------------------------
 
 
-./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
+if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
+  ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
+fi
 
 
 
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
 
-if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then 
+if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB if a directory called "ingenium_cartographer" does not already exist in ~/Documents/GitHub, then clone the current repo from GitHub
   cd ~/Documents
-  mkdir GitHub
+  if ! [ -d ~/Documents/GitHub ]; then #AB if a directory called GitHub does not already exist in ~/Documents, then create it
+    mkdir GitHub
+  fi
   cd GitHub
   git clone https://github.com/JohannesByle/ingenium_cartographer
 fi

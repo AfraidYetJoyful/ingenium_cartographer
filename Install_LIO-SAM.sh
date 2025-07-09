@@ -7,14 +7,15 @@ sudo apt update
 sudo apt ugrade
 sudo apt autoremove
 
-CWD=$(pwd) 
+CWD=$(pwd) #AB store the current directory
 
-cd ~/Apps
+cd ~/Apps #AB to to directory ~/Apps, then make and enter ~/Apps/LIO-SAM
 mkdir LIO-SAM
 cd LIO-SAM
 
 echo "Creating Dockerfile..."
 
+#AB Create a Dockerfile with these contents within ~/Apps/LIO-SAM...
 echo 'FROM ros:humble
 
 # Environment setup
@@ -68,15 +69,18 @@ CMD ["bash"]' > Dockerfile
 
 echo "Building docker image..."
 
+#AB ...and then compile it using docker build. The docker image can now be launched with docker run.
 sudo docker build --no-cache --debug -t lio-sam-humble .
 
 echo "LIO_SAM has finished installing."
 
-cd $CWD
+cd $CWD #AB Return to the directory the program was in at the start
 
 
 #AB to run the docker, use sudo docker run -it --rm   --net=host   --privileged   -v ~/Documents/Data:/data   lio-sam-humble
 
+
+#AB---------------------------v  Below is an older version of the install script that did not work  v---------------------------
 
 # #AB Install relevant ROS Jazzy dependencies
 # sudo apt install ros-jazzy-perception-pcl
