@@ -1,6 +1,8 @@
 #!/bin/bash
 
-#AB LIO-SAM Installation Script, copied from https://github.com/TixiaoShan/LIO-SAM/tree/ros2
+# Generative AI was used to create some portions of this script.
+
+#AB LIO-SAM Installation Script. Installs from https://github.com/TixiaoShan/LIO-SAM/tree/ros2
 
 
 sudo apt update
@@ -8,6 +10,11 @@ sudo apt ugrade
 sudo apt autoremove
 
 CWD=$(pwd) #AB store the current directory
+
+if ! [ -d ~/Apps ]; then
+    cd ~
+    mkdir Apps
+fi
 
 cd ~/Apps #AB to to directory ~/Apps, then make and enter ~/Apps/LIO-SAM
 mkdir LIO-SAM
@@ -22,7 +29,7 @@ echo 'FROM ros:humble
 ENV DEBIAN_FRONTEND=noninteractive
 ENV ROS_WS=/home/ros2_ws
 
-# Install system dependencies (including GTSAM)
+# Install system dependencies
 RUN apt update && apt install -y \
     git \
     wget \
@@ -78,29 +85,6 @@ cd $CWD #AB Return to the directory the program was in at the start
 
 
 #AB to run the docker, use sudo docker run -it --rm   --net=host   --privileged   -v ~/Documents/Data:/data   lio-sam-humble
-
-
-#AB---------------------------v  Below is an older version of the install script that did not work  v---------------------------
-
-# #AB Install relevant ROS Jazzy dependencies
-# sudo apt install ros-jazzy-perception-pcl
-# sudo apt install ros-jazzy-pcl-msgs
-# sudo apt install ros-jazzy-vision-opencv
-# sudo apt install ros-jazzy-xacro
-
-# #AB Install the Georgia Tech Smoothing And Mapping library
-# # Add GTSAM-PPA
-# sudo add-apt-repository ppa:borglab/gtsam-release-4.1
-# sudo apt install libgtsam-dev # libgtsam-unstable-dev #AB why the unstable...? Concerning.
-
-# #AB Install the LIO-SAM package from GitHub
-# cd ~/ros2_ws/src
-# git clone https://github.com/TixiaoShan/LIO-SAM.git
-# cd LIO-SAM
-# git checkout ros2
-# cd ..
-# colcon build
-
 
 
 
