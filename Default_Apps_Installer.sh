@@ -118,6 +118,18 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 
 
 
+#---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
+
+
+if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then 
+  cd ~/Documents
+  mkdir GitHub
+  cd GitHub
+  git clone https://github.com/JohannesByle/ingenium_cartographer
+fi
+
+
+
 #---------------------------------------------CLEANUP---------------------------------------------
 
 

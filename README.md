@@ -1,7 +1,7 @@
 # ingenium_cartographer
    Bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project. This branch is being edited to use ROS2 Jazzy Jalisco. As of this writing (June 2025) it is NOT complete, and NOT functional. 
 
-   The following scripts work as intended: cleanup.sh; Default_Apps_Installer.sh; Install_Jazzy.sh; Ubuntu-Core-RPi-Default-Packages-Installer.sh
+   The following scripts work as intended: cleanup.sh; Default_Apps_Installer.sh; Install_Jazzy.sh; Ubuntu-Core-RPi-Default-Packages-Installer.sh; Install_LIO-SAM.sh
 
    The following scripts do not yet work as intended: record_to_bag_dev_version.sh
 
@@ -20,15 +20,13 @@ Milan's comments are denoted by #MS
 ## Installation Instructions
   The order of these steps is very important, and not following this order can lead to irreparable problems with the installation.
 
-0. Download onto your device the following scripts from this branch of the repository: Default_Apps_Installer.sh ; Install_Jazzy.sh . Make sure they are in the same directory. [ NOTE: if installing on a device solely for data collection, and not on a device intended for development, use Ubuntu-Core-RPi-Default-Packages-Installer.sh instead of Default_Apps_Installer.sh ]
+0. Download onto your device the following scripts from this branch of the repository: Default_Apps_Installer.sh ; Install_Jazzy.sh ; Install_LIO-SAM.sh . Make sure they are in the same directory. [ NOTE: if installing on a device solely for data collection, and not on a device intended for development, use Ubuntu-Core-RPi-Default-Packages-Installer.sh instead of Default_Apps_Installer.sh ]
 
-1. Navigate to that directory in terminal. Mark both scripts as executable (either via the "properties" dialog when you right-click or via the chmod command)
+1. Navigate to that directory in terminal. Mark both scripts as executable (either via the "properties" dialog when you right-click or via the chmod +x /path/to/file command)
 
-2. Run sudo ./Default_Apps_Installer.sh . It is recommended that you permit all the packages to install to prevent installation issues. (Note: These scripts work best when run on a fresh reinstall of Ubuntu 24.04 LTS)
+2. Run sudo ./Default_Apps_Installer.sh . It is recommended that you permit all the packages to install to prevent issues. (Note: These scripts work best when run on a fresh reinstall of Ubuntu Desktop 24.04 LTS). Among other things, this git repository will be cloned onto your device under ~/Documents/GitHub/ingenium_cartographer
 
-3. Clone this git repostitory onto your device [Note for future: automate this]
-
-4. Mark all shell scripts within it as executable files
+3. Mark all shell scripts within it as executable files
 
 
 ## Instructions for Gathering and Processing Data
