@@ -1,7 +1,33 @@
 #!/usr/bin/python
 
-import subprocess
-subprocess.run("source ~/.bashrc; source /opt/ros/jazzy/setup.bash; sleep 2", shell = True, executable="/bin/bash")
+
+
+
+
+###########################################################################
+#AB HEY! This script is _deprecated_. This means that it is obsolete and will soon be out of use entirely.
+# You should not build anything that relies on any part of this script. Also, it only sometimes works. 
+# For an alternative solution for reading .mcaps, see app.foxglove.dev . Ingenium people can sign in with
+# the new computer's Microsoft account.  --July 11 2025
+###########################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import subprocess
+# subprocess.run("source ~/.bashrc; source /opt/ros/jazzy/setup.bash; sleep 2", shell = True, executable="/bin/bash")
 
 
 # import subprocess; subprocess.run("python3", shell=True, executable="/bin/bash"); subprocess.run('import subprocess; subprocess.run("python3", shell=True, executable="/bin/bash")', shell=True, executable="/usr/bin/python")
@@ -13,6 +39,7 @@ subprocess.run("source ~/.bashrc; source /opt/ros/jazzy/setup.bash; sleep 2", sh
 #AB example modified from https://github.com/foxglove/mcap/blob/main/python/examples/ros2/py_mcap_demo/py_mcap_demo/reader.py
 
 """script that reads ROS2 messages from an MCAP bag using the rosbag2_py API."""
+import yaml
 import argparse
 import rosbag2_py #AB Each of these import errors resolve themselves once Jazzy is sourced in the same terminal the script is run in.
 from rclpy.serialization import deserialize_message
@@ -63,7 +90,7 @@ def main():
 
     args = parser.parse_args()
 
-    with open(r"/home/lidar/Documents/Data/rosbag2_2025_07_07-16_16_48/rosbag2_2025_07_07-16_16_48_0_test#2.txt", 'a') as outputDocument: 
+    with open(r"/home/lidar/Documents/Data/rosbag2_2025_07_10-09_42_28/output.txt", 'a') as outputDocument: 
         for topic, msg, timestamp in read_messages(args.input):
             # output_string = str(topic) + " " + str(type(msg).__name__) + f"[{timestamp}]: " + str(msg) + "\n"
             outputDocument.write(str(msg) + "\n")

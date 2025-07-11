@@ -24,6 +24,7 @@ sudo apt-get install gnome-keyring #AB Install a secure cryptographic library ne
 sudo apt install rpi-imager #AB a software for burning OSes onto SD cards for use in a Raspberry Pi
 sudo apt install gnome-tweaks #AB An OS customization tool
 sudo apt install snapd #AB A package manager
+sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install docker #AB A containerization software [!] CRITICAL [!]
