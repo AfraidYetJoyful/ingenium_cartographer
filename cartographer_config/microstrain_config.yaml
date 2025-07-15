@@ -5,11 +5,6 @@ microstrain_inertial_driver_node:
     imu_enable: true
     gnss1_enable: false
     gnss2_enable: false
-    filter_enable: false
-    filter_manual_config: false
-    filter_manual: false
-    filter_frequency: 0
-    publish_filter: false
     publish_imu: true
     # debug: true
     port: /dev/ttyACM0
