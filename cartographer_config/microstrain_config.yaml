@@ -9,6 +9,6 @@ microstrain_inertial_driver_node:
     # debug: true
     port: /dev/ttyACM0
     baudrate: 115200
-    tf_mode: 0
+    tf_mode: 1
     ntrip_interface_enable: false
     low_pass_filter_config: false

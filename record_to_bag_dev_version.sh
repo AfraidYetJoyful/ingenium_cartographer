@@ -38,7 +38,7 @@ if [ $record_imu = "true" ]; then #AB If record_imu parameter is enabled...
   # Add -d flag after "launch" for debug mode
   #ros2 launch microstrain_inertial_driver microstrain_launch_ingenium.py params_file:=microstrain_config.yaml low_pass_filter_config:=false &
   #ros2 launch microstrain_inertial_driver microstrain_launch_ingenium.py params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml low_pass_filter_config:=false &
-  ros2 launch microstrain_inertial_driver microstrain_launch_ingenium.py params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml #microstrain_inertial_driver_node.tf_mode:=0 microstrain_inertial_driver.tf_mode:=0
+  ros2 launch microstrain_inertial_driver microstrain_launch_ingenium.py params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml microstrain_inertial_driver_node.tf_mode:=0 & #microstrain_inertial_driver.tf_mode:=0
   # ros2 param list
   # ros2 param get /microstrain_inertial_driver /tf_mode
 
@@ -79,8 +79,8 @@ read -r #AB Wait for an input of any key, then proceed to cleanup
 
 ./cleanup.sh #AB This  automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
 
-sleep 5 #AB wait a good long while to let the recording process finish
 pkill -f ros2 && pkill -f microstrain && pkill -f launch && pkill -f rviz2 && pkill -f python3 #AB forcefully kill ALL ROS2 processes to prevent ghost proceeses from continuing.
+sleep 1
 echo "The program has finished running now."
 exit
 
