@@ -10,6 +10,14 @@ ethernet=enp152s0
 record_lidar=false
 record_imu=true
 
+#AB Publish a static transform from the base frame to the IMU frame of reference. 
+#AB Indicate 0 translation (as consistent with the older files from the ROS1 version)
+#AB Give a rotation quaterion (same rotation as the ROS1 system). See https://www.andre-gaschler.com/rotationconverter/ for this in Euler angles (RPY) or a rotation matrix.
+#AB Specify which two frames are to be linked by this quaternion transform.
+ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --qx -0.500001 --qy -0.499999 --qz 0.500004 --qw -0.499996 --frame-id base_link --child-frame-id gx5_link &
+
+ros2 topic echo /imu/data &
+
 
 
 #---------------------------------------------LAUNCH DRIVERS AS DICTATED BY ENVIRONMENT VARIABLES---------------------------------------------#
@@ -97,8 +105,6 @@ exit
 # ros2 run velodyne_driver velodyne_driver_node --ros-args \ &
 #   -p device_ip:=192.168.1.201 \
 #   -p model:=32C \
-
-
 
 
 

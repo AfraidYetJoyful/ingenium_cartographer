@@ -6,7 +6,7 @@ microstrain_inertial_driver_node:
     gnss1_enable: false
     gnss2_enable: false
     publish_imu: true
-    # debug: true
+    debug: true
     port: /dev/ttyACM0
     baudrate: 115200
     tf_mode: 1
