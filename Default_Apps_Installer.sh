@@ -125,7 +125,9 @@ fi
 
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
-
+if ! [ -d ~/Documents ]; then #AB if ~/Documents does not yet exist, then create it. I didn't think this was possible until I saw 1 particular WSL2 Ubuntu installation without any default directories...
+  mkdir ~/Documents
+fi
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB if a directory called "ingenium_cartographer" does not already exist in ~/Documents/GitHub, then clone the current repo from GitHub
   cd ~/Documents
   if ! [ -d ~/Documents/GitHub ]; then #AB if a directory called GitHub does not already exist in ~/Documents, then create it
