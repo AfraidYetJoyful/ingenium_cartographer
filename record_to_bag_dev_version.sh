@@ -15,7 +15,6 @@ record_imu=true
 #AB Give a rotation quaterion (same rotation as the ROS1 system). See https://www.andre-gaschler.com/rotationconverter/ for this in Euler angles (RPY) or a rotation matrix.
 #AB Specify which two frames are to be linked by this quaternion transform.
 ros2 run tf2_ros static_transform_publisher --x 0 --y 0 --z 0 --qx -0.500001 --qy -0.499999 --qz 0.500004 --qw -0.499996 --frame-id base_link --child-frame-id imu_link &
-
 ros2 topic echo /imu/data &
 
 
@@ -46,7 +45,7 @@ if [ $record_imu = "true" ]; then #AB If record_imu parameter is enabled...
   # Add -d flag after "launch" for debug mode
   #ros2 launch microstrain_inertial_driver microstrain_launch_ingenium.py params_file:=microstrain_config.yaml low_pass_filter_config:=false &
   #ros2 launch microstrain_inertial_driver microstrain_launch_ingenium.py params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml low_pass_filter_config:=false &
-  ros2 launch cartographer_config/microstrain_launch_ingenium.py params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml -r tf_mode:=0 & #microstrain_inertial_driver.tf_mode:=0
+  ros2 launch cartographer_config/microstrain_launch_ingenium.py tf_mode:=0 params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml & #microstrain_inertial_driver.tf_mode:=0
   # ros2 run some_package some_ros_executable --ros-args -p my_param:=value
   # ros2 param list
   # ros2 param get /microstrain_inertial_driver /tf_mode

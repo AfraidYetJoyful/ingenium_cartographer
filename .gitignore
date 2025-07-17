@@ -6,3 +6,6 @@
 /bag_files/
 /output_files/
 /images/
+/*.pyc
+/*.mcap
+/__pycache__
