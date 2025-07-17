@@ -1,65 +1,44 @@
-# Standalone example launch file for GX3, GX4, GX/CX5, RQ1 and GQ7 series devices
-# Note: Feature support is device-dependent and some of the following settings may have no affect on your device.
-# Please consult your device's documentation for supported features
+#AB Custom-configured almost-minimal launch file for GX5 IMU, specifically for use by the Ingenium LiDAR team. 
 
-# import os
-# import yaml
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
-from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
-# from lifecycle_msgs.msg import Transition
-# from ament_index_python.packages import get_package_share_directory
-
-_PACKAGE_NAME = 'microstrain_inertial_driver'
-# _DEFAULT_PARAMS_FILE = os.path.join(
-#   get_package_share_directory(_PACKAGE_NAME),
-#   'microstrain_inertial_driver_common',
-#   'config',
-#   'params.yml'
-# )
-_DEFAULT_PARAMS_FILE = 'microstrain_config.yaml'
-# _EMPTY_PARAMS_FILE = os.path.join(
-#   get_package_share_directory(_PACKAGE_NAME),
-#   'config',
-#   'empty.yml'
-# )
 
 def generate_launch_description():
 
-  # Declare arguments with default values
   launch_description = []
-  launch_description.append(DeclareLaunchArgument('namespace',   default_value='/',                description='Namespace to use when launching the nodes in this launch file'))
-  launch_description.append(DeclareLaunchArgument('node_name',   default_value=_PACKAGE_NAME,      description='Name to give the Microstrain Inertial Driver node'))
-  launch_description.append(DeclareLaunchArgument('debug',       default_value='false',            description='Whether or not to log debug information.'))
-  launch_description.append(DeclareLaunchArgument('params_file', default_value=_DEFAULT_PARAMS_FILE, description='Path to file that will load additional parameters'))
 
-  # Pass an environment variable to the node to determine if it is in debug or not
-  launch_description.append(SetEnvironmentVariable('MICROSTRAIN_INERTIAL_DEBUG', value=LaunchConfiguration('debug')))
-
-  # ****************************************************************** 
-  # Microstrain sensor node 
-  # ****************************************************************** 
-  microstrain_node = Node(
-    package    = _PACKAGE_NAME,
-    executable = "microstrain_inertial_driver_node",
-    name       = LaunchConfiguration('node_name'),
-    namespace  = LaunchConfiguration('namespace'),
-    parameters = [LaunchConfiguration('params_file')],
-    #   # Load the default params file manually, since this is a ROS params file, we will need to load the file manually
-    #   yaml.safe_load(open(_DEFAULT_PARAMS_FILE, 'r')),
-
-    #   # If you want to override any settings in the params.yml file, make a new yaml file, and set the value via the params_file arg
-    #   LaunchConfiguration('params_file'),
-
-    #   # Supported overrides
-    #   {
-    #     "debug" : LaunchConfiguration('debug')
-    #   },
-    # ]
+  microstrain_node = Node( #AB Create a "Node" object to launch the Microstrain Inertial Driver
+    package    = 'microstrain_inertial_driver',
+    executable = "microstrain_inertial_driver_node", #AB Name of the executable to run
+    name       = "microstrain_inertial_driver", #AB Name of the node
+    namespace  = '/', #AB Namespace to use when launching the nodes in this launch file
+    parameters = [
+      {"tf_mode" : 0},
+      {"filter_heading_source" : 0},
+      {"device_setup" : True},
+      {"imu_enable" : True},
+      {"publish_imu" : True},
+      {"debug" : True},
+      {"port" : "/dev/ttyACM0"}, #AB Serial port for the Microstrain IMU
+      {"baudrate" : 115200}, #AB Baud rate for the serial connection
+      {"low_pass_filter_config" : False},
+      {"raw_file_enable" : False},
+      {"timestamp_source" : 0},
+      {"filter_manual_config" : True},
+      {"filter_auto_heading_alignment_selector" : 5},
+      {"filter_init_position" : [0.0, 0.0, 0.0]}, #AB Initial position in meters (x, y, z)
+      {"filter_init_velocity" : [0.0, 0.0, 0.0]}, #AB Initial velocity in meters per second (vx, vy, vz)
+      {"filter_init_attitude" : [4.712, 0.0, 1.5707]} #AB Initial attitude in radians (roll, pitch, yaw)
+      # {"ntrip_interface_enable" : False}, #AB NTRIP interface is not enabled in this configuration
+      # {"gnss1_enable" : False}, #AB GNSS1 is not enabled in this configuration
+      # {"gnss2_enable" : False}, #AB GNSS2 is not enabled in this configuration
+      # {"publish_imu" : True}, #AB IMU data will be published
+      # {"device_setup" : True}, #AB Device setup is enabled  
+      ]
   )
 
+  
   launch_description.append(microstrain_node)
   return LaunchDescription(launch_description)
  
@@ -89,102 +68,6 @@ def generate_launch_description():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # Standalone example launch file for GX3, GX4, GX/CX5, RQ1 and GQ7 series devices
-# # Note: Feature support is device-dependent and some of the following settings may have no affect on your device.
-# # Please consult your device's documentation for supported features
-
-# import os
-# import yaml
-# from launch import LaunchDescription
-# from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
-# from launch.substitutions import LaunchConfiguration
-# from launch_ros.actions import Node
-
-# from lifecycle_msgs.msg import Transition
-# from ament_index_python.packages import get_package_share_directory
-
-# _PACKAGE_NAME = 'microstrain_inertial_driver'
-# _DEFAULT_PARAMS_FILE = "/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml"
-# # _DEFAULT_PARAMS_FILE = os.path.join(
-# #   get_package_share_directory(_PACKAGE_NAME),
-# #   'microstrain_inertial_driver_common',
-# #   'config',
-# #   'params.yml'
-# # )
-# # _EMPTY_PARAMS_FILE = os.path.join(
-# #   get_package_share_directory(_PACKAGE_NAME),
-# #   'config',
-# #   'empty.yml'
-# # )
-
-# def generate_launch_description():
-
-#   # Declare arguments with default values
-#   launch_description = []
-#   launch_description.append(DeclareLaunchArgument('namespace',   default_value='/',                description='Namespace to use when launching the nodes in this launch file'))
-#   launch_description.append(DeclareLaunchArgument('node_name',   default_value=_PACKAGE_NAME,      description='Name to give the Microstrain Inertial Driver node'))
-#   launch_description.append(DeclareLaunchArgument('debug',       default_value='false',            description='Whether or not to log debug information.'))
-#   launch_description.append(DeclareLaunchArgument('params_file', default_value="/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml", description='<!> DANGEROUS <!> Absolute path to file that will load additional parameters'))
-
-#   # Pass an environment variable to the node to determine if it is in debug or not
-#   launch_description.append(SetEnvironmentVariable('MICROSTRAIN_INERTIAL_DEBUG', value=LaunchConfiguration('debug')))
-
-#   # ****************************************************************** 
-#   # Microstrain sensor node 
-#   # ****************************************************************** 
-#   microstrain_node = Node(
-#     package    = _PACKAGE_NAME,
-#     executable = "microstrain_inertial_driver_node",
-#     name       = LaunchConfiguration('node_name'),
-#     namespace  = LaunchConfiguration('namespace'),
-#     parameters = [
-#       # Load the default params file manually, since this is a ROS params file, we will need to load the file manually
-#       yaml.safe_load(open(_DEFAULT_PARAMS_FILE, 'r')),
-
-#       # If you want to override any settings in the params.yml file, make a new yaml file, and set the value via the params_file arg
-#       LaunchConfiguration("/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml"),
-
-#       # Supported overrides
-#       {
-#         "debug" : LaunchConfiguration('debug')
-#       },
-#     ]
-#   )
-
-#   launch_description.append(microstrain_node)
-#   return LaunchDescription(launch_description)
-  
-
- 
- 
 
 
 
@@ -406,69 +289,3 @@ def generate_launch_description():
 
 
 
-
-
-
-
-
-
-
-
-# import os
-# import yaml
-# from launch import LaunchDescription
-# from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable, OpaqueFunction
-# from launch.substitutions import LaunchConfiguration
-# from launch_ros.actions import Node
-
-# from ament_index_python.packages import get_package_share_directory
-
-# _PACKAGE_NAME = 'microstrain_inertial_driver'
-# _DEFAULT_PARAMS_FILE = os.path.join(
-#     get_package_share_directory(_PACKAGE_NAME),
-#     'microstrain_inertial_driver_common',
-#     'config',
-#     'params.yml'
-# )
-
-# def load_yaml(path):
-#     try:
-#         with open(path, 'r') as f:
-#             return yaml.safe_load(f)
-#     except Exception as e:
-#         print(f"Failed to load YAML config: {e}")
-#         return {}
-
-# def launch_setup(context, *args, **kwargs):
-#     namespace = LaunchConfiguration('namespace').perform(context)
-#     node_name = LaunchConfiguration('node_name').perform(context)
-#     debug     = LaunchConfiguration('debug').perform(context)
-#     custom_params_path = LaunchConfiguration('params_file').perform(context)
-
-#     # Load default and override params
-#     params = load_yaml(_DEFAULT_PARAMS_FILE)
-#     if os.path.isfile(custom_params_path):
-#         params.update(load_yaml(custom_params_path))
-
-#     # Add launch-time override
-#     params['debug'] = debug == 'true'
-
-#     node = Node(
-#         package='microstrain_inertial_driver',
-#         executable='microstrain_inertial_driver_node',
-#         name=node_name,
-#         namespace=namespace,
-#         parameters=[params]
-#     )
-
-#     return [node]
-
-# def generate_launch_description():
-#     return LaunchDescription([
-#         DeclareLaunchArgument('namespace', default_value='/', description='Namespace'),
-#         DeclareLaunchArgument('node_name', default_value=_PACKAGE_NAME, description='Node name'),
-#         DeclareLaunchArgument('debug', default_value='false', description='Debug mode'),
-#         DeclareLaunchArgument('params_file', default_value=_DEFAULT_PARAMS_FILE, description='Override parameter file'),
-#         SetEnvironmentVariable('MICROSTRAIN_INERTIAL_DEBUG', LaunchConfiguration('debug')),
-#         OpaqueFunction(function=launch_setup),
-#     ])
