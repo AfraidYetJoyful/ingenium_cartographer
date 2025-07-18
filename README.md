@@ -36,3 +36,12 @@ Milan's comments are denoted by #MS
 1. On a powerful computer (Raspberry Pi not recommended for this step), run ./process_bag.sh insert_mcap_file_path_here.mcap 
 
 2.  
+
+## Instructions for Downloading a Single File (such as an installation script) from GitHub on the Command Line
+On the GitHub website, navigate to the file you want to download, opening the preview
+On the upper right of the page, there should be a “Raw” button; click it
+Copy the URL of the page you are on
+In the terminal, type in “wget -O <what-you-want-to-name-the-file> <the-URL-from-step-3>”
+
+For example, to install the RPi Default Apps Installer (from the Jazzy branch) , type into the terminal: 
+“wget -O installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh”
