@@ -47,6 +47,6 @@ Milan's comments are denoted by #MS
 
  wget -O new_file_name https://raw.githubusercontent.com/my_user_name/my_reposiroty/heads/my_branch/name_of_my_file
 
-For example, to install the RPi Default Apps Installer (from the Jazzy branch) , type into the terminal: 
+For example, to install the RPi Default Apps Installer (from the Jazzy branch), run: 
 
 wget -O installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh
