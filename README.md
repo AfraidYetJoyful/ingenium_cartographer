@@ -38,10 +38,13 @@ Milan's comments are denoted by #MS
 2.  
 
 ## Instructions for Downloading a Single File (such as an installation script) from GitHub on the Command Line
-On the GitHub website, navigate to the file you want to download, opening the preview
-On the upper right of the page, there should be a “Raw” button; click it
-Copy the URL of the page you are on
-In the terminal, type in “wget -O <what-you-want-to-name-the-file> <the-URL-from-step-3>”
+
+1. On the GitHub website, navigate to the file you want to download, opening the preview
+
+2. On the upper right of the page, select "Raw" and copy the URL it leads to
+
+3. On your device, run wget -O new_file_name https://raw.githubusercontent.com/my_user_name/my_reposiroty/heads/my_branch/name_of_my_file
 
 For example, to install the RPi Default Apps Installer (from the Jazzy branch) , type into the terminal: 
-“wget -O installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh”
+
+wget -O installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh
