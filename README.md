@@ -43,7 +43,9 @@ Milan's comments are denoted by #MS
 
 2. On the upper right of the page, select "Raw" and copy the URL it leads to
 
-3. On your device, run wget -O new_file_name https://raw.githubusercontent.com/my_user_name/my_reposiroty/heads/my_branch/name_of_my_file
+3. On your device, run
+
+ wget -O new_file_name https://raw.githubusercontent.com/my_user_name/my_reposiroty/heads/my_branch/name_of_my_file
 
 For example, to install the RPi Default Apps Installer (from the Jazzy branch) , type into the terminal: 
 
