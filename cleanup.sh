@@ -16,7 +16,7 @@ do
         echo "File data:"
         echo "—————————————————————————————————————————————————————————————————————————————————————————————————————"
         echo "Size                                        Filename"
-        du -h ~/Documents/Data/"$(basename "$dir")/$(basename "$dir")_0.mcap" #AB Print the size and name of the file
+        du -h --apparent-size ~/Documents/Data/"$(basename "$dir")/$(basename "$dir")_0.mcap" #AB Print the size and name of the file
         echo "—————————————————————————————————————————————————————————————————————————————————————————————————————"
         echo " "
     fi

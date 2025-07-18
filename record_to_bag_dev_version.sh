@@ -50,7 +50,7 @@ if [ $record_imu = "true" ]; then #AB If record_imu parameter is enabled...
   # ros2 param list
   # ros2 param get /microstrain_inertial_driver /tf_mode
 
-  sleep 2
+  sleep 3
 fi
 
 
