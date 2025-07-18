@@ -26,6 +26,7 @@ sudo apt install gnome-tweaks #AB An OS customization tool
 sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install gdm-settings libglib2.0-dev-bin #AB Another OS customization tool
+sudo apt install net-tools
 
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
