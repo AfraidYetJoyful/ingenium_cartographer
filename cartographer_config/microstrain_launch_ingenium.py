@@ -12,27 +12,28 @@ def generate_launch_description():
     package    = 'microstrain_inertial_driver',
     executable = "microstrain_inertial_driver_node", #AB Name of the executable to run
     name       = "microstrain_inertial_driver_node", #AB Name of the node
-    namespace  = '/', #AB Namespace to use when launching the nodes in this launch file
+    namespace  = '', #AB Namespace to use when launching the nodes in this launch file (empty string for root namespace)
     parameters = [{
       #"microstrain_inertial_driver_node" : {
         #"ros__parameters" : {
+          "device_setup"                           : False,
+          "imu_enable"                             : True,
+          "publish_imu"                            : True,
+          "debug"                                  : True,
+          "filter_manual_config"                   : True,
+          "low_pass_filter_config"                 : False,
+          "raw_file_enable"                        : False,
           "device_type"                            : "gx5_15", #AB Device type to use, in this case the GX5-15 IMU
           "port"                                   : "/dev/ttyACM0", #AB Serial port for the Microstrain IMU
           "baudrate"                               : 115200, #AB Baud rate for the serial connection
-          "low_pass_filter_config"                 : False,
-          "raw_file_enable"                        : False,
           "timestamp_source"                       : 0,
-          "filter_manual_config"                   : True,
           "filter_auto_heading_alignment_selector" : 5,
+          "tf_mode"                                : 0,
+          "filter_heading_source"                  : 0,
           "filter_init_position"                   : [0.0, 0.0, 0.0], #AB Initial position in meters (x, y, z)
           "filter_init_velocity"                   : [0.0, 0.0, 0.0], #AB Initial velocity in meters per second (vx, vy, vz)
           "filter_init_attitude"                   : [4.712, 0.0, 1.5707], #AB Initial attitude in radians (roll, pitch, yaw)
-          "tf_mode"                                : 0,
-          "filter_heading_source"                  : 0,
-          "device_setup"                           : True,
-          "imu_enable"                             : True,
-          "publish_imu"                            : True,
-          "debug"                                  : True
+          
         #}
       #}
           # {"ntrip_interface_enable" : False}, #AB NTRIP interface is not enabled in this configuration
