@@ -1,7 +1,16 @@
 #!/bin/bash
 
-source /opt/ros/jazzy/setup.bash
+source /opt/ros/jazzy/setup.bash #AB Source ROS Jazzy
 
+
+
+#AB Launch the Microstrain Inertial Driver
+ros2 launch cartographer_config/microstrain_launch_ingenium.py params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml &
+sleep 2
+
+
+
+#AB Print its parameters and their values
 echo "device_type"
 ros2 param get /microstrain_inertial_driver_node device_type
 echo "tf_mode"
