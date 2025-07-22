@@ -1,25 +1,20 @@
 ---
 microstrain_inertial_driver_node:
   ros__parameters:
-    device_setup: True
-    imu_enable: True
-    publish_imu: True
-    # gnss1_enable: false
-    # gnss2_enable: false
-    # publish_imu: true
-    debug: True
+    device_setup: true
+    imu_enable: true
+    publish_imu: true
+    gnss1_enable: false
+    gnss2_enable: false
+    debug: true
     port: /dev/ttyACM0
     baudrate: 115200
     tf_mode: 0
-    # ntrip_interface_enable: false
-    low_pass_filter_config: False
-    raw_file_enable: False
+    low_pass_filter_config: false
+    raw_file_enable: false
     timestamp_source: 0
-    filter_manual_config: True
+    filter_manual_config: true
     filter_auto_heading_alignment_selector: 5
-    filter_init_position : [0.0, 0.0, 0.0]
-    filter_init_velocity : [0.0, 0.0, 0.0]
-    filter_init_attitude : [4.712, 0.0, 1.5707]
-    # filter_manual:
-    #     heading_source: 0x05
-
+    filter_init_position: [0.0, 0.0, 0.0]
+    filter_init_velocity: [0.0, 0.0, 0.0]
+    filter_init_attitude: [4.712, 0.0, 1.5707]
