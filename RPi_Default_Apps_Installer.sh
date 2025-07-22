@@ -16,6 +16,7 @@ sudo apt-get upgrade --fix-missing
 
 sudo apt install network-manager #AB add utility for managing networks
 sudo apt install net-tools #AB add another utility for managing networks
+sudo apt-get install git #AB install git, just in case it is not already installed
 
 mkdir -p ~/Documents/GitHub #Create the GitHub directory in the ~/Documents directory. If ~/Documents does not exist, the -p flag creates it also.
 cd ~/Documents/GitHub
@@ -29,12 +30,10 @@ cd ingenium_cartographer
 git switch jazzy
 
 
-#AB Install ROS Jazzy and LIO-SAM
-chmod +x Install_Jazzy.sh #AB make the Install_Jazzy.sh and Install_LIO-SAM scripts executable
-chmod +x Install_LIO-SAM.sh
+#AB Install ROS Jazzy
+chmod +x Install_Jazzy.sh #AB make Install_Jazzy.sh executable and run it
+./Install_Jazzy.sh 
 
-./Install_Jazzy.sh #AB run the scripts
-./Install_LIO-SAM.sh
 
 
 
