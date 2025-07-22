@@ -2,6 +2,7 @@
 
 #AB ROS Jazzy Installation Script, copied from https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
 #AB to use ROS in a given terminal session, run source /opt/ros/jazzy/setup.bash
+cwd = $(pwd)
 
 echo "Updating apt..."
 sleep 1
@@ -39,3 +40,4 @@ echo 'alias run_jazzy="source /opt/ros/jazzy/setup.bash"' >> ~/.bashrc #AB add t
 echo "ROS2 Jazzy installation complete."
 sleep 1
 
+cd $cwd

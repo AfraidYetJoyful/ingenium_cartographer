@@ -2,6 +2,7 @@
 
 #AB Run on a clean Ubuntu Server 24.04.2 LTS system
 
+cwd = $(pwd)
 
 #FK updates and upgrades
 sudo apt update
@@ -27,3 +28,10 @@ fi
 cd ingenium_cartographer
 git switch jazzy
 
+
+#AB Install ROS Jazzy and LIO-SAM
+./Install_Jazzy.sh
+./Install_LIO-SAM.sh
+
+cd $cwd
+echo "RPi_Default_Apps_Installer.sh has finished running now."
