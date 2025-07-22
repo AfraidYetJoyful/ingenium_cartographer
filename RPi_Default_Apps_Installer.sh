@@ -30,8 +30,11 @@ git switch jazzy
 
 
 #AB Install ROS Jazzy and LIO-SAM
-./Install_Jazzy.sh
+chmod +x Install_Jazzy.sh #AB make the Install_Jazzy.sh and Install_LIO-SAM scripts executable
+chmod +x Install_LIO-SAM.sh
+
+./Install_Jazzy.sh #AB run the scripts
 ./Install_LIO-SAM.sh
 
-cd $cwd
+cd $cwd #AB return to the original directory
 echo "RPi_Default_Apps_Installer.sh has finished running now."
