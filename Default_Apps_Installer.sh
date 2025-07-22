@@ -38,16 +38,26 @@ git config --global user.name "Ingenium-LiDAR"
 
 
 
+#---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
+
+
+if ! [ -d ~/Documents/GitHub ]; then #AB if ~/Documents/GitHub does not yet exist, then create it. 
+  mkdir -p ~/Documents/GitHub
+fi
+if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
+  cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
+  git clone https://github.com/JohannesByle/ingenium_cartographer
+fi
+
+
+
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
 echo "Installing ROS2 Jazzy Jalisco...\n"
-if [ -f "./Install_Jazzy.sh" ]; #AB If the ROS2 Jazzy installer script file exists...
-then 
-  ./Install_Jazzy.sh #AB ...execute it, to install ROS Jazzy
-else #AB otherwise skip it.
-    echo -e "${RED}ERROR:\n ./Install_Jazzy.sh was not found. Skipping ROS Jazzy install...\n${NC}" #AB This error prints in red
-fi
+cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartographer directory
+chmod +x Install_Jazzy.sh #AB Make the Install_Jazzy.sh script executable
+./Install_Jazzy.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
 
@@ -119,23 +129,9 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 
 
 if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
+  cd ~/Documents/GitHub/ingenium_cartographer #AB ...navigate to the ingenium_cartographer directory
+  chmod +x Install_LIO-SAM.sh #AB make the Install_LIO-SAM.sh script executable
   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
-fi
-
-
-
-#---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
-
-if ! [ -d ~/Documents ]; then #AB if ~/Documents does not yet exist, then create it. I didn't think this was possible until I saw 1 particular WSL2 Ubuntu installation without any default directories...
-  mkdir ~/Documents
-fi
-if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB if a directory called "ingenium_cartographer" does not already exist in ~/Documents/GitHub, then clone the current repo from GitHub
-  cd ~/Documents
-  if ! [ -d ~/Documents/GitHub ]; then #AB if a directory called GitHub does not already exist in ~/Documents, then create it
-    mkdir GitHub
-  fi
-  cd GitHub
-  git clone https://github.com/JohannesByle/ingenium_cartographer
 fi
 
 
