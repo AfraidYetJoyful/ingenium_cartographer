@@ -19,7 +19,7 @@ def generate_launch_description():
               "publish_imu"                            : True,
               "filter_manual_config"                   : True,
               "low_pass_filter_config"                 : False,
-              "raw_file_enable"                        : False,
+              #"raw_file_enable"                        : False,
               "device_type"                            : "gx5_15", #AB Device type to use, in this case the GX5-15 IMU
               "port"                                   : "/dev/ttyACM0", #AB Serial port for the Microstrain IMU
               "baudrate"                               : 115200, #AB Baud rate for the serial connection
