@@ -5,7 +5,7 @@ source /opt/ros/jazzy/setup.bash #AB Source ROS Jazzy
 
 
 #AB Launch the Microstrain Inertial Driver
-ros2 launch cartographer_config/microstrain_launch_ingenium.py & #params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml &
+ros2 launch -d cartographer_config/microstrain_launch_ingenium.py publish_imu:=true & #params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml &
 sleep 4
 
 #AB If the microstrain_inertial_driver_node is alive, then...

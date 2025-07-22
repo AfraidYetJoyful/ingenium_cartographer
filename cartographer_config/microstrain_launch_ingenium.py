@@ -5,7 +5,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
-  return LaunchDescription(
+  launch_description = LaunchDescription(
     [
       Node( #AB Create a "Node" object to launch the Microstrain Inertial Driver
         package    = 'microstrain_inertial_driver',
@@ -17,7 +17,6 @@ def generate_launch_description():
               "device_setup"                           : True,
               "imu_enable"                             : True,
               "publish_imu"                            : True,
-              "debug"                                  : True,
               "filter_manual_config"                   : True,
               "low_pass_filter_config"                 : False,
               "raw_file_enable"                        : False,
@@ -36,6 +35,8 @@ def generate_launch_description():
       ) #AB End of declaration of the Node object
     ] #AB End of list which contains the Node object
   ) #AB End of declaration of the LaunchDescription object, which is returned.
+  print("Launch.py initialized successfully.")
+  return launch_description 
 
 
 
