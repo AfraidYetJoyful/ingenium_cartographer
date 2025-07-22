@@ -16,8 +16,7 @@ sudo apt-get upgrade --fix-missing
 sudo apt install network-manager #AB add utility for managing networks
 sudo apt install net-tools #AB add another utility for managing networks
 
-mkdir ~/Documents
-mkdir ~/Documents/GitHub
+mkdir -p ~/Documents/GitHub #Create the nested directories ~/Documents and GitHub
 
 cd ~/Documents/GitHub
 
