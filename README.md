@@ -18,22 +18,25 @@ Thereafter, Abraham's comments are denoted by #AB
 Milan's comments are denoted by #MS 
 
 ## Installation Instructions
-  The order of these steps is very important, and not following this order can lead to irreparable problems with the installation.
 
-0. Download onto your device the following scripts from this branch of the repository: Default_Apps_Installer.sh ; Install_Jazzy.sh ; Install_LIO-SAM.sh . Make sure they are in the same directory. [ NOTE: if installing on a device solely for data collection, and not on a device intended for development, use Ubuntu-Core-RPi-Default-Packages-Installer.sh instead of Default_Apps_Installer.sh ]
+0. Download Default_Apps_Installer.sh if you wish to install the developer version, and RPi_Default_Apps_Installer if you wish to install critical dependencies only.
 
-1. Navigate to that directory in terminal. Mark both scripts as executable (either via the "properties" dialog when you right-click or via the chmod +x /path/to/file command)
+1. Navigate to the location of that file in terminal. Mark the script as executable using the relevant code snippet:
 
-2. Run sudo ./Default_Apps_Installer.sh . It is recommended that you permit all the packages to install to prevent issues. (Note: These scripts work best when run on a fresh reinstall of Ubuntu Desktop 24.04 LTS). Among other things, this git repository will be cloned onto your device under ~/Documents/GitHub/ingenium_cartographer
+`chmod +x Default_Apps_Installer.sh`
+
+`chmod +x RPi_Default_Apps_Installer.sh`
+
+2. Run ./Default_Apps_Installer.sh or ./RPi_Default_Apps_Installer.sh, depending on which file you downloaded. This _will_ prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under ~/Documents/GitHub/ingenium_cartographer
 
 3. Mark all shell scripts within it as executable files
 
 
 ## Instructions for Gathering and Processing Data
 
-0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15 and a 3DM-GX5-AR) to the data gathering device (which should have these scripts installed). Run ./record_to_bag.sh. This should procduce a .mcap file in the directory ~/Documents/Data (this will be created automatically by cleanup.sh if it does not yet exist)
+0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15 and a 3DM-GX5-AR) to the data gathering device (which should have these scripts installed). Run `./record_to_bag.sh`. This should procduce a .mcap file in the directory ~/Documents/Data (this will be created automatically by cleanup.sh if it does not yet exist)
 
-1. On a powerful computer (Raspberry Pi not recommended for this step), run ./process_bag.sh insert_mcap_file_path_here.mcap 
+1. On a powerful computer (Raspberry Pi not recommended for this step), run `./process_bag.sh insert_mcap_file_path_here.mcap`
 
 2.  
 
@@ -45,8 +48,8 @@ Milan's comments are denoted by #MS
 
 3. On your device, run
 
- wget -O new_file_name https://raw.githubusercontent.com/my_user_name/my_reposiroty/heads/my_branch/name_of_my_file
+ `wget -O new_file_name https://raw.githubusercontent.com/my_user_name/my_reposiroty/heads/my_branch/name_of_my_file`
 
 For example, to install the RPi Default Apps Installer (from the Jazzy branch), run: 
 
-wget -O installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh
+`wget -O installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh`
