@@ -36,5 +36,14 @@ chmod +x Install_LIO-SAM.sh
 ./Install_Jazzy.sh #AB run the scripts
 ./Install_LIO-SAM.sh
 
+
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install ros-jazzy-velodyne #AB Install the IMU driver. It's in a stack hosted (I believe) on the ROS website.
+sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
+
+
+
 cd $cwd #AB return to the original directory
 echo "RPi_Default_Apps_Installer.sh has finished running now."
