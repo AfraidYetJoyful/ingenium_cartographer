@@ -131,7 +131,6 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 
 if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
   cd ~/Documents/GitHub/ingenium_cartographer #AB ...navigate to the ingenium_cartographer directory
-  chmod +x Install_LIO-SAM.sh #AB make the Install_LIO-SAM.sh script executable
   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
 fi
 
