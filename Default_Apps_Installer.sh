@@ -33,7 +33,7 @@ sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE fo
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install docker #AB A containerization software [!] CRITICAL [!]
 sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
-sudo snap install blender #AB Install blender (a 3D modeling software)
+sudo snap install --classic blender #AB Install blender (a 3D modeling software)
 
 sudo apt-get install git #AB Install and then configure git (a source control software for coders)
 git config --global user.email "ingenium.lidar@outlook.com"
