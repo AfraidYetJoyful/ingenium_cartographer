@@ -29,7 +29,6 @@ sudo apt install gdm-settings libglib2.0-dev-bin #AB Another OS customization to
 sudo apt install net-tools
 sudo apt install python3-pip #AB Install pip, Python's package manager.
 sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
-sudo apt-get install virtualbox #AB Install a software for creating virtual machines
 
 
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
