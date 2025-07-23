@@ -27,16 +27,13 @@ Milan's comments are denoted by #MS
 
 `chmod +x RPi_Default_Apps_Installer.sh`
 
-2. Run ./Default_Apps_Installer.sh or ./RPi_Default_Apps_Installer.sh, depending on which file you downloaded. This _will_ prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under ~/Documents/GitHub/ingenium_cartographer
-
-3. Mark all shell scripts within it as executable files
-
+2. Run ./Default_Apps_Installer.sh or ./RPi_Default_Apps_Installer.sh, depending on which file you downloaded. This _will_ prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under ~/Documents/GitHub/ingenium_cartographer. All files within it which match "*.sh" will automatically be marked as executable. [ Failing to mark Install_Jazzy.sh and Install_LIO-SAM.sh as executable will cause installation errors. ].
 
 ## Instructions for Gathering and Processing Data
 
 0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15 and a 3DM-GX5-AR) to the data gathering device (which should have these scripts installed). Run `./record_to_bag.sh`. This should procduce a .mcap file in the directory ~/Documents/Data (this will be created automatically by cleanup.sh if it does not yet exist)
 
-1. On a powerful computer (Raspberry Pi not recommended for this step), run `./process_bag.sh insert_mcap_file_path_here.mcap`
+1. On a powerful computer (Raspberry Pi not recommended for this step), run `./process_bag.sh /path/to/your/mcap/file.mcap`
 
 2.  
 
