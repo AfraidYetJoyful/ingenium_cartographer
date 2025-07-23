@@ -50,6 +50,7 @@ fi
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
   cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
   git clone https://github.com/JohannesByle/ingenium_cartographer
+  git switch jazzy #AB Switch to the jazzy branch of the ingenium_cartographer repository
 fi
 
 cd ingenium_cartographer #AB Enter the newly cloned repository

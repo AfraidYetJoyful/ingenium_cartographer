@@ -29,6 +29,12 @@ fi
 cd ingenium_cartographer
 git switch jazzy
 
+for file in *; do #AB Iterate through all files within it
+  if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+    chmod +x $file #AB ...then mark it as executable
+  fi
+done
+
 
 #AB Install ROS Jazzy
 chmod +x Install_Jazzy.sh #AB make Install_Jazzy.sh executable and run it
