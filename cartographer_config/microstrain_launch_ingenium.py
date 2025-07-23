@@ -7,185 +7,213 @@ from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration, TextSubstitution
 from launch_ros.actions import Node
 
+
 def generate_launch_description():
-    print("-------------------------------------1-------------------------------------")
-    # Declare Launch Arguments
-
-    # --- Device Configuration ---
-    device_type_arg = DeclareLaunchArgument('device_type', default_value=TextSubstitution(text='gx5_15'), description='The Microstrain device type (e.g., gx5_15, 3dm_gq7).')
-    port_arg = DeclareLaunchArgument('port', default_value=TextSubstitution(text='/dev/ttyACM0'), description='The serial port connected to the Microstrain IMU.')
-    baudrate_arg = DeclareLaunchArgument('baudrate', default_value='115200', description='The baud rate for the serial connection.')
-
-    # --- IMU and Filter Settings ---
-    imu_enable_arg = DeclareLaunchArgument('imu_enable', default_value='true', description='Enable IMU data acquisition.')
-    publish_imu_arg = DeclareLaunchArgument('publish_imu', default_value='true', description='Publish IMU data to ROS topics.')
-    filter_manual_config_arg = DeclareLaunchArgument('filter_manual_config', default_value='true', description='Manually configure the filter settings.')
-    low_pass_filter_config_arg = DeclareLaunchArgument('low_pass_filter_config', default_value='false', description='Enable low-pass filter configuration.')
-    timestamp_source_arg = DeclareLaunchArgument('timestamp_source', default_value='0', description='Timestamp source for the IMU data.')
-    filter_auto_heading_alignment_selector_arg = DeclareLaunchArgument('filter_auto_heading_alignment_selector', default_value='5', description='Selector for automatic heading alignment.')
-    tf_mode_arg = DeclareLaunchArgument('tf_mode', default_value='0', description='Transformation frame mode.')
-    filter_heading_source_arg = DeclareLaunchArgument('filter_heading_source', default_value='0', description='Source for the filter heading.')
-
-    # --- Initial Filter State ---
-    filter_init_position_x_arg = DeclareLaunchArgument('filter_init_position_x', default_value='0.0', description='Initial X position (meters).')
-    filter_init_position_y_arg = DeclareLaunchArgument('filter_init_position_y', default_value='0.0', description='Initial Y position (meters).')
-    filter_init_position_z_arg = DeclareLaunchArgument('filter_init_position_z', default_value='0.0', description='Initial Z position (meters).')
-    filter_init_velocity_x_arg = DeclareLaunchArgument('filter_init_velocity_x', default_value='0.0', description='Initial X velocity (m/s).')
-    filter_init_velocity_y_arg = DeclareLaunchArgument('filter_init_velocity_y', default_value='0.0', description='Initial Y velocity (m/s).')
-    filter_init_velocity_z_arg = DeclareLaunchArgument('filter_init_velocity_z', default_value='0.0', description='Initial Z velocity (m/s).')
-    filter_init_attitude_roll_arg = DeclareLaunchArgument('filter_init_attitude_roll', default_value='4.712', description='Initial roll attitude (radians).')
-    filter_init_attitude_pitch_arg = DeclareLaunchArgument('filter_init_attitude_pitch', default_value='0.0', description='Initial pitch attitude (radians).')
-    filter_init_attitude_yaw_arg = DeclareLaunchArgument('filter_init_attitude_yaw', default_value='1.5707', description='Initial yaw attitude (radians).')
-
-    print("-------------------------------------2-------------------------------------")
-
-    # Get Launch Configurations
-    device_setup = True
-    device_type = LaunchConfiguration('device_type')
-    port = LaunchConfiguration('port')
-    baudrate = LaunchConfiguration('baudrate')
-    imu_enable = LaunchConfiguration('imu_enable')
-    publish_imu = LaunchConfiguration('publish_imu')
-    filter_manual_config = LaunchConfiguration('filter_manual_config')
-    low_pass_filter_config = LaunchConfiguration('low_pass_filter_config')
-    timestamp_source = LaunchConfiguration('timestamp_source')
-    filter_auto_heading_alignment_selector = LaunchConfiguration('filter_auto_heading_alignment_selector')
-    tf_mode = LaunchConfiguration('tf_mode')
-    filter_heading_source = LaunchConfiguration('filter_heading_source')
-
-    filter_init_position = [
-        LaunchConfiguration('filter_init_position_x'),
-        LaunchConfiguration('filter_init_position_y'),
-        LaunchConfiguration('filter_init_position_z')
-    ]
-
-    filter_init_velocity = [
-        LaunchConfiguration('filter_init_velocity_x'),
-        LaunchConfiguration('filter_init_velocity_y'),
-        LaunchConfiguration('filter_init_velocity_z')
-    ]
-
-    filter_init_attitude = [
-        LaunchConfiguration('filter_init_attitude_roll'),
-        LaunchConfiguration('filter_init_attitude_pitch'),
-        LaunchConfiguration('filter_init_attitude_yaw')
-    ]
-
-    print("-------------------------------------3-------------------------------------")
-
-    # Create the Microstrain Inertial Driver Node
-    microstrain_node = Node(
-        package='microstrain_inertial_driver',
-        executable='microstrain_inertial_driver_node',
-        name='microstrain_inertial_driver_node',
-        namespace='', # Root namespace
-        parameters=[{
-            "device_setup": device_setup,
-            "imu_enable": imu_enable,
-            "publish_imu": publish_imu,
-            "filter_manual_config": filter_manual_config,
-            "low_pass_filter_config": low_pass_filter_config,
-            "device_type": device_type,
-            "port": port,
-            "baudrate": baudrate,
-            "timestamp_source": timestamp_source,
-            "filter_auto_heading_alignment_selector": filter_auto_heading_alignment_selector,
-            "tf_mode": tf_mode,
-            "filter_heading_source": filter_heading_source,
-            "filter_init_position": filter_init_position,
-            "filter_init_velocity": filter_init_velocity,
-            "filter_init_attitude": filter_init_attitude,
-        }]
-        #output='screen'
-    )
-
-    print("Launch.py initialized successfully.")
-
-    return LaunchDescription([
-        # Add all declared arguments to the LaunchDescription
-        device_type_arg,
-        port_arg,
-        baudrate_arg,
-        imu_enable_arg,
-        publish_imu_arg,
-        filter_manual_config_arg,
-        low_pass_filter_config_arg,
-        timestamp_source_arg,
-        filter_auto_heading_alignment_selector_arg,
-        tf_mode_arg,
-        filter_heading_source_arg,
-        filter_init_position_x_arg,
-        filter_init_position_y_arg,
-        filter_init_position_z_arg,
-        filter_init_velocity_x_arg,
-        filter_init_velocity_y_arg,
-        filter_init_velocity_z_arg,
-        filter_init_attitude_roll_arg,
-        filter_init_attitude_pitch_arg,
-        filter_init_attitude_yaw_arg,
-        microstrain_node
-    ])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# from launch import LaunchDescription
-# from launch_ros.actions import Node
-
-
-# def generate_launch_description():
-#   launch_description = LaunchDescription(
-#     [
-#       Node( #AB Create a "Node" object to launch the Microstrain Inertial Driver
-#         package    = 'microstrain_inertial_driver',
-#         executable = "microstrain_inertial_driver_node", #AB Name of the executable to run
-#         name       = "microstrain_inertial_driver_node", #AB Name of the node
-#         namespace  = '', #AB Namespace to use when launching the nodes in this launch file (empty string for root namespace)
-#         parameters = [
-#           {
-#               "device_setup"                           : True,
-#               "imu_enable"                             : True,
-#               "publish_imu"                            : True,
-#               "filter_manual_config"                   : True,
-#               "low_pass_filter_config"                 : False,
-#               #"raw_file_enable"                        : False,
-#               "device_type"                            : "gx5_15", #AB Device type to use, in this case the GX5-15 IMU
-#               "port"                                   : "/dev/ttyACM0", #AB Serial port for the Microstrain IMU
-#               "baudrate"                               : 115200, #AB Baud rate for the serial connection
-#               "timestamp_source"                       : 0,
-#               "filter_auto_heading_alignment_selector" : 5,
-#               "tf_mode"                                : 0,
-#               "filter_heading_source"                  : 0,
-#               "filter_init_position"                   : [0.0, 0.0, 0.0], #AB Initial position in meters (x, y, z)
-#               "filter_init_velocity"                   : [0.0, 0.0, 0.0], #AB Initial velocity in meters per second (vx, vy, vz)
-#               "filter_init_attitude"                   : [4.712, 0.0, 1.5707], #AB Initial attitude in radians (roll, pitch, yaw)
-#           } #AB Close dict of parameters
-#         ] #AB Close list called "parameters"
-#       ) #AB End of declaration of the Node object
-#     ] #AB End of list which contains the Node object
-#   ) #AB End of declaration of the LaunchDescription object, which is returned.
-#   print("Launch.py initialized successfully.")
-#   return launch_description 
+  launch_description = LaunchDescription(
+    [
+      Node( #AB Create a "Node" object to launch the Microstrain Inertial Driver
+        package    = 'microstrain_inertial_driver',
+        executable = "microstrain_inertial_driver_node", #AB Name of the executable to run
+        name       = "microstrain_inertial_driver_node", #AB Name of the node
+        namespace  = '', #AB Namespace to use when launching the nodes in this launch file (empty string for root namespace)
+        parameters = [
+          {
+              "device_setup"                           : True,
+              "imu_enable"                             : True,
+              "publish_imu"                            : True,
+              "filter_manual_config"                   : True,
+              "low_pass_filter_config"                 : False,
+              #"raw_file_enable"                        : False,
+              "device_type"                            : "gx5_15", #AB Device type to use, in this case the GX5-15 IMU
+              "port"                                   : "/dev/ttyACM0", #AB Serial port for the Microstrain IMU
+              "baudrate"                               : 115200, #AB Baud rate for the serial connection
+              "timestamp_source"                       : 0,
+              "filter_auto_heading_alignment_selector" : 5,
+              "tf_mode"                                : 0,
+              "filter_heading_source"                  : 0,
+              "filter_init_position"                   : [0.0, 0.0, 0.0], #AB Initial position in meters (x, y, z)
+              "filter_init_velocity"                   : [0.0, 0.0, 0.0], #AB Initial velocity in meters per second (vx, vy, vz)
+              "filter_init_attitude"                   : [4.712, 0.0, 1.5707], #AB Initial attitude in radians (roll, pitch, yaw)
+          } #AB Close dict of parameters
+        ] #AB Close list called "parameters"
+      ) #AB End of declaration of the Node object
+    ] #AB End of list which contains the Node object
+  ) #AB End of declaration of the LaunchDescription object, which is returned.
+  print("Launch.py initialized successfully.")
+  return launch_description 
 
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import os
+# from ament_index_python.packages import get_package_share_directory
+# from launch import LaunchDescription
+# from launch.actions import DeclareLaunchArgument
+# from launch.substitutions import LaunchConfiguration, TextSubstitution
+# from launch_ros.actions import Node
+
+# def generate_launch_description():
+#     print("-------------------------------------1-------------------------------------")
+#     # Declare Launch Arguments
+
+#     # --- Device Configuration ---
+#     device_type_arg = DeclareLaunchArgument('device_type', default_value=TextSubstitution(text='gx5_15'), description='The Microstrain device type (e.g., gx5_15, 3dm_gq7).')
+#     port_arg = DeclareLaunchArgument('port', default_value=TextSubstitution(text='/dev/ttyACM0'), description='The serial port connected to the Microstrain IMU.')
+#     baudrate_arg = DeclareLaunchArgument('baudrate', default_value='115200', description='The baud rate for the serial connection.')
+
+#     # --- IMU and Filter Settings ---
+#     imu_enable_arg = DeclareLaunchArgument('imu_enable', default_value='true', description='Enable IMU data acquisition.')
+#     publish_imu_arg = DeclareLaunchArgument('publish_imu', default_value='true', description='Publish IMU data to ROS topics.')
+#     filter_manual_config_arg = DeclareLaunchArgument('filter_manual_config', default_value='true', description='Manually configure the filter settings.')
+#     low_pass_filter_config_arg = DeclareLaunchArgument('low_pass_filter_config', default_value='false', description='Enable low-pass filter configuration.')
+#     timestamp_source_arg = DeclareLaunchArgument('timestamp_source', default_value='0', description='Timestamp source for the IMU data.')
+#     filter_auto_heading_alignment_selector_arg = DeclareLaunchArgument('filter_auto_heading_alignment_selector', default_value='5', description='Selector for automatic heading alignment.')
+#     tf_mode_arg = DeclareLaunchArgument('tf_mode', default_value='0', description='Transformation frame mode.')
+#     filter_heading_source_arg = DeclareLaunchArgument('filter_heading_source', default_value='0', description='Source for the filter heading.')
+
+#     # --- Initial Filter State ---
+#     filter_init_position_x_arg = DeclareLaunchArgument('filter_init_position_x', default_value='0.0', description='Initial X position (meters).')
+#     filter_init_position_y_arg = DeclareLaunchArgument('filter_init_position_y', default_value='0.0', description='Initial Y position (meters).')
+#     filter_init_position_z_arg = DeclareLaunchArgument('filter_init_position_z', default_value='0.0', description='Initial Z position (meters).')
+#     filter_init_velocity_x_arg = DeclareLaunchArgument('filter_init_velocity_x', default_value='0.0', description='Initial X velocity (m/s).')
+#     filter_init_velocity_y_arg = DeclareLaunchArgument('filter_init_velocity_y', default_value='0.0', description='Initial Y velocity (m/s).')
+#     filter_init_velocity_z_arg = DeclareLaunchArgument('filter_init_velocity_z', default_value='0.0', description='Initial Z velocity (m/s).')
+#     filter_init_attitude_roll_arg = DeclareLaunchArgument('filter_init_attitude_roll', default_value='4.712', description='Initial roll attitude (radians).')
+#     filter_init_attitude_pitch_arg = DeclareLaunchArgument('filter_init_attitude_pitch', default_value='0.0', description='Initial pitch attitude (radians).')
+#     filter_init_attitude_yaw_arg = DeclareLaunchArgument('filter_init_attitude_yaw', default_value='1.5707', description='Initial yaw attitude (radians).')
+
+#     print("-------------------------------------2-------------------------------------")
+
+#     # Get Launch Configurations
+#     device_setup = True
+#     device_type = LaunchConfiguration('device_type')
+#     port = LaunchConfiguration('port')
+#     baudrate = LaunchConfiguration('baudrate')
+#     imu_enable = LaunchConfiguration('imu_enable')
+#     publish_imu = LaunchConfiguration('publish_imu')
+#     filter_manual_config = LaunchConfiguration('filter_manual_config')
+#     low_pass_filter_config = LaunchConfiguration('low_pass_filter_config')
+#     timestamp_source = LaunchConfiguration('timestamp_source')
+#     filter_auto_heading_alignment_selector = LaunchConfiguration('filter_auto_heading_alignment_selector')
+#     tf_mode = LaunchConfiguration('tf_mode')
+#     filter_heading_source = LaunchConfiguration('filter_heading_source')
+
+#     filter_init_position = [
+#         LaunchConfiguration('filter_init_position_x'),
+#         LaunchConfiguration('filter_init_position_y'),
+#         LaunchConfiguration('filter_init_position_z')
+#     ]
+
+#     filter_init_velocity = [
+#         LaunchConfiguration('filter_init_velocity_x'),
+#         LaunchConfiguration('filter_init_velocity_y'),
+#         LaunchConfiguration('filter_init_velocity_z')
+#     ]
+
+#     filter_init_attitude = [
+#         LaunchConfiguration('filter_init_attitude_roll'),
+#         LaunchConfiguration('filter_init_attitude_pitch'),
+#         LaunchConfiguration('filter_init_attitude_yaw')
+#     ]
+
+#     print("-------------------------------------3-------------------------------------")
+
+#     # Create the Microstrain Inertial Driver Node
+#     microstrain_node = Node(
+#         package='microstrain_inertial_driver',
+#         executable='microstrain_inertial_driver_node',
+#         name='microstrain_inertial_driver_node',
+#         namespace='', # Root namespace
+#         parameters=[{
+#             "device_setup": device_setup,
+#             "imu_enable": imu_enable,
+#             "publish_imu": publish_imu,
+#             "filter_manual_config": filter_manual_config,
+#             "low_pass_filter_config": low_pass_filter_config,
+#             "device_type": device_type,
+#             "port": port,
+#             "baudrate": baudrate,
+#             "timestamp_source": timestamp_source,
+#             "filter_auto_heading_alignment_selector": filter_auto_heading_alignment_selector,
+#             "tf_mode": tf_mode,
+#             "filter_heading_source": filter_heading_source,
+#             "filter_init_position": filter_init_position,
+#             "filter_init_velocity": filter_init_velocity,
+#             "filter_init_attitude": filter_init_attitude,
+#         }]
+#         #output='screen'
+#     )
+
+#     print("Launch.py initialized successfully.")
+
+#     return LaunchDescription([
+#         # Add all declared arguments to the LaunchDescription
+#         device_type_arg,
+#         port_arg,
+#         baudrate_arg,
+#         imu_enable_arg,
+#         publish_imu_arg,
+#         filter_manual_config_arg,
+#         low_pass_filter_config_arg,
+#         timestamp_source_arg,
+#         filter_auto_heading_alignment_selector_arg,
+#         tf_mode_arg,
+#         filter_heading_source_arg,
+#         filter_init_position_x_arg,
+#         filter_init_position_y_arg,
+#         filter_init_position_z_arg,
+#         filter_init_velocity_x_arg,
+#         filter_init_velocity_y_arg,
+#         filter_init_velocity_z_arg,
+#         filter_init_attitude_roll_arg,
+#         filter_init_attitude_pitch_arg,
+#         filter_init_attitude_yaw_arg,
+#         microstrain_node
+#     ])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
