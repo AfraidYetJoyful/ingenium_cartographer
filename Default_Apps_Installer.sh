@@ -60,6 +60,9 @@ for file in *; do #AB Iterate through all files within it
   fi
 done
 
+gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
+
+
 
 
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
