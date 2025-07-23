@@ -18,8 +18,6 @@ sudo apt upgrade
 echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, yamllint, snapd, net-tools, gdm-toolkit, pip, Docker, and git\n"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
-sudo apt install blender #AB Install blender (a 3D modeling software)
-sudo apt install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
 sudo apt install rpi-imager #AB a software for burning OSes onto SD cards for use in a Raspberry Pi
 sudo apt install gnome-tweaks #AB An OS customization tool
@@ -34,12 +32,14 @@ sudo apt install python3.12-venv #AB Install a package to allow creating python 
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install docker #AB A containerization software [!] CRITICAL [!]
+sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
+sudo snap install blender #AB Install blender (a 3D modeling software)
 
 sudo apt-get install git #AB Install and then configure git (a source control software for coders)
 git config --global user.email "ingenium.lidar@outlook.com"
 git config --global user.name "Ingenium-LiDAR"
 
-
+code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyrihgt
 
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
