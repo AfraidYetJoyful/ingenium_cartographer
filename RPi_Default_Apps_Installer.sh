@@ -37,7 +37,6 @@ done
 
 
 #AB Install ROS Jazzy
-chmod +x Install_Jazzy.sh #AB make Install_Jazzy.sh executable and run it
 ./Install_Jazzy.sh 
 
 
