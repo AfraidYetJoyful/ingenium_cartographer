@@ -15,7 +15,7 @@ sleep 1
 echo "Running sudo apt update and upgrade: "
 sudo apt update
 sudo apt upgrade
-echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, and git\n"
+echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, yamllint, snapd, net-tools, gdm-toolkit, pip, Docker, and git\n"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt install blender #AB Install blender (a 3D modeling software)
@@ -27,6 +27,9 @@ sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install gdm-settings libglib2.0-dev-bin #AB Another OS customization tool
 sudo apt install net-tools
+sudo apt install python3-pip #AB Install pip, Python's package manager.
+sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
+
 
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
@@ -49,14 +52,20 @@ if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory ca
   git clone https://github.com/JohannesByle/ingenium_cartographer
 fi
 
+cd ingenium_cartographer #AB Enter the newly cloned repository
+for file in *; do #AB Iterate through all files within it
+  if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+    chmod +x $file #AB ...then mark it as executable
+  fi
+done
+
 
 
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
 echo "Installing ROS2 Jazzy Jalisco...\n"
-cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartographer directory
-chmod +x Install_Jazzy.sh #AB Make the Install_Jazzy.sh script executable
+cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
 ./Install_Jazzy.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
@@ -66,17 +75,8 @@ chmod +x Install_Jazzy.sh #AB Make the Install_Jazzy.sh script executable
 
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install ros-jazzy-velodyne #AB Install the IMU driver. It's in a stack hosted (I believe) on the ROS website.
+sudo apt-get install ros-jazzy-velodyne #AB Install the Velodyne driver. It's in a stack hosted (I believe) on the ROS website.
 sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
-
-
-
-#---------------------------------------------INSTALL PIP AND PYTHON PACKAGES---------------------------------------------
-
-
-sudo apt install python3-pip #AB Install pip, Python's package manager.
-sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
-#AB Add more install package instructions here. (I mean to add open3d, but it looks like that might cause some problems...)
 
 
 
@@ -86,7 +86,7 @@ sudo apt install python3.12-venv #AB Install a package to allow creating python 
 # sudo ip addr flush dev enp152s0 
 # sudo ip addr add 192.168.1.100/24 dev enp152s0 
 #AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
-sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip addr 
+sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
 
 
 
