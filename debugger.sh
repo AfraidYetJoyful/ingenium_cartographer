@@ -49,6 +49,9 @@ if ros2 node list | grep -w -q "microstrain_inertial_driver_node"; then
     ros2 param get /microstrain_inertial_driver_node filter_auto_heading_alignment_selector
 fi
 
+echo "Press any key to finish."
+read -r
+
 echo "Killing *..."
 
 pkill -f ros2 && pkill -f microstrain && pkill -f launch && pkill -f rviz2 && pkill -f python3 #AB forcefully kill ALL ROS2 processes to prevent ghost proceeses from continuing.
