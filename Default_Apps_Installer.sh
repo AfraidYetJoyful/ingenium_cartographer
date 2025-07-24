@@ -39,7 +39,7 @@ sudo apt-get install git #AB Install and then configure git (a source control so
 git config --global user.email "ingenium.lidar@outlook.com"
 git config --global user.name "Ingenium-LiDAR"
 
-code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyrihgt
+code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyring
 
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
@@ -147,15 +147,4 @@ echo 'alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"'
 
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
-
-
-
-
-
-
-
-
-    # find "$directory_path" -maxdepth 1 -type f -name "*.sh" | while IFS= read -r filepath; do
-    # chmod +x "$filepath"
-                
 
