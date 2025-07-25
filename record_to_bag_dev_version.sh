@@ -26,10 +26,10 @@ if [ $record_lidar = "true" ]; then #AB If record_lidar parameter is enabled...
   echo "recording lidar..."
   sudo ip addr flush dev $ethernet
   sudo ip addr add 192.168.1.100/24 dev $ethernet
-  sudo ip route add 192.168.1.201 dev $ethernet
+  # sudo ip route add 192.168.1.201 dev $ethernet
   #AB Launch the velodyne driver and begin broadcasting on the /velodyne_packets topic
   ros2 launch velodyne_driver velodyne_driver_node-VLP32C-launch.py &
-  sleep 2
+  sleep 3
 fi
 
 
