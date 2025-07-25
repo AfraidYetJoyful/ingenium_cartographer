@@ -81,3 +81,16 @@ nmcli connection modify id Hotspot connection.autoconnect-priority 1
 
 cd $cwd #AB return to the original directory
 echo "RPi_Default_Apps_Installer.sh has finished running now."
+sleep 2
+echo "System will reboot in..."
+echo 5
+sleep 1
+echo 4
+sleep 1
+echo 3
+sleep 1
+echo 2
+sleep 1
+echo 1
+sleep 1
+reboot
