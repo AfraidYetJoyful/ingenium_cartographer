@@ -18,6 +18,7 @@ sudo apt install network-manager #AB add utility for managing networks
 sudo apt install net-tools #AB add another utility for managing networks
 sudo apt-get install git #AB install git, just in case it is not already installed
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
+sudo apt install sl #AB Install sl, an alias for ls
 
 mkdir -p ~/Documents/GitHub #Create the GitHub directory in the ~/Documents directory. If ~/Documents does not exist, the -p flag creates it also.
 cd ~/Documents/GitHub
