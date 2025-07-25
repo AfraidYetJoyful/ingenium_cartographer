@@ -2,7 +2,7 @@
 
 #AB Run on a clean Ubuntu Server 24.04.2 LTS system
 
-cwd = $(pwd)
+cwd=$(pwd)
 read -p "Enter password for hotspot: " hotspot_password #AB Ask the user to enter a password for the hotspot. 
 
 
