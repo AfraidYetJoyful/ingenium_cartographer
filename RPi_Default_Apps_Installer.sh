@@ -57,6 +57,15 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 
 
 
+#---------------------------------------------UPDATE THE SYSTEM AGAIN---------------------------------------------
+
+
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+
+
+
 #---------------------------------------------CONFIGURE NETWORK---------------------------------------------
 
 
