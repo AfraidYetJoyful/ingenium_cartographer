@@ -7,7 +7,7 @@ source /opt/ros/jazzy/setup.bash
 
 cwd=$(pwd)
 ethernet=enp152s0
-record_lidar=false
+record_lidar=true
 record_imu=true
 
 #AB Publish a static transform from the base frame to the IMU frame of reference. 

@@ -45,7 +45,7 @@ def generate_launch_description():
               "baudrate"                               : 115200, #AB Baud rate for the serial connection
               "timestamp_source"                       : 0,
               "tf_mode"                                : 0,
-              "imu_data_rate"                          : 100,
+              "imu_data_rate"                          : 200,
               # "filter_manual_config"                   : True,
               "filter_auto_heading_alignment_selector" : 5,
               "filter_heading_source"                  : 0,
