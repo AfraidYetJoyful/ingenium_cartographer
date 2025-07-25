@@ -5,9 +5,10 @@ source /opt/ros/jazzy/setup.bash #AB Source ROS Jazzy
 
 
 #AB Launch the Microstrain Inertial Driver
-ros2 launch cartographer_config/microstrain_launch_ingenium.py & #params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml &
-ros2 param set /microstrain_inertial_driver_node publish_imu true
-ros2 param set /microstrain_inertial_driver_node imu_enable true
+ros2 launch cartographer_config/microstrain_launch_ingenium.py --show-args
+ros2 launch cartographer_config/microstrain_launch_ingenium.py & #filter_manual_config:=true & #params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml &
+# ros2 param set /microstrain_inertial_driver_node publish_imu true
+# ros2 param set /microstrain_inertial_driver_node imu_enable true
 #ros2 launch -p microstrain_inertial_driver cartographer_config/microstrain_launch_ingenium.py --ros-args microstrain_inertial_driver_node:publish_imu:=true &
 #ros2 launch -d microstrain_inertial_driver cartographer_config/microstrain_launch_ingenium.py --ros-args -p microstrain_inertial_driver_node:publish_imu:=true &
 sleep 4
@@ -15,13 +16,13 @@ sleep 4
 #AB If the microstrain_inertial_driver_node is alive, then...
 if ros2 node list | grep -w -q "microstrain_inertial_driver_node"; then
     #AB Print its parameters and their values
-    echo "device_type"
-    ros2 param get /microstrain_inertial_driver_node device_type
+    # echo "device_type"
+    # ros2 param get /microstrain_inertial_driver_node device_type
     echo "tf_mode"
     ros2 param get /microstrain_inertial_driver_node tf_mode
-    echo "imu_enable"
-    ros2 param get /microstrain_inertial_driver_node imu_enable
-    echo "publish_imu"
+    # echo "imu_enable"
+    # ros2 param get /microstrain_inertial_driver_node imu_enable
+    # echo "publish_imu"
     ros2 param get /microstrain_inertial_driver_node publish_imu
     echo "port"
     ros2 param get /microstrain_inertial_driver_node port
@@ -45,10 +46,12 @@ if ros2 node list | grep -w -q "microstrain_inertial_driver_node"; then
     ros2 param get /microstrain_inertial_driver_node raw_file_enable
     echo "timestamp_source"
     ros2 param get /microstrain_inertial_driver_node timestamp_source
-    echo "filter_manual_config"
-    ros2 param get /microstrain_inertial_driver_node filter_manual_config
+    # echo "filter_manual_config"
+    # ros2 param get /microstrain_inertial_driver_node filter_manual_config
     echo "filter_auto_heading_alignment_selector"
     ros2 param get /microstrain_inertial_driver_node filter_auto_heading_alignment_selector
+    echo "imu_data_rate"
+    ros2 param get /microstrain_inertial_driver_node imu_data_rate
 fi
 
 echo "Press enter to finish."
