@@ -6,6 +6,8 @@ source /opt/ros/jazzy/setup.bash #AB Source ROS Jazzy
 
 #AB Launch the Microstrain Inertial Driver
 ros2 launch cartographer_config/microstrain_launch_ingenium.py & #params_file:=/home/lidar/Documents/GitHub/ingenium_cartographer/cartographer_config/microstrain_config.yaml &
+ros2 param set /microstrain_inertial_driver_node publish_imu true
+ros2 param set /microstrain_inertial_driver_node imu_enable true
 #ros2 launch -p microstrain_inertial_driver cartographer_config/microstrain_launch_ingenium.py --ros-args microstrain_inertial_driver_node:publish_imu:=true &
 #ros2 launch -d microstrain_inertial_driver cartographer_config/microstrain_launch_ingenium.py --ros-args -p microstrain_inertial_driver_node:publish_imu:=true &
 sleep 4

@@ -11,22 +11,6 @@ from launch_ros.actions import Node
 def generate_launch_description():
   launch_description = LaunchDescription(
     [
-      DeclareLaunchArgument('device_setup',                           default_value=True),
-      DeclareLaunchArgument('imu_enable',                             default_value=True),
-      DeclareLaunchArgument('publish_imu',                            default_value=True),
-      DeclareLaunchArgument('filter_manual_config',                   default_value=True),
-      DeclareLaunchArgument('low_pass_filter_config',                 default_value=False),
-      DeclareLaunchArgument('device_type',                            default_value='gx5_15'),
-      DeclareLaunchArgument('port',                                   default_value='/dev/ttyACM0'),
-      DeclareLaunchArgument('baudrate',                               default_value=115200),
-      DeclareLaunchArgument('timestamp_source',                       default_value=0),
-      DeclareLaunchArgument('filter_auto_heading_alignment_selector', default_value=5),
-      DeclareLaunchArgument('tf_mode',                                default_value=0),
-      DeclareLaunchArgument('filter_heading_source',                  default_value=0),
-      DeclareLaunchArgument('filter_init_position',                   default_value=[0.0, 0.0, 0.0]),
-      DeclareLaunchArgument('filter_init_velocity',                   default_value=[0.0, 0.0, 0.0]),
-      DeclareLaunchArgument('filter_init_attitude',                   default_value=[4.712, 0.0, 1.5707]),
-
       Node( #AB Create a "Node" object to launch the Microstrain Inertial Driver
         package    = 'microstrain_inertial_driver',
         executable = "microstrain_inertial_driver_node", #AB Name of the executable to run
@@ -34,22 +18,22 @@ def generate_launch_description():
         namespace  = '', #AB Namespace to use when launching the nodes in this launch file (empty string for root namespace)
         parameters = [
           {
-              "device_setup"                           : LaunchConfiguration('device_setup'),
-              "imu_enable"                             : LaunchConfiguration('imu_enable'),
-              "publish_imu"                            : LaunchConfiguration('publish_imu'),
-              "filter_manual_config"                   : LaunchConfiguration('filter_manual_config'),
-              "low_pass_filter_config"                 : LaunchConfiguration('low_pass_filter_config'),
+              "device_setup"                           : True,
+              "imu_enable"                             : True,
+              "publish_imu"                            : True,
+              "filter_manual_config"                   : True,
+              "low_pass_filter_config"                 : False,
               #"raw_file_enable"                        : False,
-              "device_type"                            : LaunchConfiguration('device_type'), #AB Device type to use, in this case the GX5-15 IMU
-              "port"                                   : LaunchConfiguration('port'), #AB Serial port for the Microstrain IMU
-              "baudrate"                               : LaunchConfiguration('baudrate'), #AB Baud rate for the serial connection
-              "timestamp_source"                       : LaunchConfiguration('timestamp_source'),
-              "filter_auto_heading_alignment_selector" : LaunchConfiguration('filter_auto_heading_alignment_selector'),
-              "tf_mode"                                : LaunchConfiguration('tf_mode'),
-              "filter_heading_source"                  : LaunchConfiguration('filter_heading_source'),
-              "filter_init_position"                   : LaunchConfiguration('filter_init_position'), #AB Initial position in meters (x, y, z)
-              "filter_init_velocity"                   : LaunchConfiguration('filter_init_velocity'), #AB Initial velocity in meters per second (vx, vy, vz)
-              "filter_init_attitude"                   : LaunchConfiguration('filter_init_attitude'), #AB Initial attitude in radians (roll, pitch, yaw)
+              "device_type"                            : "gx5_15", #AB Device type to use, in this case the GX5-15 IMU
+              "port"                                   : "/dev/ttyACM0", #AB Serial port for the Microstrain IMU
+              "baudrate"                               : 115200, #AB Baud rate for the serial connection
+              "timestamp_source"                       : 0,
+              "filter_auto_heading_alignment_selector" : 5,
+              "tf_mode"                                : 0,
+              "filter_heading_source"                  : 0,
+              "filter_init_position"                   : [0.0, 0.0, 0.0], #AB Initial position in meters (x, y, z)
+              "filter_init_velocity"                   : [0.0, 0.0, 0.0], #AB Initial velocity in meters per second (vx, vy, vz)
+              "filter_init_attitude"                   : [4.712, 0.0, 1.5707], #AB Initial attitude in radians (roll, pitch, yaw)
           } #AB Close dict of parameters
         ] #AB Close list called "parameters"
       ) #AB End of declaration of the Node object
@@ -57,6 +41,82 @@ def generate_launch_description():
   ) #AB End of declaration of the LaunchDescription object, which is returned.
   print("Launch.py initialized successfully.")
   return launch_description 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import os
+# from ament_index_python.packages import get_package_share_directory
+# from launch import LaunchDescription
+# from launch.actions import DeclareLaunchArgument
+# from launch.substitutions import LaunchConfiguration, TextSubstitution
+# from launch_ros.actions import Node
+
+
+# def generate_launch_description():
+#   launch_description = LaunchDescription(
+#     [
+#       DeclareLaunchArgument('device_setup',                           default_value=True),
+#       DeclareLaunchArgument('imu_enable',                             default_value=True),
+#       DeclareLaunchArgument('publish_imu',                            default_value=True),
+#       DeclareLaunchArgument('filter_manual_config',                   default_value=True),
+#       DeclareLaunchArgument('low_pass_filter_config',                 default_value=False),
+#       DeclareLaunchArgument('device_type',                            default_value='gx5_15'),
+#       DeclareLaunchArgument('port',                                   default_value='/dev/ttyACM0'),
+#       DeclareLaunchArgument('baudrate',                               default_value=115200),
+#       DeclareLaunchArgument('timestamp_source',                       default_value=0),
+#       DeclareLaunchArgument('filter_auto_heading_alignment_selector', default_value=5),
+#       DeclareLaunchArgument('tf_mode',                                default_value=0),
+#       DeclareLaunchArgument('filter_heading_source',                  default_value=0),
+#       DeclareLaunchArgument('filter_init_position',                   default_value=[0.0, 0.0, 0.0]),
+#       DeclareLaunchArgument('filter_init_velocity',                   default_value=[0.0, 0.0, 0.0]),
+#       DeclareLaunchArgument('filter_init_attitude',                   default_value=[4.712, 0.0, 1.5707]),
+
+#       Node( #AB Create a "Node" object to launch the Microstrain Inertial Driver
+#         package    = 'microstrain_inertial_driver',
+#         executable = "microstrain_inertial_driver_node", #AB Name of the executable to run
+#         name       = "microstrain_inertial_driver_node", #AB Name of the node
+#         namespace  = '', #AB Namespace to use when launching the nodes in this launch file (empty string for root namespace)
+#         parameters = [
+#           {
+#               "device_setup"                           : LaunchConfiguration('device_setup'),
+#               "imu_enable"                             : LaunchConfiguration('imu_enable'),
+#               "publish_imu"                            : LaunchConfiguration('publish_imu'),
+#               "filter_manual_config"                   : LaunchConfiguration('filter_manual_config'),
+#               "low_pass_filter_config"                 : LaunchConfiguration('low_pass_filter_config'),
+#               #"raw_file_enable"                        : False,
+#               "device_type"                            : LaunchConfiguration('device_type'), #AB Device type to use, in this case the GX5-15 IMU
+#               "port"                                   : LaunchConfiguration('port'), #AB Serial port for the Microstrain IMU
+#               "baudrate"                               : LaunchConfiguration('baudrate'), #AB Baud rate for the serial connection
+#               "timestamp_source"                       : LaunchConfiguration('timestamp_source'),
+#               "filter_auto_heading_alignment_selector" : LaunchConfiguration('filter_auto_heading_alignment_selector'),
+#               "tf_mode"                                : LaunchConfiguration('tf_mode'),
+#               "filter_heading_source"                  : LaunchConfiguration('filter_heading_source'),
+#               "filter_init_position"                   : LaunchConfiguration('filter_init_position'), #AB Initial position in meters (x, y, z)
+#               "filter_init_velocity"                   : LaunchConfiguration('filter_init_velocity'), #AB Initial velocity in meters per second (vx, vy, vz)
+#               "filter_init_attitude"                   : LaunchConfiguration('filter_init_attitude'), #AB Initial attitude in radians (roll, pitch, yaw)
+#           } #AB Close dict of parameters
+#         ] #AB Close list called "parameters"
+#       ) #AB End of declaration of the Node object
+#     ] #AB End of list which contains the Node object
+#   ) #AB End of declaration of the LaunchDescription object, which is returned.
+#   print("Launch.py initialized successfully.")
+#   return launch_description 
 
 
  
