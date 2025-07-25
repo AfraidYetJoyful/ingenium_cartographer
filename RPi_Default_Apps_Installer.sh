@@ -7,12 +7,7 @@ cwd = $(pwd)
 #FK updates and upgrades
 sudo apt update
 sudo apt upgrade
-sudo apt update --fix-missing
-sudo apt upgrade --fix-missing
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get update --fix-missing
-sudo apt-get upgrade --fix-missing
+sudo apt autoremove
 
 sudo apt install network-manager #AB add utility for managing networks
 sudo apt install net-tools #AB add another utility for managing networks
