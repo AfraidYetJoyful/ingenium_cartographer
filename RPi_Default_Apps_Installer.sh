@@ -3,6 +3,8 @@
 #AB Run on a clean Ubuntu Server 24.04.2 LTS system
 
 cwd = $(pwd)
+read -p "Enter password for hotspot: " hotspot_password #AB Ask the user to enter a password for the hotspot. 
+
 
 #---------------------------------------------UPDATE THE SYSTEM AND INSTALL PACKAGES---------------------------------------------
 
@@ -61,7 +63,7 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 cd ~/Documents/GitHub/ingenium_cartographer/cartographer_config
 sudo mv use_network_manager.yaml /etc/netplan
 
-nmcli device wifi hotspot ifname wlan0 ssid Hotspot4 password <lidar-password> 
+nmcli device wifi hotspot ifname wlan0 ssid Hotspot4 password $hotspot_password #FK tells NetworkManager to create a connection profile for a hotspot, on the network interface (aka device) with the name (ifname = interface name) wlan0, with an ssid of Hotspot 4 (so that Hotspot4 is the name that appears for people wishing to connect to it), with a certain password
 #FK tells NetworkManager to create a connection profile for a hotspot, 
 # on the network interface (aka device) with the name (ifname = interface name) wlan0, 
 # with an ssid of Hotspot 4 (so that Hotspot4 is the name that appears for people wishing to connect to it),
