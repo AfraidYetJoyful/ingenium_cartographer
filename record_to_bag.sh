@@ -43,7 +43,7 @@ sleep 4
 #---------------------------------------------END DATA COLLECTION AND CLEAN UP WORKSPACE---------------------------------------------#
 
 
-echo "Currently recording, press any key to exit"
+echo "Currently recording, press enter to exit"
 read -r #AB Wait for an input of any key, then proceed to cleanup
 
 ./cleanup.sh #AB This  automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
