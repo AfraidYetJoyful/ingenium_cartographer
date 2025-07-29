@@ -24,15 +24,19 @@ Finn's comments are denoted by #FK
 
 ## Installation Instructions
 
-0. Download `Default_Apps_Installer.sh` if you wish to install the developer version, and `RPi_Default_Apps_Installer.sh` if you wish to install critical dependencies only.
+0. Download one of the two installer scripts. 
+
+    0. Use `Default_Apps_Installer.sh` if you wish to install the repository, various developer tools, and the SLAM dependencies.
+    
+    1. Use `RPi_Default_Apps_Installer.sh` if you wish to install the data gathering tools and their dependencies only.
 
 1. Navigate to the location of that file in terminal. Mark the script as executable using the relevant code snippet:
 
-`chmod +x Default_Apps_Installer.sh`
+    `chmod +x Default_Apps_Installer.sh`
 
-`chmod +x RPi_Default_Apps_Installer.sh`
+    `chmod +x RPi_Default_Apps_Installer.sh`
 
-2. Run `./Default_Apps_Installer.sh` or `./RPi_Default_Apps_Installer.sh`, depending on which file you downloaded. This *will* prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under `~/Documents/GitHub/ingenium_cartographer`. All files within it which match "\*.sh" will automatically be marked as executable. [Disabling this feature will cause irreparable installation errors].
+2. Run the script you just marked as executable (`./Default_Apps_Installer.sh` or `RPi_Default_Apps_Installer.sh`). This *will* prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under `~/Documents/GitHub/ingenium_cartographer`. All files within it which match "\*.sh" will automatically be marked as executable. [Disabling this feature will cause irreparable installation errors].
 
 3. If you ran `RPi_Default_Apps_Installer.sh` in step 2, after the reboot, run `./RPi_Network_Config.sh` (which will now be located in the `~` directory)
 
