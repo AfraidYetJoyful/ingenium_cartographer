@@ -4,7 +4,7 @@
 
 if ! [ -d ~/Documents/Data ]; then #AB If the ~/Documents/Data folder does not exist, make it
     echo "Data folder not found. Creating at ~/Documents/Data"
-    mkdir "~/Documents/Data"
+    mkdir -p "~/Documents/Data"
 fi
 
 
