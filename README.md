@@ -1,6 +1,6 @@
 # ingenium_cartographer
 
-Bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project. This branch is being edited to use ROS2 Jazzy Jalisco. As of this writing (June 2025) it is NOT complete, and NOT functional.
+&nbsp; &nbsp; &nbsp; This repository contains bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project. This branch is being edited to use ROS2 Jazzy Jalisco. As of this writing (July 2025) this branch is NOT complete, and NOT functional.
 
 The following scripts work as intended: `cleanup.sh`; `Default_Apps_Installer.sh`; `Install_Jazzy.sh`; `RPi-Default-Apps-Installer.sh`; `record_to_bag.sh`
 
@@ -13,7 +13,7 @@ The following scripts are relics from the ROS1 branch, and will eventually be fu
 
 ## A Brief Note About the Jazzy Branch
 
-This is a branch off a main codebase which was written almost 10 years ago. Much of the knowledge of how the original codebase worked has since been lost. Therefore, in the summer of 2025, Abraham began to reverse-engineer the various scripts, learning bash as he did so. In the above scripts, comments which were original to the document are denoted by a solitary hashtag: #.
+&nbsp; &nbsp; &nbsp; This is a branch off a main codebase which was written almost 10 years ago. Much of the knowledge of how the original codebase worked has since been lost. Therefore, in the summer of 2025, Abraham began to reverse-engineer the various scripts, learning bash as he did so. In the above scripts, comments which were original to the document are denoted by a solitary hashtag: #.
 Abraham's original reverse-engineering comments are denoted by a triple hashtag: ###. These represent his best guess as to what the code does, but he did not write it nor does he fully understand all of it.
 
 Thereafter, Abraham's comments are denoted by #AB
