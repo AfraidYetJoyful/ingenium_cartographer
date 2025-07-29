@@ -37,7 +37,7 @@ git switch jazzy
 
 
 #AB Remove all files in the main directory which are not relevant to data acquisition
-rm Default_Apps_Installer.sh display_bag.sh Install_LIO-SAM.sh install.sh process_bag.sh subtract.sh blanchard.png 
+rm Default_Apps_Installer.sh display_bag.sh Install_LIO-SAM.sh install.sh process_bag.sh subtract.sh blanchard.png Install_Humble.sh
 sudo rm -r python_scripts
 sudo rm -r gui_scripts
 

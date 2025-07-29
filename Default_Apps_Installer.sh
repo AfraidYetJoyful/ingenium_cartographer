@@ -31,6 +31,7 @@ sudo apt install sl #AB Install sl, an alias for ls
 
 
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
+sudo snap install firefox
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo snap install --classic blender #AB Install blender (a 3D modeling software)
