@@ -37,32 +37,14 @@ git switch jazzy
 
 
 #AB Remove all files in the main directory which are not relevant to data acquisition
-rm Default_Apps_Installer.sh 
-rm display_bag.sh
-rm Install_LIO-SAM.sh 
-rm install.sh
-rm process_bag.sh
-rm subtract.sh
-rm blanchard.png
-rm README.md
+rm Default_Apps_Installer.sh display_bag.sh Install_LIO-SAM.sh install.sh process_bag.sh subtract.sh blanchard.png 
 sudo rm -r python_scripts
 sudo rm -r gui_scripts
 
 #AB Remove all files in the cartographer_config directory which are not relevant to data acquisition
 cd cartographer_config
-rm demo_3d.rviz
-rm display.launch
-rm lidar_stick.rviz
-rm lidar_stick.urdf
-rm localization.launch
-rm localization.lua
-rm slam_visualize.launch
-rm slam.launch
-rm slam.lua
-rm slam.lua_old
-rm slamtest.lua
-
-cd ~/Documents/GitHub/ingenium_cartographer #AB Return to the ingenium_cartographer directory
+rm demo_3d.rviz display.launch lidar_stick.rviz lidar_stick.urdf localization.launch localization.lua slam_visualize.launch slam.launch slam.lua slam.lua_old slamtest.lua
+cd .. #AB Return to the ingenium_cartographer directory
 
 
 for file in *; do #AB Iterate through all files within it
