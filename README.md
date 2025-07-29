@@ -32,13 +32,13 @@ Finn's comments are denoted by #FK
 
 `chmod +x RPi_Default_Apps_Installer.sh`
 
-2. Run `./Default_Apps_Installer.sh` or `./RPi_Default_Apps_Installer.sh`, depending on which file you downloaded. This *will* prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under `~/Documents/GitHub/ingenium_cartographer`. All files within it which match "\*.sh" will automatically be marked as executable. [ Failing to mark `Install_Jazzy.sh` and `Install_LIO-SAM.sh` as executable will cause installation errors. ].
+2. Run `./Default_Apps_Installer.sh` or `./RPi_Default_Apps_Installer.sh`, depending on which file you downloaded. This *will* prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under `~/Documents/GitHub/ingenium_cartographer`. All files within it which match "\*.sh" will automatically be marked as executable. [Disabling this feature will cause irreparable installation errors].
 
-3. If you ran `RPi_Default_Apps_Installer.sh` in step 2, after the reboot, run `./RPi_post_reboot_default_apps_installer.sh` (which can be found in the ~ directory)
+3. If you ran `RPi_Default_Apps_Installer.sh` in step 2, after the reboot, run `./RPi_Network_Config.sh` (which will now be located in the `~` directory)
 
 ## Instructions for Gathering and Processing Data
 
-0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15 and a 3DM-GX5-AR) to the data gathering device. Run `./record_to_bag.sh`. This should procduce a .mcap file in `~/Documents/Data` (this directory will be created automatically by `cleanup.sh` if it does not yet exist)
+0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15/3DM-GX5-AR) to the data gathering device. Run `./record_to_bag.sh`. This should procduce a .mcap file in `~/Documents/Data` (this directory will be created automatically by `cleanup.sh` if it does not yet exist)
 
 1. On the fastest available computer, run `./process_bag.sh /path/to/your/mcap/file.mcap`. [NOTE: The dependencies for this script are not included in the minimal installation for Raspberry Pi!]
 
@@ -54,6 +54,6 @@ Finn's comments are denoted by #FK
 
 `wget -O [new_file_name] https://raw.githubusercontent.com/[my_user_name]/[my_repository]/refs/heads/[my_branch]/[name_of_my_file]`
 
-For example, to install the RPi Default Apps Installer (from the Jazzy branch), run:
+For example, to download `RPi_Default_Apps_Installer.sh`, run:
 
-`wget -O installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh`
+`wget -O RPi_Default_Apps_Installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh`
