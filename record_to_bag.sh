@@ -36,7 +36,7 @@ sleep 3
 
 echo "Recording lidar and imu data..."
 ros2 bag record /imu/data /velodyne_packets & #AB Record the /velodyne_packets and /imu/data topics
-sleep 2
+sleep 4
 
 
 
