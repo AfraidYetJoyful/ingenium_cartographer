@@ -2,11 +2,12 @@
 
 Bash scripts and config files for recording and slamming data for the Wheaton College Tel Shimron lidar project. This branch is being edited to use ROS2 Jazzy Jalisco. As of this writing (June 2025) it is NOT complete, and NOT functional.
 
-The following scripts work as intended: cleanup.sh; Default_Apps_Installer.sh; Install_Jazzy.sh; Ubuntu-Core-RPi-Default-Packages-Installer.sh; Install_LIO-SAM.sh; record_to_bag.sh
+The following scripts work as intended: `cleanup.sh`; `Default_Apps_Installer.sh`; `Install_Jazzy.sh`; `RPi-Default-Apps-Installer.sh`; `record_to_bag.sh`
 
-The following scripts do not yet work as intended: [None]
+The following scripts do not yet work as intended:
+`Install_LIO-SAM.sh`
 
-The following scripts are relics from the ROS1 branch, and will eventually be fully replaced: display_bag.sh; install.sh; process_bag.sh; subtract.sh
+The following scripts are relics from the ROS1 branch, and will eventually be fully replaced: `display_bag.sh`; `install.sh`; `process_bag.sh`; `subtract.sh`
 
 ![Screenshot](blanchard.png)
 
@@ -18,6 +19,8 @@ Abraham's original reverse-engineering comments are denoted by a triple hashtag:
 Thereafter, Abraham's comments are denoted by #AB
 
 Milan's comments are denoted by #MS
+
+Finn's comments are denoted by #FK
 
 ## Installation Instructions
 
@@ -35,21 +38,21 @@ Milan's comments are denoted by #MS
 
 ## Instructions for Gathering and Processing Data
 
-0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15 and a 3DM-GX5-AR) to the data gathering device (which should have these scripts installed). Run `./record_to_bag.sh`. This should procduce a .mcap file in the directory `~/Documents/Data` (this will be created automatically by `cleanup.sh` if it does not yet exist)
+0. Connect your LiDAR Hardware (this is tested with a Velodyne VLP-32C Ultra Puck) and IMU (this is tested with a LORD Microstrain 3DM-GX5-15 and a 3DM-GX5-AR) to the data gathering device. Run `./record_to_bag.sh`. This should procduce a .mcap file in `~/Documents/Data` (this directory will be created automatically by `cleanup.sh` if it does not yet exist)
 
-1. On a powerful computer (Raspberry Pi not recommended for this step), run `./process_bag.sh /path/to/your/mcap/file.mcap`
+1. On the fastest available computer, run `./process_bag.sh /path/to/your/mcap/file.mcap`. [NOTE: The dependencies for this script are not included in the minimal installation for Raspberry Pi!]
 
 
 
-## Instructions for Downloading a Single File (such as an installation script) from GitHub on the Command Line
+## Instructions for Downloading a Single File from GitHub with the Command Line
 
-1. On the GitHub website, navigate to the file you want to download, opening the preview
+1. On the GitHub website, navigate to the file you want to download and open the preview
 
-2. On the upper right of the page, select "Raw" and copy the URL it leads to
+2. On the upper right of the page, select "Raw" and copy the URL
 
 3. On your device, run
 
-`wget -O new_file_name https://raw.githubusercontent.com/my_user_name/my_reposiroty/heads/my_branch/name_of_my_file`
+`wget -O [new_file_name] https://raw.githubusercontent.com/[my_user_name]/[my_repository]/refs/heads/[my_branch]/[name_of_my_file]`
 
 For example, to install the RPi Default Apps Installer (from the Jazzy branch), run:
 
