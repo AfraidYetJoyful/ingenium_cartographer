@@ -4,7 +4,7 @@
 
 #---------------------------------------------CONTINUE CONFIGURING NETWORK---------------------------------------------
 
-read -p "Enter password for hotspot: " $hotspot_password #AB Ask the user to enter a password for the hotspot. 
+read -p "Enter password for hotspot: " hotspot_password #AB Ask the user to enter a password for the hotspot. 
 
 nmcli device wifi hotspot ifname wlan0 ssid Hotspot4 password $hotspot_password #FK tells NetworkManager to create a connection profile for a hotspot, on the network interface (aka device) with the name (ifname = interface name) wlan0, with an ssid of Hotspot 4 (so that Hotspot4 is the name that appears for people wishing to connect to it), with a certain password
 #FK tells NetworkManager to create a connection profile for a hotspot, 
