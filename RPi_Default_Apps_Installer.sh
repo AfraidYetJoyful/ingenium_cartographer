@@ -3,7 +3,6 @@
 #AB Run on a clean Ubuntu Server 24.04.2 LTS system
 
 cwd=$(pwd)
-read -p "Enter password for hotspot: " hotspot_password #AB Ask the user to enter a password for the hotspot. 
 
 
 #---------------------------------------------UPDATE THE SYSTEM AND INSTALL PACKAGES---------------------------------------------
@@ -70,19 +69,15 @@ sudo apt autoremove
 
 
 cd ~/Documents/GitHub/ingenium_cartographer/cartographer_config
+#FK go into the config folder
+
 sudo mv use_network_manager.yaml /etc/netplan
+#FK move file that makes Ubuntu Server use NetworkManager into the correct folder
 
-nmcli device wifi hotspot ifname wlan0 ssid Hotspot4 password $hotspot_password #FK tells NetworkManager to create a connection profile for a hotspot, on the network interface (aka device) with the name (ifname = interface name) wlan0, with an ssid of Hotspot 4 (so that Hotspot4 is the name that appears for people wishing to connect to it), with a certain password
-#FK tells NetworkManager to create a connection profile for a hotspot, 
-# on the network interface (aka device) with the name (ifname = interface name) wlan0, 
-# with an ssid of Hotspot 4 (so that Hotspot4 is the name that appears for people wishing to connect to it),
-# with a certain password 
-nmcli connection modify id Hotspot connection.autoconnect yes
-#FK tells NetworkManager to edit the hotspot’s connection profile so that it will make the hotspot automatically on startup
-nmcli connection modify id Hotspot connection.autoconnect-priority 1
-#FK make the autoconnect priority greater than 0 so that the hotspot takes priority over other connections
-#FK at this point, after a reboot, the hotspot should automatically start on start and before login.
-
+sudo chmod +x RPi_post_reboot_default_apps_installer.sh
+#FK mark the second installer script as executable
+sudo mv RPi_post_reboot_default_apps_installer.sh ~
+#FK move second installer script to the main directory
 
 
 #---------------------------------------------EXIT---------------------------------------------
