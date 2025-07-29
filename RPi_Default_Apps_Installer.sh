@@ -35,6 +35,36 @@ fi
 cd ingenium_cartographer
 git switch jazzy
 
+
+#AB Remove all files in the main directory which are not relevant to data acquisition
+rm Default_Apps_Installer.sh 
+rm display_bag.sh
+rm Install_LIO-SAM.sh 
+rm install.sh
+rm process_bag.sh
+rm subtract.sh
+rm blanchard.png
+rm README.md
+sudo rm -r python_scripts
+sudo rm -r gui_scripts
+
+#AB Remove all files in the cartographer_config directory which are not relevant to data acquisition
+cd cartographer_config
+rm demo_3d.rviz
+rm display.launch
+rm lidar_stick.rviz
+rm lidar_stick.urdf
+rm localization.launch
+rm localization.lua
+rm slam_visualize.launch
+rm slam.launch
+rm slam.lua
+rm slam.lua_old
+rm slamtest.lua
+
+cd ~/Documents/GitHub/ingenium_cartographer #AB Return to the ingenium_cartographer directory
+
+
 for file in *; do #AB Iterate through all files within it
   if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
     chmod +x $file #AB ...then mark it as executable
