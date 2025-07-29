@@ -33,9 +33,9 @@ sudo apt install ros-humble-desktop
 
 echo "Installing rosbag2..."
 sleep 1
-sudo apt-get install ros-humble-rosbag2
+sudo apt-get install ros-humble-rosbag2 &
 
-echo 'alias run_humble="source /opt/ros/humble/setup.bash"' >> ~/.bashrc #AB add the alias run_humble to the system ~/.bashrc file.
+echo 'alias run_humble="source /opt/ros/humble/setup.bash"' >> ~/.bashrc  #AB add the alias run_humble to the system ~/.bashrc file.
 
 echo "ROS2 humble installation complete."
 sleep 1

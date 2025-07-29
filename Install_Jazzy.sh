@@ -33,7 +33,7 @@ sudo apt install ros-jazzy-desktop
 
 echo "Installing rosbag2..."
 sleep 1
-sudo apt-get install ros-jazzy-rosbag2
+sudo apt-get install ros-jazzy-rosbag2 &
 
 echo 'alias run_jazzy="source /opt/ros/jazzy/setup.bash"' >> ~/.bashrc #AB add the alias run_jazzy to the system ~/.bashrc file.
 
