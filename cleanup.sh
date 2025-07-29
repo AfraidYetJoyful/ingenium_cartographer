@@ -2,7 +2,7 @@
 
 #AB This script is an extended version of the one that used to run automatically at the bottom of record_to_bag_dev_version.sh. That file now uses a cleanup alias to direct the Terminal here.
 
-if ! [ -d /home/lidar/Documents/Data ]; then #AB If the /Documents/Data folder does not exist, make it
+if ! [ -d ~/Documents/Data ]; then #AB If the ~/Documents/Data folder does not exist, make it
     echo "Data folder not found. Creating at ~/Documents/Data"
     mkdir "~/Documents/Data"
 fi
