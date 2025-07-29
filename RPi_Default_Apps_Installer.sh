@@ -80,6 +80,7 @@ sudo mv RPi_Network_Config.sh ~
 #FK move second installer script to the main directory
 
 
+
 #---------------------------------------------EXIT---------------------------------------------
 
 
