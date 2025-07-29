@@ -74,9 +74,9 @@ cd ~/Documents/GitHub/ingenium_cartographer/cartographer_config
 sudo mv use_network_manager.yaml /etc/netplan
 #FK move file that makes Ubuntu Server use NetworkManager into the correct folder
 
-sudo chmod +x RPi_post_reboot_default_apps_installer.sh
+sudo chmod +x RPi_Network_Config.sh
 #FK mark the second installer script as executable
-sudo mv RPi_post_reboot_default_apps_installer.sh ~
+sudo mv RPi_Network_Config.sh ~
 #FK move second installer script to the main directory
 
 
