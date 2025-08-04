@@ -5,6 +5,11 @@
 
 #FK has worked on Finn's computer, 8/1/2025, windows subsystem for linux with Ubuntu 22.04.5 LTS
 
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+
+
 echo “checking for UTF-8...“
 sleep 2
 locale  # check for UTF-8
@@ -15,7 +20,7 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 locale  # verify settings
-echo "done checking for UTF-8. If not UTF-8, cancel the process in 5 seconds."
+echo "done checking for UTF-8. If not UTF-8, kill the process within 5 seconds."
 sleep 5
 
 #then run the following to set things up
@@ -42,15 +47,13 @@ sleep 2
 sudo apt install ros-dev-tools
 
 echo "Setting up the environment by sourcing the .bash file"
-echo "If bash is not the current shell, please cancel this process and edit the current script before running. The current script keeps going in 5 seconds."
+echo "Assuming bash shell. Else, please kill this process within 5 seconds and edit the currently running script."
 sleep 5
 source /opt/ros/humble/setup.bash
 
-echo "Making it so that ros2 is automatically sourced in the .bashrc file, for convenience, starting in 5 seconds."
-sleep 5
 cd ~
-echo "# source ros2 bash file" >> .bashrc
-echo "source /opt/ros/humble/setup.bash" >> .bashrc
+echo "Adding alias run_humble to system ~/.bashrc file"
+echo 'alias run_humble="source /opt/ros/humble/setup.bash"' >> ~/.bashrc
 
 echo "All done!"
 
