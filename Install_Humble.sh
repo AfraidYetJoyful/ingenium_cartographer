@@ -1,43 +1,56 @@
 #!/bin/bash
 
-#AB ROS humble Installation Script, copied from https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
-#AB to use ROS in a given terminal session, run source /opt/ros/humble/setup.bash
-cwd=$(pwd)
+#FK from this documentation: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+#FK meant to be used on Ubuntu 22.04
 
-echo "Updating apt..."
-sleep 1
-sudo apt update
-sudo apt upgrade
-sudo apt autoremove
+#FK has worked on Finn's computer, 8/1/2025, windows subsystem for linux with Ubuntu 22.04.5 LTS
 
-echo "Installing universe repository..."
-sleep 1
+echo “checking for UTF-8...“
+sleep 2
+locale  # check for UTF-8
+
+sudo apt update && sudo apt install locales
+sudo locale-gen en_US en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+locale  # verify settings
+echo "done checking for UTF-8. If not UTF-8, cancel the process in 5 seconds."
+sleep 5
+
+#then run the following to set things up
+
+echo "Beginning setup..."
+sleep 2
+
 sudo apt install software-properties-common
 sudo add-apt-repository universe
 
-echo "Configuring system..."
-sleep 1
 sudo apt update && sudo apt install curl -y
 export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
-curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $VERSION_CODENAME)_all.deb" # If using Ubuntu derivates use $UBUNTU_CODENAME
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo $UBUNTU_CODENAME)_all.deb"
 sudo dpkg -i /tmp/ros2-apt-source.deb
 
-echo "Updating apt a second time..."
-sleep 1
 sudo apt update
 sudo apt upgrade
 
-echo "Installing ros-humble-desktop..."
-sleep 1
+echo "Installing ros humble desktop..."
+sleep 2
 sudo apt install ros-humble-desktop
+echo "Installing ros humble dev tools..."
+sleep 2
+sudo apt install ros-dev-tools
 
-echo "Installing rosbag2..."
-sleep 1
-sudo apt-get install ros-humble-rosbag2 &
+echo "Setting up the environment by sourcing the .bash file"
+echo "If bash is not the current shell, please cancel this process and edit the current script before running. The current script keeps going in 5 seconds."
+sleep 5
+source /opt/ros/humble/setup.bash
 
-echo 'alias run_humble="source /opt/ros/humble/setup.bash"' >> ~/.bashrc  #AB add the alias run_humble to the system ~/.bashrc file.
+echo "Making it so that ros2 is automatically sourced in the .bashrc file, for convenience, starting in 5 seconds."
+sleep 5
+cd ~
+echo "# source ros2 bash file" >> .bashrc
+echo "source /opt/ros/humble/setup.bash" >> .bashrc
 
-echo "ROS2 humble installation complete."
-sleep 1
+echo "All done!"
 
-cd $cwd
