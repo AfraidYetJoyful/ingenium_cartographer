@@ -15,12 +15,12 @@ sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 locale  # verify settings
-echo “done checking for UTF-8. If not UTF-8, cancel the process in 5 seconds.“
+echo "done checking for UTF-8. If not UTF-8, cancel the process in 5 seconds."
 sleep 5
 
 #then run the following to set things up
 
-echo “Beginning setup...”
+echo "Beginning setup..."
 sleep 2
 
 sudo apt install software-properties-common
@@ -34,23 +34,23 @@ sudo dpkg -i /tmp/ros2-apt-source.deb
 sudo apt update
 sudo apt upgrade
 
-echo “Installing ros humble desktop...”
+echo "Installing ros humble desktop..."
 sleep 2
 sudo apt install ros-humble-desktop
-echo “Installing ros humble dev tools...”
+echo "Installing ros humble dev tools..."
 sleep 2
 sudo apt install ros-dev-tools
 
-echo “Setting up the environment by sourcing the .bash file”
-echo “If bash is not the current shell, please cancel this process and edit the current script before running. The current script keeps going in 5 seconds.”
+echo "Setting up the environment by sourcing the .bash file"
+echo "If bash is not the current shell, please cancel this process and edit the current script before running. The current script keeps going in 5 seconds."
 sleep 5
 source /opt/ros/humble/setup.bash
 
-echo “Making it so that ros2 is automatically sourced in the .bashrc file, for convenience, starting in 5 seconds.”
+echo "Making it so that ros2 is automatically sourced in the .bashrc file, for convenience, starting in 5 seconds."
 sleep 5
 cd ~
 echo "# source ros2 bash file" >> .bashrc
-echo “source /opt/ros/humble/setup.bash” >> .bashrc
+echo "source /opt/ros/humble/setup.bash" >> .bashrc
 
-echo “All done!”
+echo "All done!"
 
