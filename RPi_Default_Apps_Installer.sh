@@ -80,16 +80,10 @@ sudo apt autoremove
 #---------------------------------------------CONFIGURE NETWORK---------------------------------------------
 
 
-cd ~/Documents/GitHub/ingenium_cartographer/cartographer_config
-#FK go into the config folder
-
-sudo mv use_network_manager.yaml /etc/netplan
-#FK move file that makes Ubuntu Server use NetworkManager into the correct folder
-
-sudo chmod +x RPi_Network_Config.sh
-#FK mark the second installer script as executable
-sudo mv RPi_Network_Config.sh ~
-#FK move second installer script to the main directory
+cd ~/Documents/GitHub/ingenium_cartographer/cartographer_config #FK go into the config folder
+sudo mv use_network_manager.yaml /etc/netplan #FK move file that makes Ubuntu Server use NetworkManager into the correct folder
+sudo chmod +x RPi_Network_Config.sh #FK mark the second installer script as executable
+sudo mv RPi_Network_Config.sh ~ #FK move second installer script to the main directory
 
 
 
