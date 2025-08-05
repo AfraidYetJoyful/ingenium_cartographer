@@ -24,7 +24,7 @@
 #   organization={IEEE}
 # }
 
-
+run_humble
 
 sudo apt update
 sudo apt upgrade
@@ -60,5 +60,3 @@ echo "Process has finished. Press enter to exit"
 read -r #AB Wait for an input of any key, then proceed to cleanup
 
 exit 0
-
-
