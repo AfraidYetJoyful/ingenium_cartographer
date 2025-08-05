@@ -22,7 +22,6 @@ sudo apt-get install gnome-keyring #AB Install a secure cryptographic library ne
 sudo apt install gnome-tweaks #AB An OS customization tool
 sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
-sudo apt install gdm-settings libglib2.0-dev-bin #AB Another OS customization tool
 sudo apt install sl #AB Install sl, an alias for ls
 
 
