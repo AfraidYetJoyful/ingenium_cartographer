@@ -28,6 +28,7 @@ sudo apt install net-tools
 sudo apt install python3-pip #AB Install pip, Python's package manager.
 sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
 sudo apt install sl #AB Install sl, an alias for ls
+sudo apt install tree #AB A fancy directory structure printer
 
 
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
