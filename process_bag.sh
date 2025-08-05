@@ -12,7 +12,7 @@ sleep 5
 
 cd /home/Documents/Data
 
-ros2 bag play $file --log-level debug
+ros2 bag play -s mcap $file --log-level debug
 
 # Return to original directory
 cd "$cwd"
