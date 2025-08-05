@@ -43,9 +43,8 @@ sudo add-apt-repository ppa:borglab/gtsam-release-4.1
 sudo apt install libgtsam-dev libgtsam-unstable-dev
 
 
-if ! [ -d ~/Apps/LIO-SAM/src ]; then #AB if ~/Documents/GitHub does not yet exist, then create it. 
-  mkdir -p ~/Apps/LIO-SAM/src
 
+mkdir -p ~/Apps/LIO-SAM/src
 cd ~/Apps/LIO-SAM/src
 git clone https://github.com/TixiaoShan/LIO-SAM.git
 cd LIO-SAM
