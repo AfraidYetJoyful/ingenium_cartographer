@@ -19,14 +19,10 @@ echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudComp
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
-sudo apt install rpi-imager #AB a software for burning OSes onto SD cards for use in a Raspberry Pi
 sudo apt install gnome-tweaks #AB An OS customization tool
 sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install gdm-settings libglib2.0-dev-bin #AB Another OS customization tool
-sudo apt install net-tools
-sudo apt install python3-pip #AB Install pip, Python's package manager.
-sudo apt install python3.12-venv #AB Install a package to allow creating python virtual environments
 sudo apt install sl #AB Install sl, an alias for ls
 
 
@@ -51,7 +47,7 @@ fi
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
   cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
   git clone https://github.com/JohannesByle/ingenium_cartographer
-  git switch jazzy #AB Switch to the jazzy branch of the ingenium_cartographer repository
+  git switch humble #AB Switch to the jazzy branch of the ingenium_cartographer repository
 fi
 
 cd ingenium_cartographer #AB Enter the newly cloned repository
@@ -69,74 +65,19 @@ gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/i
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
-echo "Installing ROS2 Jazzy Jalisco...\n"
+echo "Installing ROS2 Humble Hawksbill...\n"
 cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
-./Install_Jazzy.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
-
-
-
-#---------------------------------------------INSTALL HARDWARE DRIVERS---------------------------------------------
-
-
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install ros-jazzy-velodyne #AB Install the Velodyne driver. It's in a stack hosted (I believe) on the ROS website.
-sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU driver. Turns out that the these drivers are now maintained as part of a built-in ROS package manager! This should make things easier for future updates.
-
-
-
-#---------------------------------------------CONFIGURE PORTS AND IP ADDRESSES---------------------------------------------
-
-
-# sudo ip addr flush dev enp152s0 
-# sudo ip addr add 192.168.1.100/24 dev enp152s0 
-#AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
-sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
-
-
-
-
-#---------------------------------------------INSTALL VELOVIEW---------------------------------------------
-
-
-echo "Installing VeloView..."
-CURRENT_DIRECTORY=$(pwd) #AB store the current directory in a variable
-cd ~ #AB create a new directory called "Apps" within the directory ~ (the user default) and navigate into it
-mkdir Apps
-cd Apps
-
-#AB Download VeloView 5.1 for Ubuntu from the web
-curl "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.9&type=app&os=Linux&downloadFile=VeloView-5.1.0-Ubuntu18.04-x86_64.tar.gz" --output veloview.tar.gz
-tar -xzf veloview.tar.gz #AB Extract it from the archive. Extracts by default to a directory called VeloView-5.1.0-Ubuntu18.04-x86_64
-chmod +x "VeloView-5.1.0-Ubuntu18.04-x86_64/bin/VeloView" #AB Make the VeloView binary executable
-VELOVIEW_EXEC_PATH="$(pwd)/VeloView-5.1.0-Ubuntu18.04-x86_64/bin/VeloView" #AB Get the absolute path to the executable
-
-#AB Create a Desktop entry file for all users linking to the VeloView binary
-sudo bash -c "cat > '/usr/share/applications/veloview.desktop' <<EOF
-[Desktop Entry]
-Version=1.0
-Name=VeloView
-Exec=$VELOVIEW_EXEC_PATH
-Icon=utilities-terminal
-Terminal=false
-Type=Application
-Categories=Graphics;
-EOF"
-
-sudo chmod +x "/usr/share/applications/veloview.desktop" #AB Make the desktop file into an executable
-rm veloview.tar.gz #AB delete the archive previously downloaded
-
-cd $CURRENT_DIRECTORY #AB return to the directory the script was in before installing VeloView
+./Install_Humble.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
 
 #---------------------------------------------INSTALL LIO-SAM---------------------------------------------
 
 
-if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
-  cd ~/Documents/GitHub/ingenium_cartographer #AB ...navigate to the ingenium_cartographer directory
-  ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
-fi
+# if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
+#   cd ~/Documents/GitHub/ingenium_cartographer #AB ...navigate to the ingenium_cartographer directory
+#   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
+# fi
 
 
 
