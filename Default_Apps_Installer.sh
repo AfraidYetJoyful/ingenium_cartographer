@@ -5,6 +5,7 @@
 
 RED='\033[0;31m' #AB format echo text as red
 NC='\033[0m' #AB format echo text as "no color"
+BOLD_CYAN='\e[1;36m'
 
 
 

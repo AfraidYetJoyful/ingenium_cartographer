@@ -17,5 +17,5 @@ ros2 bag play -s mcap $file --log-level debug
 # Return to original directory
 cd "$cwd"
 
-echo -e ' \e[1;36mprocess_bag.sh has finished running. Press enter to exit.'
+echo -e '\e[1;36mprocess_bag.sh has finished running. Press enter to exit.'
 read -r ### Pause until reading any character. Once a character is read, progress to the next line (that is, terminate the program).
