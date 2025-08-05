@@ -3,6 +3,29 @@
 #AB LIO-SAM Installation Script. Installs from https://github.com/TixiaoShan/LIO-SAM/tree/ros2
 
 
+
+#AB Citations for LIO-SAM and LeGO-LOAM, as requested in the README.md on Github.
+
+# @inproceedings{liosam2020shan,
+#   title={LIO-SAM: Tightly-coupled Lidar Inertial Odometry via Smoothing and Mapping},
+#   author={Shan, Tixiao and Englot, Brendan and Meyers, Drew and Wang, Wei and Ratti, Carlo and Rus Daniela},
+#   booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+#   pages={5135-5142},
+#   year={2020},
+#   organization={IEEE}
+# }
+
+# @inproceedings{legoloam2018shan,
+#   title={LeGO-LOAM: Lightweight and Ground-Optimized Lidar Odometry and Mapping on Variable Terrain},
+#   author={Shan, Tixiao and Englot, Brendan},
+#   booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+#   pages={4758-4765},
+#   year={2018},
+#   organization={IEEE}
+# }
+
+
+
 sudo apt update
 sudo apt upgrade
 sudo apt autoremove
@@ -39,22 +62,3 @@ read -r #AB Wait for an input of any key, then proceed to cleanup
 exit 0
 
 
-#AB Citations for LIO-SAM and LeGO-LOAM, as requested in the README.md on Github.
-
-# @inproceedings{liosam2020shan,
-#   title={LIO-SAM: Tightly-coupled Lidar Inertial Odometry via Smoothing and Mapping},
-#   author={Shan, Tixiao and Englot, Brendan and Meyers, Drew and Wang, Wei and Ratti, Carlo and Rus Daniela},
-#   booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
-#   pages={5135-5142},
-#   year={2020},
-#   organization={IEEE}
-# }
-
-# @inproceedings{legoloam2018shan,
-#   title={LeGO-LOAM: Lightweight and Ground-Optimized Lidar Odometry and Mapping on Variable Terrain},
-#   author={Shan, Tixiao and Englot, Brendan},
-#   booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
-#   pages={4758-4765},
-#   year={2018},
-#   organization={IEEE}
-# }
