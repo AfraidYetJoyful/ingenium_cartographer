@@ -4,7 +4,7 @@
 
 
 sudo apt update
-sudo apt ugrade
+sudo apt upgrade
 sudo apt autoremove
 
 
