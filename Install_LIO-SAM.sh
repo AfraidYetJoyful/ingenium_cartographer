@@ -24,7 +24,7 @@
 #   organization={IEEE}
 # }
 
-run_humble
+source /opt/ros/humble/setup.bash
 
 sudo apt update
 sudo apt upgrade
@@ -59,4 +59,4 @@ docker build -t liosam-humble-jammy .
 echo "Process has finished. Press enter to exit"
 read -r #AB Wait for an input of any key, then proceed to cleanup
 
-exit 0
+sudo apt autoremove
