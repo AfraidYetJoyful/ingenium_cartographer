@@ -40,10 +40,12 @@ code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyri
 
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
+mkdir -p ~/Documents/GitHub
+mkdir -p ~/Documents/Data
+mkdir ~/Apps
 
-if ! [ -d ~/Documents/GitHub ]; then #AB if ~/Documents/GitHub does not yet exist, then create it. 
-  mkdir -p ~/Documents/GitHub
-fi
+
+
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
   cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
   git clone https://github.com/JohannesByle/ingenium_cartographer
