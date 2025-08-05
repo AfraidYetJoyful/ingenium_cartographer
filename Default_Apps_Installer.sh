@@ -42,12 +42,20 @@ git config --global user.name "Ingenium-LiDAR"
 
 code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyring
 
+
+
+#---------------------------------------------CREATE DEFAULT DIRECTORY STRUCTURE---------------------------------------------
+
+
+mkdir -p ~/Documents/GitHub
+mkdir -p ~/Documents/Data
+mkdir ~/Apps
+
+
+
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
 
-if ! [ -d ~/Documents/GitHub ]; then #AB if ~/Documents/GitHub does not yet exist, then create it. 
-  mkdir -p ~/Documents/GitHub
-fi
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
   cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
   git clone https://github.com/JohannesByle/ingenium_cartographer
@@ -62,7 +70,6 @@ for file in *; do #AB Iterate through all files within it
 done
 
 gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
-
 
 
 
@@ -101,9 +108,7 @@ sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name 
 
 echo "Installing VeloView..."
 CURRENT_DIRECTORY=$(pwd) #AB store the current directory in a variable
-cd ~ #AB create a new directory called "Apps" within the directory ~ (the user default) and navigate into it
-mkdir Apps
-cd Apps
+cd ~/Apps
 
 #AB Download VeloView 5.1 for Ubuntu from the web
 curl "https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.9&type=app&os=Linux&downloadFile=VeloView-5.1.0-Ubuntu18.04-x86_64.tar.gz" --output veloview.tar.gz
@@ -135,7 +140,7 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 
 if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
   cd ~/Documents/GitHub/ingenium_cartographer #AB ...navigate to the ingenium_cartographer directory
-  ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
+  ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM in the ~/Apps directory
 fi
 
 
