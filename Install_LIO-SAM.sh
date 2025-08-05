@@ -33,7 +33,7 @@ colcon build
 
 docker build -t liosam-humble-jammy .
 
-
+exit 0
 
 
 #AB Citations for LIO-SAM and LeGO-LOAM, as requested in the README.md on Github.
