@@ -33,6 +33,9 @@ colcon build
 
 docker build -t liosam-humble-jammy .
 
+echo "Process has finished. Press enter to exit"
+read -r #AB Wait for an input of any key, then proceed to cleanup
+
 exit 0
 
 
