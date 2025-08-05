@@ -91,6 +91,8 @@ echo "Installing NVIDIA Container Toolkit...\n"
 #   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
 # fi
 
+#FK temp LIO-SAM installer + docker container launch file
+./Finns_Install_LIO-SAM.sh
 
 
 #---------------------------------------------CLEANUP---------------------------------------------
