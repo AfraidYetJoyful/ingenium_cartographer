@@ -23,6 +23,7 @@ sudo apt install gnome-tweaks #AB An OS customization tool
 sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install sl #AB Install sl, an alias for ls
+sudo apt install python3-colcon-core #Install colcon, the build manager for ROS2
 
 
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
