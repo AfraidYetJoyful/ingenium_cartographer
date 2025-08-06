@@ -6,10 +6,13 @@
 
 RED='\033[0;31m' #AB format echo text as red
 NC='\033[0m' #AB format echo text as "no color"
+BOLD_CYAN='\e[1;36m'
 
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
+
+
 echo -ne "Installing base packages...\n"
 sleep 1
 
@@ -39,7 +42,10 @@ git config --global user.name "Ingenium-LiDAR"
 
 code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyring
 
+
+
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
+
 
 mkdir -p ~/Documents/GitHub
 mkdir -p ~/Documents/Data
@@ -55,21 +61,26 @@ fi
 
 cd ingenium_cartographer #AB Enter the newly cloned repository
 for file in *; do #AB Iterate through all files within it
-  if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
-    chmod +x $file #AB ...then mark it as executable
-  fi
+    if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+      chmod +x $file #AB ...then mark it as executable
+    else if [ -d "$file" ]; then
+      for file in *; do #AB Iterate through all files within it
+        if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+          chmod +x $file #AB ...then mark it as executable
+        fi
+      done
+    fi
 done
 
 gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
 
 
 
-
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
-echo "Installing ROS2 Humble Hawksbill...\n"
-cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
+echo -ne "Installing ROS2 Humble Hawksbill...\n"
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. 
 ./Install_Humble.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
@@ -77,22 +88,22 @@ cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartogr
 #---------------------------------------------INSTALL DOCKER AND NVIDIA CONTAINER TOOLKIT---------------------------------------------
 
 
-echo "Installing Docker...\n"
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
+echo -ne "Installing Docker...\n"
 ./Install_Docker.sh #FK Run the Install_Docker.sh script to install docker
-echo "Installing NVIDIA Container Toolkit...\n"
+echo -ne "Installing NVIDIA Container Toolkit...\n"
 ./Install_NVIDIA_Docker_Tools.sh #FK Run the Install_NVIDIA_Docker_Tools.sh to install NVIDIA Container toolkit
+
 
 
 #---------------------------------------------INSTALL LIO-SAM---------------------------------------------
 
 
-# if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
-#   cd ~/Documents/GitHub/ingenium_cartographer #AB ...navigate to the ingenium_cartographer directory
-#   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
-# fi
+if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
+  cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
+  ./Finns_Install_LIO-SAM.sh #FK temp LIO-SAM installer + docker container launch file #AB Installs inside the ~/APps directory
+fi
 
-#FK temp LIO-SAM installer + docker container launch file
-./Finns_Install_LIO-SAM.sh
 
 
 #---------------------------------------------CLEANUP---------------------------------------------
@@ -103,4 +114,5 @@ echo 'alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"'
 
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
+
 
