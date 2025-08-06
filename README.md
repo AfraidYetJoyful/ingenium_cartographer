@@ -15,13 +15,28 @@ Finn's comments are denoted by #FK
 
 ## Installation Instructions
 
-0. Download `Default_Apps_Installer.sh` onto a clean Ubuntu 22.04.5 LTS Jammy Jellyfish installation
+0. Use wget to download `install.sh` from the internet. We provide a tinyurl link to simplify this process. The appropriate command is
 
-1. Mark it as executable by navigating to its directory in Terminal and running `chmod +x Default_Apps_Installer.sh`
+    `wget -O install.sh https://tinyurl.com/ingenium-lidar-install`
 
-2. Next, run `./Default_Apps_Installer.sh`. This *will* prompt sudo--potentially multiple times. Among other things, this git repository will be cloned onto your device under `~/Documents/GitHub/ingenium_cartographer`. All files within it which match "\*.sh" will automatically be marked as executable. [Disabling this feature will cause irreparable installation errors].
+1. Mark the downloaded script as executable by running `chmod +x install.sh`
 
-3. If you ran `RPi_Default_Apps_Installer.sh` in step 2, after the reboot, run `./RPi_Network_Config.sh` (which will now be located in the `~` directory)
+2. Run the script with the appropriate argument to install a particular set of software packages from this repository. The valid arguments are: 
+
+    - `dev-jazzy`
+    - `dev-humble`
+    - `rpi`
+    - `slam` 
+    - `sl`
+    - `--help`
+
+    The `--help` option provides more information about the different options. `dev-jazzy` is intended for use on the Ubuntu 24.04.1 LTS Desktop developer laptop for a LiDAR project. `dev-humble` is intended for an Ubuntu 22.04.5 LTS Desktop developer project which requires ROS Humble (in our case, this exists to facilitate work with LIO-SAM). `rpi` is intended for use on an Ubuntu 24.04.2 LTS Server installation on a Raspberry Pi 3. It exclusively installs the dependencies and packages needed for recording data from the LiDAR puck and IMU. At this time, `slam` is identical to `dev-humble`, but it will someday be replaced by a script analogous to `rpi`, but for running LIO-SAM. For more details on `sl`, see the help menu.
+
+    To set up the dev-jazzy system, you would run
+
+    `./install.sh dev-jazzy`
+    
+    These scripts frequently prompt sudo at various stages of the process. This is normal.
 
 ## Instructions for Gathering and Processing Data
 
