@@ -33,6 +33,7 @@ sudo git checkout ros2
 cd ..
 
 
+
 #---------------------------------------------BUILD THE ROS PACKAGE AND THE DOCKER IMAGE---------------------------------------------
 
 
@@ -61,6 +62,11 @@ sudo docker run --init -it -d \
   liosam-humble-jammy \
   bash
 
+
+
+#---------------------------------------------PRINT INSTRUCTIONS---------------------------------------------
+
+
 echo "run 'sudo docker exec -it liosam-humble-jammy-container bash' to launch the container"
 echo -ne "ONCE INSIDE OF CONTAINER: \n"
 echo -ne "cd /home/Documents/GitHub/ingenium_cartographer \n
@@ -69,3 +75,5 @@ git switch humble \n
 sudo apt update \n
 sudo apt upgrade \n
 ./process_bag.sh /home/Documents/data/test.mcap \n"
+
+
