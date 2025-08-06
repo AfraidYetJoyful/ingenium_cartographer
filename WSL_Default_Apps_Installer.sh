@@ -16,3 +16,5 @@ fi
 cd ingenium_cartographer #AB Enter the newly cloned repository
 chmod +x Default_Apps_Installer.sh #AB Mark DAI as executable
 ./Default_Apps_Installer.sh #AB run DAI
+
+echo 'Deleting $(basename "$0")' && rm $(basename "$0") #AB Move the currently running script to Trash, since a copy of it is now present in ingenium_cartographer.
