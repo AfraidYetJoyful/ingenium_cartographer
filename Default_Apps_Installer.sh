@@ -66,13 +66,13 @@ fi
 cd ingenium_cartographer #AB Enter the newly cloned repository
 for file in *; do #AB Iterate through all files within it
     if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
-      chmod +x $file #AB ...then mark it as executable
-    else if [ -d "$file" ]; then
-      for file in *; do #AB Iterate through all files within it
-        if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
-          chmod +x $file #AB ...then mark it as executable
-        fi
-      done
+        chmod +x "$file" #AB ...then mark it as executable
+    elif [ -d "$file" ]; then #AB If the file is a directory...
+        for subfile in "$file"/*; do #AB Iterate through all files within the directory
+            if [[ "$subfile" == *.sh ]]; then #AB If the file is a bash script...
+                chmod +x "$subfile" #AB ...then mark it as executable
+            fi
+        done
     fi
 done
 
