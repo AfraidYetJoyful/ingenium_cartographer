@@ -74,3 +74,4 @@ if [ $parameter == "dev-jazzy" ] || [ $parameter == "dev-humble" ] || [ $paramet
     chmod +x ingenium_lidar_installer.sh #AB Mark the downloaded script as executable
     ./ingenium_lidar_installer.sh #AB Run the downloaded script
     rm ingenium_lidar_installer.sh #AB Delete the now obsolete downloaded script
+fi
