@@ -61,9 +61,15 @@ fi
 
 cd ingenium_cartographer #AB Enter the newly cloned repository
 for file in *; do #AB Iterate through all files within it
-  if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
-    chmod +x $file #AB ...then mark it as executable
-  fi
+    if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+      chmod +x $file #AB ...then mark it as executable
+    else if [ -d "$file" ]; then
+      for file in *; do #AB Iterate through all files within it
+        if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+          chmod +x $file #AB ...then mark it as executable
+        fi
+      done
+    fi
 done
 
 gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.

@@ -13,16 +13,16 @@
 
 #FK Add humble related stuff
 sudo apt install ros-humble-perception-pcl \
-  	   ros-humble-pcl-msgs \
-  	   ros-humble-vision-opencv \
-  	   ros-humble-xacro
+  ros-humble-pcl-msgs \
+  ros-humble-vision-opencv \
+  ros-humble-xacro
 #FK Add GTSAM-PPA
 sudo add-apt-repository ppa:borglab/gtsam-release-4.1
 sudo apt install libgtsam-dev libgtsam-unstable-dev
 
 
 
-#---------------------------------------------SET UP DIRECTORY STRUCTURE AND CLONE GITHUB---------------------------------------------
+#---------------------------------------------SET UP DIRECTORY STRUCTURE AND CLONE THE LIO-SAM GITHUB---------------------------------------------
 
 
 mkdir -p ~/Apps/LIO-SAM/src
