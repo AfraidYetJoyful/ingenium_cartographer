@@ -52,7 +52,8 @@ else if [ $parameter == "slam" ]; then #AB Someday, may install something else. 
     echo "slam"
     wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/humble/Default_Apps_Installer.sh
 
-else if [ $parameter == "--help" ] || [ $parameter == "--h" ]; then; print_help #AB Print the help page
+else if [ $parameter == "--help" ] || [ $parameter == "--h" ]; then 
+    print_help #AB Print the help page
     
 else if [ $parameter == "sl" ]; then
     sudo apt install sl # Install critical dependency
