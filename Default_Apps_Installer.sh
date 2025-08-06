@@ -69,7 +69,7 @@ gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/i
 
 
 echo "Installing ROS2 Humble Hawksbill...\n"
-cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
 ./Install_Humble.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
@@ -78,7 +78,7 @@ cd ~/Documents/GitHub/ingenium_cartographer #AB Navigate to the ingenium_cartogr
 
 
 # if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
-#   cd ~/Documents/GitHub/ingenium_cartographer #AB ...navigate to the ingenium_cartographer directory
+#   cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
 #   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
 # fi
 
