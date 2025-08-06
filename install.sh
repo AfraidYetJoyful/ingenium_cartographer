@@ -40,22 +40,22 @@ if [ $parameter == "dev-jazzy" ]; then #AB Download the Jazzy DAI
     echo "Installing Ingenium LiDAR's dev-jazzy package"
     wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/Default_Apps_Installer.sh
 
-else if [ $parameter == "dev-humble" ]; then #AB Download the Humble DAI
+elif [ $parameter == "dev-humble" ]; then #AB Download the Humble DAI
     echo "Installing Ingenium LiDAR's dev-humble package"
     wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/humble/Default_Apps_Installer.sh
 
-else if [ $parameter == "rpi" ]; then #AB Download the Jazzy RDAI
+elif [ $parameter == "rpi" ]; then #AB Download the Jazzy RDAI
     echo "Installing Ingenium LiDAR's rpi package"
     wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/jazzy/RPi_Default_Apps_Installer.sh
 
-else if [ $parameter == "slam" ]; then #AB Someday, may install something else. For now, download Humble DAI since it runs ILS
+elif [ $parameter == "slam" ]; then #AB Someday, may install something else. For now, download Humble DAI since it runs ILS
     echo "slam"
     wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/humble/Default_Apps_Installer.sh
 
-else if [ $parameter == "--help" ] || [ $parameter == "--h" ]; then 
+elif [ $parameter == "--help" ] || [ $parameter == "--h" ]; then 
     print_help #AB Print the help page
     
-else if [ $parameter == "sl" ]; then
+elif [ $parameter == "sl" ]; then
     sudo apt install sl # Install critical dependency
     echo ""
     echo "He he he..."
@@ -75,3 +75,7 @@ if [ $parameter == "dev-jazzy" ] || [ $parameter == "dev-humble" ] || [ $paramet
     ./ingenium_lidar_installer.sh #AB Run the downloaded script
     rm ingenium_lidar_installer.sh #AB Delete the now obsolete downloaded script
 fi
+
+
+
+
