@@ -15,10 +15,10 @@ sudo apt install ros-humble-perception-pcl \
 sudo add-apt-repository ppa:borglab/gtsam-release-4.1
 sudo apt install libgtsam-dev libgtsam-unstable-dev
 
-#FK NOT IN THE LIO-SAM GITHUB README DIRECTIONS (ran into issues until I did this though)
-mkdir -p ~/ros2_ws/src
 
-cd ~/ros2_ws/src
+mkdir -p ~/Apps/LIO-SAM/src
+
+cd ~/Apps/LIO-SAM/src
 git clone https://github.com/TixiaoShan/LIO-SAM.git
 cd LIO-SAM
 sudo git checkout ros2
@@ -26,7 +26,7 @@ cd ..
 sudo colcon build
 
 #FK make the docker image
-cd ~/ros2_ws/src/LIO-SAM
+cd ~/Apps/LIO-SAM/src/LIO-SAM
 sudo docker build -t liosam-humble-jammy . #FK create a docker image titled liosam-humble-jammy from a Dockerfile in the current directory
 
 #FK make the container out of the image
