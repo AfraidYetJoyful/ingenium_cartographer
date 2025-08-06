@@ -11,6 +11,8 @@ BOLD_CYAN='\e[1;36m'
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
+
+
 echo -ne "Installing base packages...\n"
 sleep 1
 
@@ -40,7 +42,10 @@ git config --global user.name "Ingenium-LiDAR"
 
 code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyring
 
+
+
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
+
 
 mkdir -p ~/Documents/GitHub
 mkdir -p ~/Documents/Data
@@ -65,12 +70,11 @@ gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/i
 
 
 
-
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
-echo "Installing ROS2 Humble Hawksbill...\n"
-cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
+echo -ne "Installing ROS2 Humble Hawksbill...\n"
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. 
 ./Install_Humble.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
 
@@ -78,22 +82,25 @@ cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the in
 #---------------------------------------------INSTALL DOCKER AND NVIDIA CONTAINER TOOLKIT---------------------------------------------
 
 
-echo "Installing Docker...\n"
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
+echo -ne "Installing Docker...\n"
 ./Install_Docker.sh #FK Run the Install_Docker.sh script to install docker
-echo "Installing NVIDIA Container Toolkit...\n"
+echo -ne "Installing NVIDIA Container Toolkit...\n"
 ./Install_NVIDIA_Docker_Tools.sh #FK Run the Install_NVIDIA_Docker_Tools.sh to install NVIDIA Container toolkit
+
 
 
 #---------------------------------------------INSTALL LIO-SAM---------------------------------------------
 
 
-# if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
-#   cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
-#   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
-# fi
+if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
+  cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
+  ./Finns_Install_LIO-SAM.sh #FK temp LIO-SAM installer + docker container launch file #AB Installs inside the ~/APps directory
+fi
 
-#FK temp LIO-SAM installer + docker container launch file
-./Finns_Install_LIO-SAM.sh
+
+
+
 
 
 #---------------------------------------------CLEANUP---------------------------------------------
