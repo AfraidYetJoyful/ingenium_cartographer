@@ -5,16 +5,16 @@
 #   container).
 
 #FK create an alias for clarity (note: only applies to current terminal session)
-alias do-nothing="sleep 0"
+alias usr-please-ignore-error="echo 'Ignore the above error. Everything is fine."
 
 #FK stop and remove any containers of the same name that still exist
 
 #FK if the container is currently running, stop it
 #FK if this results in an error (probably because the container is not currently running), do nothing
-sudo docker stop liosam-humble-jammy-container || do-nothing
+sudo docker stop liosam-humble-jammy-container || usr-please-ignore-error
 #FK if the container exists, remove it
 #FK if this results in an error (probably because the container has not been created), do nothing
-sudo docker rm liosam-humble-jammy-container || do-nothing
+sudo docker rm liosam-humble-jammy-container || usr-please-ignore-error
 
 #FK make the container out of the image
 #FK the mount is ESPECIALLY in flux rn
