@@ -91,6 +91,7 @@ sudo mv RPi_Network_Config.sh ~ #FK move second installer script to the main dir
 
 
 cd $cwd #AB return to the original directory
+echo 'Deleting file at $0' && rm "$0" #AB Move the currently running script to Trash, since a copy of it is now present in ingenium_cartographer.
 echo "RPi_Default_Apps_Installer.sh has finished running now."
 sleep 2
 echo "System will reboot in..."
