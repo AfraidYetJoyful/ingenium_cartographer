@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#AB Bash script to reinstall all the scripts and apps necessary for the project. Run on a fresh Ubuntu install.
+#AB Bash script to reinstall all the scripts and apps necessary for the project.
+#AB/FK Run on a fresh Ubuntu install with an NVIDIA GPU.
 #AB NOTE: This script primarily installs a long series of "developer tools"--things necessary for the project developers (eg. CloudCompare, IDEs), but not necessarily needed on every RPi. To set up a new RPi, see Ubuntu-Core-RPi-Default-Packages-Installer.sh
 
 RED='\033[0;31m' #AB format echo text as red
@@ -74,6 +75,15 @@ cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the in
 
 
 
+#---------------------------------------------INSTALL DOCKER AND NVIDIA CONTAINER TOOLKIT---------------------------------------------
+
+
+echo "Installing Docker...\n"
+./Install_Docker.sh #FK Run the Install_Docker.sh script to install docker
+echo "Installing NVIDIA Container Toolkit...\n"
+./Install_NVIDIA_Docker_Tools.sh #FK Run the Install_NVIDIA_Docker_Tools.sh to install NVIDIA Container toolkit
+
+
 #---------------------------------------------INSTALL LIO-SAM---------------------------------------------
 
 
@@ -82,6 +92,8 @@ cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the in
 #   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM inside a docker in the ~/Apps directory
 # fi
 
+#FK temp LIO-SAM installer + docker container launch file
+./Finns_Install_LIO-SAM.sh
 
 
 #---------------------------------------------CLEANUP---------------------------------------------
