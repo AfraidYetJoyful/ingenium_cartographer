@@ -6,6 +6,11 @@
 #FK prerequisite: docker install script
 #FK prerequisite: NVIDIA toolkit install script
 
+
+
+#---------------------------------------------INSTALL DEPENDENCIES---------------------------------------------
+
+
 #FK Add humble related stuff
 sudo apt install ros-humble-perception-pcl \
   	   ros-humble-pcl-msgs \
@@ -16,18 +21,31 @@ sudo add-apt-repository ppa:borglab/gtsam-release-4.1
 sudo apt install libgtsam-dev libgtsam-unstable-dev
 
 
-mkdir -p ~/Apps/LIO-SAM/src
 
+#---------------------------------------------SET UP DIRECTORY STRUCTURE AND CLONE GITHUB---------------------------------------------
+
+
+mkdir -p ~/Apps/LIO-SAM/src
 cd ~/Apps/LIO-SAM/src
 git clone https://github.com/TixiaoShan/LIO-SAM.git
 cd LIO-SAM
 sudo git checkout ros2
 cd ..
+
+
+#---------------------------------------------BUILD THE ROS PACKAGE AND THE DOCKER IMAGE---------------------------------------------
+
+
 sudo colcon build
 
 #FK make the docker image
 cd ~/Apps/LIO-SAM/src/LIO-SAM
 sudo docker build -t liosam-humble-jammy . #FK create a docker image titled liosam-humble-jammy from a Dockerfile in the current directory
+
+
+
+#---------------------------------------------CREATE THE DOCKER CONTAINER---------------------------------------------
+
 
 #FK make the container out of the image
 #FK the mount is ESPECIALLY in flux rn
@@ -44,8 +62,8 @@ sudo docker run --init -it -d \
   bash
 
 echo "run 'sudo docker exec -it liosam-humble-jammy-container bash' to launch the container"
-echo "ONCE INSIDE OF CONTAINER: \n"
-echo "cd /home/Documents/GitHub/ingenium_cartographer \n
+echo -ne "ONCE INSIDE OF CONTAINER: \n"
+echo -ne "cd /home/Documents/GitHub/ingenium_cartographer \n
 git config --global --add safe.directory /home/Documents/GitHub/ingenium_cartographer \n
 git switch humble \n
 sudo apt update \n
