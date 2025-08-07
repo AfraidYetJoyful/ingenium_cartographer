@@ -20,7 +20,7 @@ echo -e "\e[38;5;82mUpdating apt...\033[0m"
 sudo apt update
 sudo apt upgrade
 
-echo -e "\e[38;5;82mInstalling htop, openss-server, gnome-keyring, gnome-tweaks, snapd, yamllint, sl, and colcon...\033[0m"
+echo -e "\e[38;5;82mInstalling htop, openss-server, gnome-keyring, gnome-tweaks, snapd, yamllint, sl, pip, and colcon...\033[0m"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
@@ -28,7 +28,8 @@ sudo apt install gnome-tweaks #AB An OS customization tool
 sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install sl #AB Install sl, an alias for ls
-sudo apt install python3-colcon-core #Install colcon, the build manager for ROS2
+sudo apt install pip #AB Install pip, a package manager for Python
+sudo apt install python3-colcon-common-extensions #Install colcon, the build manager for ROS2
 
 
 echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender...\033[0m"
@@ -60,17 +61,17 @@ echo -e "\e[38;5;82mInstalling ingenium_cartographer repository...\033[0m"
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
   cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
   git clone https://github.com/JohannesByle/ingenium_cartographer
+  cd ingenium_cartographer #AB Enter the newly cloned repository
   git switch humble #AB Switch to the jazzy branch of the ingenium_cartographer repository
 fi
 
-cd ingenium_cartographer #AB Enter the newly cloned repository
 for file in *; do #AB Iterate through all files within it
     if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
-      chmod +x $file #AB ...then mark it as executable
-    else if [ -d "$file" ]; then
-      for file in *; do #AB Iterate through all files within it
-        if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
-          chmod +x $file #AB ...then mark it as executable
+      chmod +x "$file" #AB ...then mark it as executable
+    elif [ -d "$file" ]; then
+      for subfile in "$file"; do #AB Iterate through all files within it
+        if [[ "$subfile" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+          chmod +x "$subfile" #AB ...then mark it as executable
         fi
       done
     fi
