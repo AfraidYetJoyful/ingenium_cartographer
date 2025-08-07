@@ -30,13 +30,13 @@ Finn's comments are denoted by #FK
     - `sl`
     - `--help`
 
-    The `--help` option provides more information about the different options. `dev-jazzy` is intended for use on the Ubuntu 24.04.1 LTS Desktop developer laptop for a LiDAR project. `dev-humble` is intended for an Ubuntu 22.04.5 LTS Desktop developer project which requires ROS Humble (in our case, this exists to facilitate work with LIO-SAM). `rpi` is intended for use on an Ubuntu 24.04.2 LTS Server installation on a Raspberry Pi 3. It exclusively installs the dependencies and packages needed for recording data from the LiDAR puck and IMU. At this time, `slam` is identical to `dev-humble`, but it will someday be replaced by a script analogous to `rpi`, but for running LIO-SAM. For more details on `sl`, see the help menu.
+    The `--help` option provides more information about the different options. `dev-jazzy` is intended for use on the Ubuntu 24.04.1 LTS Desktop developer laptop for a LiDAR project. `dev-humble` is intended for an Ubuntu 22.04.5 LTS Desktop developer project which requires ROS Humble (in our case, this exists to facilitate work with LIO-SAM). `rpi` is intended for use on an Ubuntu 24.04.2 LTS Server installation on a Raspberry Pi 3. It exclusively installs the dependencies and packages needed for recording data from the LiDAR puck and IMU. `slam` is currently almost identical to `dev-humble`, except that it assumes a WSL installation and installs Gnome GUI before running `dev-humble`. For more details on `sl`, see the help menu.
 
     To set up the dev-jazzy system, you would run
 
     `./install.sh dev-jazzy`
     
-    These scripts frequently prompt sudo at various stages of the process. This is normal.
+    These scripts frequently prompt sudo at various stages of the process. This is normal. You should monitor the installaton process--it currently requests user input a LOT, and we haven't figured out how to fix that yet.
 
 ## Instructions for Gathering and Processing Data
 
