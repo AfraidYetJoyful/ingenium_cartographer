@@ -6,9 +6,9 @@ sudo apt upgrade
 sudo apt autoremove
 
 echo -e "\e[38;5;82mInstalling Gnome Desktop..."
-sudo apt install ubuntu-gnome-desktop
-echo -e "\e[38;5;82mInstalling Gnome Tweaks..."
-sudo apt install ubuntu-gnome-tweaks
+sudo apt install tasksel
+sudo tasksel install ubuntu-desktop
+sudo apt install gnome-tweaks
 
 echo -e "\e[38;5;82mInstalling ingenium_cartographer repository..."
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
