@@ -102,11 +102,8 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 #---------------------------------------------CONFIGURE PORTS AND IP ADDRESSES---------------------------------------------
 
 
-# sudo ip addr flush dev enp152s0 
-# sudo ip addr add 192.168.1.100/24 dev enp152s0 
 #AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
 sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
-
 
 
 
@@ -142,16 +139,6 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 
 
 
-#---------------------------------------------INSTALL LIO-SAM---------------------------------------------
-
-
-# if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
-#   cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
-#   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM in the ~/Apps directory
-# fi
-
-
-
 #---------------------------------------------CLEANUP---------------------------------------------
 
 
@@ -161,4 +148,3 @@ echo 'alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"'
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
 
-# echo 'Deleting file at $0' && rm "$0" #AB Move the currently running script to Trash, since a copy of it is now present in ingenium_cartographer.
