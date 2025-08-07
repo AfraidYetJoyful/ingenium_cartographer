@@ -13,13 +13,14 @@ BOLD_CYAN='\e[1;36m'
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
 
 
-echo -ne "Installing base packages...\n"
+echo -e "\e[38;5;82mInstalling base packages..."
 sleep 1
 
-echo "Running sudo apt update and upgrade: "
+echo -e "\e[38;5;82mUpdating apt..."
 sudo apt update
 sudo apt upgrade
 
+echo -e "\e[38;5;82mInstalling htop, openss-server, gnome-keyring, gnome-tweaks, snapd, yamllint, sl, and colcon..."
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
@@ -30,12 +31,14 @@ sudo apt install sl #AB Install sl, an alias for ls
 sudo apt install python3-colcon-core #Install colcon, the build manager for ROS2
 
 
+echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender..."
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap install firefox
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo snap install --classic blender #AB Install blender (a 3D modeling software)
 
+echo -e "\e[38;5;82mInstalling git and configuring git and VS Code..."
 sudo apt-get install git #AB Install and then configure git (a source control software for coders)
 git config --global user.email "ingenium.lidar@outlook.com"
 git config --global user.name "Ingenium-LiDAR"
@@ -47,12 +50,13 @@ code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyri
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
 
+echo -e "\e[38;5;82mSetting up the default directory structure..."
 mkdir -p ~/Documents/GitHub
 mkdir -p ~/Documents/Data
 mkdir ~/Apps
 
 
-
+echo -e "\e[38;5;82mInstalling ingenium_cartographer repository..."
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
   cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
   git clone https://github.com/JohannesByle/ingenium_cartographer
@@ -79,7 +83,7 @@ gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/i
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
-echo -ne "Installing ROS2 Humble Hawksbill...\n"
+echo -e "\e[38;5;82mInstalling ROS2 Humble..."
 cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. 
 ./Install_Humble.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
@@ -89,7 +93,7 @@ cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the in
 
 
 cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
-echo -ne "Installing Docker...\n"
+echo -e "\e[38;5;82mInstalling Docker and NVIDIA Container Toolkit..."
 ./Install_Docker.sh #FK Run the Install_Docker.sh script to install docker
 echo -ne "Installing NVIDIA Container Toolkit...\n"
 ./Install_NVIDIA_Docker_Tools.sh #FK Run the Install_NVIDIA_Docker_Tools.sh to install NVIDIA Container toolkit
@@ -99,6 +103,7 @@ echo -ne "Installing NVIDIA Container Toolkit...\n"
 #---------------------------------------------INSTALL LIO-SAM---------------------------------------------
 
 
+echo -e "\e[38;5;82mInstalling LIO-SAM..."
 if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
   cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
   ./Finns_Install_LIO-SAM.sh #FK temp LIO-SAM installer + docker container launch file #AB Installs inside the ~/APps directory
@@ -109,10 +114,11 @@ fi
 #---------------------------------------------CLEANUP---------------------------------------------
 
 
+echo -e "\e[38;5;82mCleaning up..."
 echo 'alias cleanup="./cleanup.sh"' >> ~/.bashrc #AB add the alias cleanup to the system ~/.bashrc file. It will now run ./cleanup.sh whenever the command "cleanup" is entered.
 echo 'alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"' >> ~/.bashrc #AB add the alias update to the system ~/.bashrc file. It will now update, upgrade, and finally autoremove all unnecessary files whenever the command "update" is entered.
 
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
 
-# echo 'Deleting file at $0' && rm "$0" #AB Move the currently running script to Trash, since a copy of it is now present in ingenium_cartographer.
+echo -e "\e[38;5;82mDefault_Apps_Installer.sh has finished running now."
