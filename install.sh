@@ -50,7 +50,7 @@ elif [ $parameter == "rpi" ]; then #AB Download the Jazzy RDAI
 
 elif [ $parameter == "slam" ]; then #AB Download WSL-DAI, which assumes a blank WSL installation of Ubuntu 22.04 LTS Desktop (no directories, no GUI) and therefore installs a GUI before running the Humble DAI
     echo "slam"
-    wget -O ingenium_lidar_installer.sh https://github.com/JohannesByle/ingenium_cartographer/blob/humble/agent_scripts/WSL_Default_Apps_Installer.sh
+    wget -O ingenium_lidar_installer.sh https://raw.githubusercontent.com/JohannesByle/ingenium_cartographer/refs/heads/humble/agent_scripts/WSL_Default_Apps_Installer.sh
 
 elif [ $parameter == "--help" ] || [ $parameter == "--h" ]; then 
     print_help #AB Print the help page
