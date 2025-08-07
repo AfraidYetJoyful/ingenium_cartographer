@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#AB To download this script, use:
+# wget -O install.sh https://tinyurl.com/ingenium-lidar-install
+
 parameter=$1 #AB take the parameter passed to the script
 
 
