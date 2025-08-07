@@ -15,7 +15,7 @@ sleep 1
 echo "Running sudo apt update and upgrade: "
 sudo apt update
 sudo apt upgrade
-echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, yamllint, snapd, net-tools, gdm-toolkit, pip, Docker, and git\n"
+echo "Installing htop, openssh, blender, snapd, gnome-tweaks, VS Code, CloudCompare, gnome-keyring, rpi-imager, Firefox, yamllint, snapd, net-tools, gdm-toolkit, pip, and git\n"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
@@ -145,10 +145,10 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 #---------------------------------------------INSTALL LIO-SAM---------------------------------------------
 
 
-if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
-  cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
-  ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM in the ~/Apps directory
-fi
+# if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
+#   cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
+#   ./Install_LIO-SAM.sh #AB Run a script to install LIO-SAM in the ~/Apps directory
+# fi
 
 
 
