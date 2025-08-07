@@ -34,6 +34,9 @@ For more details or more help with this script, please see the GitHub README.md 
    
 }
 
+echo -e "\e[38;5;196mThis install script will require periodic attention. Please keep an eye on the terminal window and respond to any prompts that may appear. Press enter to acknowledge this message and proceed with the installation.\e[0m"
+sleep 2
+read -r
 
 
 if [ $parameter == "dev-jazzy" ]; then #AB Download the Jazzy DAI
