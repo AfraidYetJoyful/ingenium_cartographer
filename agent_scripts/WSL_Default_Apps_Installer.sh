@@ -13,7 +13,7 @@ if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory ca
   git switch humble #AB Switch to the humble branch of the ingenium_cartographer repository
 fi
 
-cd ingenium_cartographer #AB Enter the newly cloned repository
+cd ingenium_cartographer/agent_scripts #AB Enter the newly cloned repository
 chmod +x Default_Apps_Installer.sh #AB Mark DAI as executable
 ./Default_Apps_Installer.sh #AB run DAI
 
