@@ -35,7 +35,7 @@ sleep 3
 
 
 echo "Recording lidar and imu data..."
-ros2 bag record /imu/data /velodyne_packets & #AB Record the /velodyne_packets and /imu/data topics
+ros2 bag record -o ~/Documents/Data/$(date +%s).sqlite3 --storage sqlite3 /imu/data /velodyne_packets & #AB Record the /velodyne_packets and /imu/data topics
 sleep 4
 
 
