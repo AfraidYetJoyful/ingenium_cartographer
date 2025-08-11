@@ -62,7 +62,8 @@ if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory ca
   git switch humble #AB Switch to the jazzy branch of the ingenium_cartographer repository
 fi
 
-for file in *; do #AB Iterate through all files within it
+cd ~/Documents/GitHub/ingenium_cartographer
+for file in *; do #AB Iterate through all files within the current directory
     if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
       chmod +x "$file" #AB ...then mark it as executable
     elif [ -d "$file" ]; then
@@ -73,6 +74,14 @@ for file in *; do #AB Iterate through all files within it
       done
     fi
 done
+
+cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the agent_scripts directory within the ingenium_cartographer repository
+for file in *; do #AB Iterate through all files within it
+    if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
+      chmod +x "$file" #AB ...then mark it as executable
+    fi
+done
+
 
 gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/ingenium_cartographer/blanchard.png #AB Set the desktop background to blanchard.png from the GitHub.
 
@@ -92,9 +101,9 @@ cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the in
 
 cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer/agent_scripts directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
 echo -e "\e[38;5;82mInstalling Docker and NVIDIA Container Toolkit...\033[0m"
-./Install_Docker.sh #FK Run the Install_Docker.sh script to install docker
+sudo ./Install_Docker.sh #FK Run the Install_Docker.sh script to install docker
 echo -e "\e[38;5;82mInstalling NVIDIA Container Toolkit...\033[0m"
-./Install_NVIDIA_Docker_Tools.sh #FK Run the Install_NVIDIA_Docker_Tools.sh to install NVIDIA Container toolkit
+sudo ./Install_NVIDIA_Docker_Tools.sh #FK Run the Install_NVIDIA_Docker_Tools.sh to install NVIDIA Container toolkit
 
 
 
@@ -104,7 +113,7 @@ echo -e "\e[38;5;82mInstalling NVIDIA Container Toolkit...\033[0m"
 echo -e "\e[38;5;82mInstalling LIO-SAM...\033[0m"
 if ! [ -d ~/Apps/LIO-SAM ]; then #AB If a directory called LIO-SAM is not already in the ~/Apps directory...
   cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB ...navigate to the ingenium_cartographer directory
-  ./Finns_Install_LIO-SAM.sh #FK temp LIO-SAM installer + docker container launch file #AB Installs inside the ~/APps directory
+  sudo ./Finns_Install_LIO-SAM.sh #FK temp LIO-SAM installer + docker container launch file #AB Installs inside the ~/APps directory
 fi
 
 
