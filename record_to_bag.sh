@@ -12,6 +12,13 @@ sudo ip addr flush dev $ethernet
 sudo ip addr add 192.168.1.100/24 dev $ethernet
 
 
+sleep 1
+echo "Enter the Grid ID:"
+read -r grid_id #AB Prompt the user to enter a grid ID, which will be used to name the recorded data bag files.
+echo "Grid ID set to: $grid_id"
+save_path=~/Documents/Data/$(date +%F)/"$grid_id"_RAW_$(date +%F-%H-%M)_$(date +%s)
+
+
 #AB Publish a static transform from the base frame to the IMU frame of reference. 
 #  - Indicate 0 translation (as consistent with the older files from the ROS1 version)
 #  - Give a rotation quaterion (same rotation as the ROS1 system). See https://www.andre-gaschler.com/rotationconverter/ for this in Euler angles (RPY) or a rotation matrix.
@@ -35,7 +42,7 @@ sleep 3
 
 
 echo "Recording lidar and imu data..."
-ros2 bag record -o ~/Documents/Data/$(date +%s).sqlite3 --storage sqlite3 /imu/data /velodyne_packets & #AB Record the /velodyne_packets and /imu/data topics
+ros2 bag record -o $save_path --storage sqlite3 /imu/data /velodyne_packets & #AB Record the /velodyne_packets and /imu/data topics
 sleep 4
 
 
@@ -46,7 +53,7 @@ sleep 4
 echo "Currently recording, press enter to exit"
 read -r #AB Wait for an input of any key, then proceed to cleanup
 
-./cleanup.sh #AB This  automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
+# ./cleanup.sh #AB This  automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
 
 pkill -f ros2 && pkill -f microstrain && pkill -f launch && pkill -f rviz2 && pkill -f python3 #AB forcefully kill ALL ROS2 processes to prevent ghost proceeses from continuing.
 sleep 1
