@@ -29,8 +29,13 @@ sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install sl #AB Install sl, an alias for ls
 sudo apt install pip #AB Install pip, a package manager for Python
-sudo apt install python3-colcon-common-extensions #Install colcon, the build manager for ROS2
 
+#AB Install colcon, the build manager for ROS2
+echo -e "\e[38;5;82mInstalling colcon...\033[0m"
+sudo sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+sudo apt update
+sudo apt install python3-colcon-common-extensions 
 
 echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender...\033[0m"
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
