@@ -23,12 +23,12 @@ sudo apt upgrade
 echo -e "\e[38;5;82mInstalling htop, openss-server, gnome-keyring, gnome-tweaks, snapd, yamllint, sl, pip, and colcon...\033[0m"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
-sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
 sudo apt install gnome-tweaks #AB An OS customization tool
 sudo apt install snapd #AB A package manager
 sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install sl #AB Install sl, an alias for ls
 sudo apt install pip #AB Install pip, a package manager for Python
+sudo apt-get install git #AB Install and then configure git (a source control software for coders)
 
 #AB Install colcon, the build manager for ROS2
 echo -e "\e[38;5;82mInstalling colcon...\033[0m"
@@ -37,19 +37,11 @@ curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo ap
 sudo apt update
 sudo apt install python3-colcon-common-extensions 
 
-echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender...\033[0m"
-sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
+echo -e "\e[38;5;82mInstalling Firefox, CloudCompare, and Blender...\033[0m"
 sudo snap install firefox
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo snap install --classic blender #AB Install blender (a 3D modeling software)
-
-echo -e "\e[38;5;82mInstalling git and configuring git and VS Code...\033[0m"
-sudo apt-get install git #AB Install and then configure git (a source control software for coders)
-git config --global user.email "ingenium.lidar@outlook.com"
-git config --global user.name "Ingenium-LiDAR"
-
-code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyring
 
 
 
