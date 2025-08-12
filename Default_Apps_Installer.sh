@@ -11,6 +11,7 @@ BOLD='\e[1m' #AB format echo text as bold
 # for code in {0..255}
 #     do echo -e "\e[38;5;${code}m"'\\e[38;5;'"$code"m"\e[0m"
 #   done
+ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using ip address 
 
 
 
@@ -115,7 +116,9 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 
 echo -e "\e[38;5;82mConfiguring ports and IP addresses..."
 #AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
-sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
+#FK probably unnecessary: sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
+#FK Adds a network connection to the ethernet port with the stable ipv4 address 192.168.1.100/24, necessary to connect to the VLP-32C
+nmcli connection add type ethernet ifname $ethernet con-name lidar-puck autoconnect yes ipv4.addresses "192.168.1.201" ipv4.method manual
 
 
 
