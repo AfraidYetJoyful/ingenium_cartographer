@@ -18,10 +18,11 @@ sudo docker rm liosam-humble-jammy-container || usr-please-ignore-error
 
 #FK make the container out of the image
 #FK the mount is ESPECIALLY in flux rn
+mkdir -p /mnt/c/Users/ingen/Documents #FK if the user doesn't have the directories to mount to the docker, create them
 cd ~
 sudo docker run --init -it -d \
   --name liosam-humble-jammy-container \
-  --mount type=bind,source="$(pwd)"/Documents,target=/home/Documents \
+  --mount type=bind,source=/mnt/c/Users/ingen/Documents,target=/home/Documents \
   -v /etc/localtime:/etc/localtime:ro \
   -v /etc/timezone:/etc/timezone:ro \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
