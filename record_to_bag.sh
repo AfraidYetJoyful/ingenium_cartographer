@@ -8,8 +8,8 @@ source /opt/ros/jazzy/setup.bash
 ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using ip address 
 
 #AB Configure the IP address of the ethernet port to receive data from the default IP of a VLP-32C.
-sudo ip address flush dev $ethernet
-sudo ip address add 192.168.1.100/24 dev $ethernet
+#FK unnecessary since nmcli used elsewhere: sudo ip address flush dev $ethernet
+#FK unnecessary since nmcli used elsewhere: sudo ip address add 192.168.1.100/24 dev $ethernet
 
 
 sleep 1
