@@ -8,14 +8,14 @@ source /opt/ros/jazzy/setup.bash
 ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, which can be found using ip address 
 
 #AB Configure the IP address of the ethernet port to receive data from the default IP of a VLP-32C.
-sudo ip addr flush dev $ethernet
-sudo ip addr add 192.168.1.100/24 dev $ethernet
+sudo ip address flush dev $ethernet
+sudo ip address add 192.168.1.100/24 dev $ethernet
 
 
 sleep 1
-echo "Enter the Grid ID:"
+echo -e "\e[1;36mEnter the Grid ID:\033[0m"
 read -r grid_id #AB Prompt the user to enter a grid ID, which will be used to name the recorded data bag files.
-echo "Grid ID set to: $grid_id"
+echo -e "\e[1;36mGrid ID set to: $grid_id\033[0m"
 save_path=~/Documents/Data/$(date +%F)/"$grid_id"_RAW_$(date +%F-%H-%M)_$(date +%s)
 
 
@@ -41,7 +41,7 @@ sleep 3
 #---------------------------------------------RECORD DATA AS DICTATED BY ENVIRONMENT VARIABLES---------------------------------------------#
 
 
-echo "Recording lidar and imu data..."
+echo -e "\e[1;36mRecording lidar and imu data...\033[0m"
 ros2 bag record -o $save_path --storage sqlite3 /imu/data /velodyne_packets & #AB Record the /velodyne_packets and /imu/data topics
 sleep 4
 
@@ -50,7 +50,7 @@ sleep 4
 #---------------------------------------------END DATA COLLECTION AND CLEAN UP WORKSPACE---------------------------------------------#
 
 
-echo "Currently recording, press enter to exit"
+echo -e "\e[1;36mCurrently recording, press enter to exit\033[0m"
 read -r #AB Wait for an input of any key, then proceed to cleanup
 
 # ./cleanup.sh #AB This  automatically moves all directories starting with "rosbag2_" to the /Documents/Data directory, and creates that directory if it does not exist.
@@ -58,7 +58,7 @@ read -r #AB Wait for an input of any key, then proceed to cleanup
 pkill -f ros2 && pkill -f microstrain && pkill -f launch && pkill -f rviz2 && pkill -f python3 #AB forcefully kill ALL ROS2 processes to prevent ghost proceeses from continuing.
 sleep 1
 
-echo "The program has finished running now."
+echo -e "\e[1;36mThe program has finished running now.\033[0m"
 exit
 
 
