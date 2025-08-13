@@ -16,13 +16,13 @@ ethernet=enp152s0  #AB Replace enp152s0 with the name of your ethernet port, whi
 
 
 #---------------------------------------------INSTALL BASIC PACKAGES---------------------------------------------
-echo -e "\e[38;5;82mInstalling base packages..."
+echo -e "\e[38;5;82mInstalling base packages...\033[0m"
 sleep 1
 
 echo -e "\e[38;5;82mUpdating and upgrading apt repositories..."
 sudo apt update
 sudo apt upgrade
-echo -e "\e[38;5;82mInstalling htop, openssh, gnome-keyring, rpi-imager, gnome-tweaks, snapd, yamllint, gdm-toolkit, net-tools, pip, python3.12-venv, sl, and tree via apt..."
+echo -e "\e[38;5;82mInstalling htop, openssh, gnome-keyring, rpi-imager, gnome-tweaks, snapd, yamllint, gdm-toolkit, net-tools, pip, python3.12-venv, sl, and tree via apt...\033[0m"
 sudo apt install htop #AB Disk space monitor
 sudo apt install openssh-server #AB SSH client
 sudo apt-get install gnome-keyring #AB Install a secure cryptographic library needed by VS Code
@@ -38,14 +38,14 @@ sudo apt install sl #AB Install sl, an alias for ls
 sudo apt install tree #AB A fancy directory structure printer
 
 
-echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender via snap..."
+echo -e "\e[38;5;82mInstalling VS Code, Firefox, CloudCompare, and Blender via snap...\033[0m"
 sudo snap install --classic code #AB Visual Studio Code, a git-integrated IDE for basically all computer languages
 sudo snap install firefox
 sudo snap refresh firefox #AB Update the default-installed firefox to the latest version
 sudo snap install cloudcompare #AB Install CloudCompare (a point-cloud processing software)
 sudo snap install --classic blender #AB Install blender (a 3D modeling software)
 
-echo -e "\e[38;5;82mInstalling and configuring git..."
+echo -e "\e[38;5;82mInstalling and configuring git...\033[0m"
 sudo apt-get install git #AB Install and then configure git (a source control software for coders)
 git config --global user.email "ingenium.lidar@outlook.com"
 git config --global user.name "Ingenium-LiDAR"
@@ -57,7 +57,7 @@ code --password-store="gnome-libsecret" #AB Configure VS Code to use Gnome Keyri
 #---------------------------------------------CREATE DEFAULT DIRECTORY STRUCTURE---------------------------------------------
 
 
-echo -e "\e[38;5;82mCreating default directory structure..."
+echo -e "\e[38;5;82mCreating default directory structure...\033[0m"
 mkdir -p ~/Documents/GitHub
 mkdir -p ~/Documents/Data
 mkdir ~/Apps
@@ -67,14 +67,16 @@ mkdir ~/Apps
 #---------------------------------------------INSTALL "ingenium_cartographer" REPOSITORY---------------------------------------------
 
 
-echo -e "\e[38;5;82mInstalling the Ingenium Cartographer repository..."
+echo -e "\e[38;5;82mInstalling the Ingenium Cartographer repository...\033[0m"
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
   cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
   git clone https://github.com/JohannesByle/ingenium_cartographer
+  sleep 2
   git switch jazzy #AB Switch to the jazzy branch of the ingenium_cartographer repository
 fi
 
 cd ingenium_cartographer #AB Enter the newly cloned repository
+git switch jazzy #AB Switch to the jazzy branch of the ingenium_cartographer repository (backup, since the last didn't work on a recent install)
 for file in *; do #AB Iterate through all files within it
     if [[ "$file" == *.sh ]]; then #AB If the file is a bash script (i.e., if it ends in .sh)...
         chmod +x "$file" #AB ...then mark it as executable
@@ -94,7 +96,7 @@ gsettings set org.gnome.desktop.background picture-uri file:~/Documents/GitHub/i
 #---------------------------------------------INSTALL ROS2 Jazzy---------------------------------------------
 
 
-echo -e "\e[38;5;82mInstalling ROS2 Jazzy Jalisco..."
+echo -e "\e[38;5;82mInstalling ROS2 Jazzy Jalisco...\033[0m"
 cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the ingenium_cartographer directory. Technically unnecessary at this stage since the script is already there, but best to make it explicit where the program needs to be.
 ./Install_Jazzy.sh #AB Run the Install_Jazzy.sh script to install ROS Jazzy 
 
@@ -103,7 +105,7 @@ cd ~/Documents/GitHub/ingenium_cartographer/agent_scripts #AB Navigate to the in
 #---------------------------------------------INSTALL HARDWARE DRIVERS---------------------------------------------
 
 
-echo -e "\e[38;5;82mInstalling hardware drivers..."
+echo -e "\e[38;5;82mInstalling hardware drivers...\033[0m"
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install ros-jazzy-velodyne #AB Install the Velodyne driver. It's in a stack hosted (I believe) on the ROS website.
@@ -114,7 +116,7 @@ sudo apt-get install ros-jazzy-microstrain-inertial-driver #AB Install the IMU d
 #---------------------------------------------CONFIGURE PORTS AND IP ADDRESSES---------------------------------------------
 
 
-echo -e "\e[38;5;82mConfiguring ports and IP addresses..."
+echo -e "\e[38;5;82mConfiguring ports and IP addresses...\033[0m"
 #AB This section rewrites your ethernet IP to be on the same network as the VLP-32C default. If your sensors are not connecting, you're probably on the wrong subnet.
 #FK probably unnecessary: sudo ip route add 192.168.1.201 dev enp152s0 #AB Replace enp152s0 with the name of your ethernet port, which can be found by running ip address 
 #FK Adds a network connection to the ethernet port with the stable ipv4 address 192.168.1.100/24, necessary to connect to the VLP-32C
@@ -125,7 +127,7 @@ nmcli connection add type ethernet ifname $ethernet con-name lidar-puck autoconn
 #---------------------------------------------INSTALL VELOVIEW---------------------------------------------
 
 
-echo -e "\e[38;5;82mInstalling VeloView..."
+echo -e "\e[38;5;82mInstalling VeloView...\033[0m"
 CURRENT_DIRECTORY=$(pwd) #AB store the current directory in a variable
 cd ~/Apps
 
@@ -156,11 +158,11 @@ cd $CURRENT_DIRECTORY #AB return to the directory the script was in before insta
 
 #---------------------------------------------CLEANUP---------------------------------------------
 
-echo -e "\e[38;5;82mCleaning up..."
+echo -e "\e[38;5;82mCleaning up...\033[0m"
 echo 'alias cleanup="./cleanup.sh"' >> ~/.bashrc #AB add the alias cleanup to the system ~/.bashrc file. It will now run ./cleanup.sh whenever the command "cleanup" is entered.
 echo 'alias update="sudo apt update && sudo apt upgrade && sudo apt autoremove"' >> ~/.bashrc #AB add the alias update to the system ~/.bashrc file. It will now update, upgrade, and finally autoremove all unnecessary files whenever the command "update" is entered.
 
 echo -ne "Running sudo apt autoremove:\n"
 sudo apt autoremove #AB Remove all files not needed in the system. Frees up a variable amount of space (on the Jun 24, 2025 reinstall, I had superfluous firmware. You never know...)
 
-echo -e "\e[38;5;82mDefault_Apps_Installer.sh has finished running now."
+echo -e "\e[38;5;82mDefault_Apps_Installer.sh has finished running now.\033[0m"
