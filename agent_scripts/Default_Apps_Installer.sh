@@ -54,13 +54,19 @@ mkdir -p ~/Documents/Data
 mkdir ~/Apps
 
 
-echo -e "\e[38;5;82mInstalling ingenium_cartographer repository...\033[0m"
+echo -e "\e[38;5;82mInstalling the Ingenium Cartographer repository...\033[0m"
 if ! [ -d ~/Documents/GitHub/ingenium_cartographer ]; then #AB If a directory called ingenium_cartographer does not already exist in ~/Documents/GitHub...
-  cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
-  git clone https://github.com/JohannesByle/ingenium_cartographer
-  cd ingenium_cartographer #AB Enter the newly cloned repository
-  git switch humble #AB Switch to the jazzy branch of the ingenium_cartographer repository
+    cd ~/Documents/GitHub #AB ...navigate to the ~/Documents/GitHub directory
+    git clone https://github.com/JohannesByle/ingenium_cartographer
+    sleep 2
+    cd ingenium_cartographer #AB Enter the newly cloned repository
+    git switch humble #AB Switch to the jazzy branch of the ingenium_cartographer repository
+else
+    cd ingenium_cartographer #AB Enter the newly cloned repository
+    git pull #AB Update the repository to the latest version
+    git switch humble #AB Switch to the jazzy branch of the ingenium_cartographer repository (backup, since the last didn't work on a recent install)
 fi
+
 
 cd ~/Documents/GitHub/ingenium_cartographer
 for file in *; do #AB Iterate through all files within the current directory
