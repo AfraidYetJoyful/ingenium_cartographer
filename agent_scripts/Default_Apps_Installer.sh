@@ -29,6 +29,7 @@ sudo apt install yamllint #AB a tool to check the syntax of YAML files
 sudo apt install sl #AB Install sl, an alias for ls
 sudo apt install pip #AB Install pip, a package manager for Python
 sudo apt-get install git #AB Install and then configure git (a source control software for coders)
+sudo apt install curl #AB Install curl, a command-line tool for transferring data with URLs
 
 #AB Install colcon, the build manager for ROS2
 echo -e "\e[38;5;82mInstalling colcon...\033[0m"
