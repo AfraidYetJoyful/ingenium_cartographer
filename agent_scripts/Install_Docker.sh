@@ -23,6 +23,3 @@ sudo systemctl enable docker
 sudo systemctl start docker
 systemctl status docker
 
-#FK test that Docker works; this test is from various places
-sudo docker run --name hello hello-world
-sudo docker rm hello
