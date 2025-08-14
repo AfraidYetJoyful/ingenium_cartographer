@@ -36,6 +36,7 @@ echo -e "\e[38;5;82mInstalling colcon...\033[0m"
 sudo sh -c 'echo "deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 sudo apt update
+sudo apt upgrade
 sudo apt install python3-colcon-common-extensions 
 
 echo -e "\e[38;5;82mInstalling Firefox, CloudCompare, and Blender...\033[0m"
